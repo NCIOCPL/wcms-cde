@@ -762,6 +762,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         new NciUrl() {
                             QueryParameters = new Dictionary<string,string>() {
                                 { "va", "1" },
+                                { "loc", "0" },
                                 { "rl", "1" }
                             }
                         }
@@ -776,6 +777,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         new NciUrl() {
                             QueryParameters = new Dictionary<string,string>() {
                                 { "va", "0" },
+                                { "loc", "0" },
                                 { "rl", "1" }
                             }
                         }

@@ -43,7 +43,21 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                 City = "Berlin"
                             }
                         },
-                        GetCityOnlySites()
+                        GetExpectedCityOnlySites()
+                    },
+                    //City Only + VA
+                    new object[] {
+                        new ClinicalTrial() {
+                            Sites = GetCSSLocData()
+                        },
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            Location = LocationType.CountryCityState,
+                            LocationParams = new CountryCityStateLocationSearchParams() {
+                                City = "Berlin"
+                            }
+                        },
+                        GetExpectedVASites()
                     },
                     //State Only
                     new object[] { 
@@ -61,7 +75,26 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                 }
                             }
                         },
-                        GetStateOnlySites()
+                        GetExpectedStateOnlySites()
+                    },
+                    //State Only + VA
+                    new object[] {
+                        new ClinicalTrial() {
+                            Sites = GetCSSLocData()
+                        },
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            Location = LocationType.CountryCityState,
+                            LocationParams = new CountryCityStateLocationSearchParams() {
+                                State = new LabelledSearchParam[] {
+                                    new LabelledSearchParam() {
+                                        Key = "MD",
+                                        Label = "Maryland"
+                                    }
+                                }
+                            }
+                        },
+                        GetExpectedVASites()
                     },
                     //2 States Only
                     new object[] { 
@@ -83,7 +116,30 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                 }
                             }
                         },
-                        Get2StateOnlySites()
+                        GetExpected2StateOnlySites()
+                    },
+                    //2 States Only + VA
+                    new object[] {
+                        new ClinicalTrial() {
+                            Sites = GetCSSLocData()
+                        },
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            Location = LocationType.CountryCityState,
+                            LocationParams = new CountryCityStateLocationSearchParams() {
+                                State = new LabelledSearchParam[] {
+                                    new LabelledSearchParam() {
+                                        Key = "PA",
+                                        Label = "Pennsylvania"
+                                    },
+                                    new LabelledSearchParam() {
+                                        Key = "MD",
+                                        Label = "Maryland"
+                                    }
+                                }
+                            }
+                        },
+                        GetExpectedVASites()
                     },
                     //Country Only
                     new object[] { 
@@ -96,8 +152,23 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                 Country = "Germany"
                             }
                         },
-                        GetCountryOnlySites()
+                        GetExpectedCountryOnlySites()
                     },
+                    //Country Only + VA
+                    new object[] {
+                        new ClinicalTrial() {
+                            Sites = GetCSSLocData()
+                        },
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            Location = LocationType.CountryCityState,
+                            LocationParams = new CountryCityStateLocationSearchParams() {
+                                Country = "Germany"
+                            }
+                        },
+                        new ClinicalTrial.StudySite[] { }
+                    },
+
                     //City State Only
                     new object[] { 
                         new ClinicalTrial() {
@@ -115,7 +186,27 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                 }
                             }
                         },
-                        GetCityStateSites()
+                        GetExpectedCityStateSites()
+                    },
+                    //City State Only + VA
+                    new object[] {
+                        new ClinicalTrial() {
+                            Sites = GetCSSLocData()
+                        },
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            Location = LocationType.CountryCityState,
+                            LocationParams = new CountryCityStateLocationSearchParams() {
+                                City = "Berlin",
+                                State = new LabelledSearchParam[] {
+                                    new LabelledSearchParam() {
+                                        Key = "MD",
+                                        Label = "Maryland"
+                                    }
+                                }
+                            }
+                        },
+                        GetExpectedVASites()
                     }
 
                     //TODO: Country only, State Only, combos
@@ -134,6 +225,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital A",
                         City = "Berlin",
                         Country = "Germany",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = null
                     },
                     new ClinicalTrial.StudySite()
@@ -141,6 +233,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital Skip A",
                         City = "Paris",
                         Country = "France",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = null
                     },
 
@@ -150,6 +243,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital O",
                         City = "Berlin",
                         Country = "Canada",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "ON"
                     },
 
@@ -158,6 +252,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital B",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     },
 
@@ -166,6 +261,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital P",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "PA"
                     },
                     new ClinicalTrial.StudySite()
@@ -173,6 +269,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = true,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -180,6 +277,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Another Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "AK"
                     },
                     new ClinicalTrial.StudySite()
@@ -187,6 +285,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital Skip B",
                         City = "Montreal",
                         Country = "Canada",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "QC"
                     },
                     new ClinicalTrial.StudySite()
@@ -194,6 +293,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital Skip C",
                         City = "Bethesda",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     }
                 }
@@ -202,7 +302,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;
         }
 
-        private static IEnumerable<ClinicalTrial.StudySite> GetCityOnlySites()
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpectedCityOnlySites()
         {
             List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
 
@@ -213,6 +313,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital A",
                         City = "Berlin",
                         Country = "Germany",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = null
                     },
                     new ClinicalTrial.StudySite()
@@ -220,6 +321,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital O",
                         City = "Berlin",
                         Country = "Canada",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "ON"
                     },
                     new ClinicalTrial.StudySite()
@@ -227,6 +329,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital B",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -234,6 +337,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital P",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "PA"
                     },
                     new ClinicalTrial.StudySite()
@@ -241,6 +345,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = true,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -248,6 +353,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Another Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "AK"
                     }                    
                 }
@@ -256,7 +362,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;          
         }
 
-        private static IEnumerable<ClinicalTrial.StudySite> GetStateOnlySites()
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpectedStateOnlySites()
         {
             List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
 
@@ -267,6 +373,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital B",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -274,6 +381,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = true,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -281,6 +389,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital Skip C",
                         City = "Bethesda",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     }
                 }
@@ -289,7 +398,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;
         }
 
-        private static IEnumerable<ClinicalTrial.StudySite> Get2StateOnlySites()
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpected2StateOnlySites()
         {
             List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
 
@@ -300,6 +409,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital B",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -307,6 +417,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital P",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "PA"
                     },
                     new ClinicalTrial.StudySite()
@@ -314,6 +425,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = true,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -321,6 +433,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital Skip C",
                         City = "Bethesda",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     }
                 }
@@ -329,7 +442,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;
         }
 
-        private static IEnumerable<ClinicalTrial.StudySite> GetCountryOnlySites()
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpectedCountryOnlySites()
         {
             List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
 
@@ -340,6 +453,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital A",
                         City = "Berlin",
                         Country = "Germany",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = null
                     }
                 }
@@ -348,7 +462,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;
         }
 
-        private static IEnumerable<ClinicalTrial.StudySite> GetCityStateSites()
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpectedCityStateSites()
         {
             List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
 
@@ -359,6 +473,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital B",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = false,
                         StateOrProvinceAbbreviation = "MD"
                     },
                     new ClinicalTrial.StudySite()
@@ -366,6 +481,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                         Name = "Hospital C",
                         City = "Berlin",
                         Country = "United States",
+                        IsVA = true,
                         StateOrProvinceAbbreviation = "MD"
                     }
                 }
@@ -374,6 +490,25 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
             return sites;
         }
 
+        private static IEnumerable<ClinicalTrial.StudySite> GetExpectedVASites()
+        {
+            List<ClinicalTrial.StudySite> sites = new List<ClinicalTrial.StudySite>();
+
+            sites.AddRange(
+                new ClinicalTrial.StudySite[] {
+                    new ClinicalTrial.StudySite()
+                    {
+                        Name = "Hospital C",
+                        City = "Berlin",
+                        Country = "United States",
+                        IsVA = true,
+                        StateOrProvinceAbbreviation = "MD"
+                    }
+                }
+            );
+
+            return sites;
+        }
 
         [Theory, MemberData("CCSFilteringData")]
         public void FilterByCCS(ClinicalTrial trial, CTSSearchParams searchParams, IEnumerable<ClinicalTrial.StudySite> expectedSites)

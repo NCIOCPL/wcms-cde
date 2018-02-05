@@ -132,8 +132,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.TrialVelocityTools
                                StateOrProvinceAbbreviation = "MD"
                            }
                         }
-                    }
-                    //TODO: Find a trial with no NIH sites, but other trial sites.
+                    },
+                    
                 };
             }
         }
