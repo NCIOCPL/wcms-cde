@@ -36,6 +36,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 SerializeAge +
                 SerializeKeyword +
                 SerializeGender +
+                SerializeIsVAOnly +
                 SerializeLocation +
                 SerializeTrialTypes +
                 SerializeDrugs +
@@ -67,6 +68,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 ParseAge +
                 ParseKeyword +
                 ParseGender +
+                ParseIsVAOnly +
                 ParseLocation +
                 ParseTrialTypes +
                 ParseDrugs +
@@ -199,6 +201,15 @@ namespace CancerGov.ClinicalTrials.Basic.v2
             if (searchParams.IsFieldSet(FormFields.Gender))
             {
                 url.QueryParameters.Add("g", HttpUtility.UrlEncode(searchParams.Gender));
+            }
+        }
+
+        // Parameter va (Search VA Only)
+        private static void SerializeIsVAOnly(NciUrl url, CTSSearchParams searchParams)
+        {
+            if (searchParams.IsFieldSet(FormFields.IsVAOnly))
+            {
+                url.QueryParameters.Add("va", searchParams.IsVAOnly ? "1" : "0" );
             }
         }
 
@@ -501,6 +512,30 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 else
                 {
                     LogParseError(FormFields.Gender, "Please enter a valid gender.", searchParams);
+                }
+            }
+        }
+
+        // Parameter va (VA Only Search)
+        private void ParseIsVAOnly(NciUrl url, CTSSearchParams searchParams)
+        {
+            if (IsInUrl(url, "va"))
+            {
+                int va = this.ParamAsInt(url.QueryParameters["va"], -1);
+                if (va == -1)
+                {
+                    LogParseError(FormFields.IsVAOnly, "Please enter a valid Veterans Health Administration facility search parameter.", searchParams);
+                }
+                else if (va > 1)
+                {
+                    LogParseError(FormFields.IsVAOnly, "Please enter a valid Veterans Health Administration facility search parameter.", searchParams);
+                }
+                else
+                {
+                    if (va == 0)
+                        searchParams.IsVAOnly = false;
+                    else
+                        searchParams.IsVAOnly = true;
                 }
             }
         }

@@ -523,6 +523,13 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         ResultsLinkFlag = ResultsLinkType.Basic,
                         Location = LocationType.None
                     }},
+
+                    // TEST 17.0 - Is VA only with invalid param (not int)
+                    new object[] { "?va=chicken", new CTSSearchParams() {
+                        IsVAOnly = false,
+                        ResultsLinkFlag = ResultsLinkType.Basic
+                    }},
+
                 };
             }
         }

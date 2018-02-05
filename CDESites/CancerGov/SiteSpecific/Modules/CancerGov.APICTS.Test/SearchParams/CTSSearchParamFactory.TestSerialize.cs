@@ -751,6 +751,34 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                                 { "rl", "2" }
                             }
                         }
+                    },
+
+                    // TEST 36a - Location
+                    new object[] {
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            ResultsLinkFlag = ResultsLinkType.Basic
+                        },
+                        new NciUrl() {
+                            QueryParameters = new Dictionary<string,string>() {
+                                { "va", "1" },
+                                { "rl", "1" }
+                            }
+                        }
+                    },
+
+                    // TEST 36b - Location
+                    new object[] {
+                        new CTSSearchParams() {
+                            IsVAOnly = false,
+                            ResultsLinkFlag = ResultsLinkType.Basic
+                        },
+                        new NciUrl() {
+                            QueryParameters = new Dictionary<string,string>() {
+                                { "va", "0" },
+                                { "rl", "1" }
+                            }
+                        }
                     }
                 };
             }

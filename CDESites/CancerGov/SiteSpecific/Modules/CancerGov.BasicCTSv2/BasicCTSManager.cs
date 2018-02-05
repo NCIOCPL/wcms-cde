@@ -60,6 +60,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
             "sites.org_postal_code",
             "eligibility.structured",
             "current_trial_status",
+            "sites.org_va",
             "sites.org_country",
             "sites.org_state_or_province",
             "sites.org_city",
@@ -433,6 +434,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2
             if (searchParams.IsFieldSet(FormFields.TrialIDs))
             {
                 filterCriteria.Add("_trialids", searchParams.TrialIDs);
+            }
+
+            //Add VA Only Filter
+            if (searchParams.IsFieldSet(FormFields.IsVAOnly) && searchParams.IsVAOnly)
+            {
+                filterCriteria.Add("sites.org_va", true);
             }
 
             if (searchParams.IsFieldSet(FormFields.Location) && searchParams.Location != LocationType.None)

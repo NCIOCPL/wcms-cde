@@ -96,6 +96,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                     }
             }
 
+            //Filter out non-va sites if this is a VA only search
+            if (searchParams.IsVAOnly && searchParams.Location != LocationType.Hospital)
+            {
+                rtnSites = rtnSites.Where(site => site.IsVA);
+            }
+
             //Now that we have the sites filtered, now we need to sort.
             return rtnSites.ToArray();
         }

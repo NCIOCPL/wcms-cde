@@ -45,6 +45,7 @@ namespace CancerGov.ClinicalTrialsAPI.Test
                 x.OrgToFamilyRelationship == y.OrgToFamilyRelationship &&
                 x.OrgTTY == y.OrgTTY &&
                 x.PostalCode == y.PostalCode &&
+                x.IsVA == y.IsVA &&
                 x.RecruitmentStatus == y.RecruitmentStatus &&
                 x.StateOrProvince == y.StateOrProvince &&
                 x.StateOrProvinceAbbreviation == y.StateOrProvinceAbbreviation;                
@@ -85,6 +86,9 @@ namespace CancerGov.ClinicalTrialsAPI.Test
 
             if (obj.LocalSiteIdentifier != null)
                 hash ^= obj.LocalSiteIdentifier.GetHashCode();
+
+            if (obj.IsVA != null)
+                hash ^= obj.IsVA.GetHashCode();
 
             if (obj.Family != null)
                 hash ^= obj.Family.GetHashCode();

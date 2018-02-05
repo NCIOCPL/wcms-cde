@@ -40,6 +40,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         string _leadOrg             = string.Empty;
         string[] _trialIDs          = { };
         LocationType _locationType  = LocationType.None;
+        bool _isVAOnly                = false;
 
         LocationSearchParams _locationParams = null;
 
@@ -193,6 +194,13 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                         {
                             return LeadOrg;
                         }
+                    case FormFields.IsVAOnly:
+                        {
+                            if (IsVAOnly)
+                                return "True";
+                            else
+                                return "False";
+                        }
                     case FormFields.AtNIH:
                     case FormFields.City:
                     case FormFields.State:
@@ -327,6 +335,15 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         public String Phrase {
             get { return _phrase; }
             set { _phrase = value; _usedFields |= FormFields.Phrase; } 
+        }
+
+        /// <summary>
+        /// Gets or sets an indicator if we need to search for trials with VA sites
+        /// </summary>
+        public bool IsVAOnly
+        {
+            get { return _isVAOnly; }
+            set { _isVAOnly = value; _usedFields |= FormFields.IsVAOnly; }
         }
 
         /// <summary>

@@ -476,6 +476,12 @@ namespace CancerGov.ClinicalTrialsAPI
             public string Country { get; set; }
 
             /// <summary>
+            /// Gets or sets a flag indicating if this organization is a Dept. of Veterans Affairs Center/Hospital/Clinic
+            /// </summary>
+            [JsonProperty("org_va")]
+            public bool IsVA { get; set; }
+
+            /// <summary>
             /// Gets or sets the name of this organization
             /// </summary>
             [JsonProperty("org_name")]

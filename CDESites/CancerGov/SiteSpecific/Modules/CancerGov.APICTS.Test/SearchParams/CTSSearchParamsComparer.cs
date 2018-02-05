@@ -53,6 +53,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                 x.Age == y.Age &&
                 x.Gender == y.Gender &&
                 x.Phrase == y.Phrase && // Keyword
+                x.IsVAOnly == y.IsVAOnly &&
                 x.Location == y.Location &&
                 _locParamComp.Equals(x.LocationParams, y.LocationParams) &&
                 x.Investigator == y.Investigator &&

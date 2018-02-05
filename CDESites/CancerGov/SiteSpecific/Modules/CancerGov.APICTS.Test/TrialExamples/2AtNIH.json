@@ -1,634 +1,932 @@
 ﻿{
-  "nci_id": "NCI-2013-01491",
-  "nct_id": "NCT01362803",
-  "protocol_id": "8799",
-  "ccr_id": "11-C-0161",
-  "ctep_id": "8799",
-  "dcp_id": null,
-  "other_ids": [{
-    "name": "Study Protocol Other Identifier",
-    "value": "P11809"
-  }, {
-    "name": "Study Protocol Other Identifier",
-    "value": "748727"
-  }],
-  "associated_studies": null,
-  "amendment_date": "2016-10-21T00:00:00",
-  "current_trial_status": "Active",
-  "current_trial_status_date": "2011-05-21",
-  "start_date": "2011-05-21",
-  "start_date_type_code": "ACTUAL",
-  "completion_date": null,
-  "completion_date_type_code": null,
-  "record_verification_date": "2016-12-10",
-  "brief_title": "Selumetinib in Treating Younger Patients with Neurofibromatosis Type 1 or Plexiform Neurofibromas That Cannot Be Removed by Surgery",
-  "official_title": "A Phase I / II Study of the Mitogen Activated Protein Kinase Kinase (MEK) 1 Inhibitor Selumetinib (AZD6244; HYD Sulfate) in Children with Neurofibromatosis Type 1 (NF1) and Inoperable Plexiform Neurofibromas (PN)",
-  "acronym": null,
-  "keywords": null,
-  "brief_summary": "This phase I / II trial studies the side effects and best dose of selumetinib and to see how well it works in treating younger patients with neurofibromatosis type 1 or plexiform neurofibromas that cannot be removed by surgery. Selumetinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth.",
-  "detail_description": "PRIMARY OBJECTIVES:\r\nI. To determine the maximum tolerated dose (MTD), extended tolerability, and recommended phase II dose of selumetinib administered orally every 12 hours on a continuous daily schedule for cycles of 28 days with no rest period between cycles in children and adolescents with neurofibromatosis type 1 (NF1) and inoperable plexiform neurofibromas (PN). (Phase I)\r\nII. To study the plasma pharmacokinetics (PK) of selumetinib at baseline and steady state. (Phase I)\r\nIII. To evaluate the confirmed partial and complete response rate of selumetinib using volumetric magnetic resonance imaging (MRI) analysis in children and young adults with NF1 and inoperable PN with PN related morbidity at the time of enrollment. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To determine the effect of selumetinib on the growth rate of PN using automated volumetric MRI analysis. (Phase I)\r\nII. To measure adherence of selumetinib chronic dosing in this patient population. (Phase I)\r\nIII. To describe and define the toxicities in pediatric patients on chronic dosing of selumetinib. (Phase I)\r\nIV. To evaluate the confirmed partial and complete response rate of selumetinib in the overall population of all patients treated (patients with and without PN related morbidity at the time of enrollment), and those with “typical PN” versus “nodular PN” versus “solitary nodular PN.” (Phase II)\r\nV. To determine the long-term tolerability and safety of selumetinib. (Phase II)\r\nVI. To determine the duration of response to selumetinib. (Phase II)\r\nVII. To evaluate the effect of selumetinib on bone mineral density in patients at the National Cancer Institute (NCI) with impaired bone mineral density at the time of enrollment. (Phase II)\r\nVIII. To characterize the effect of selumetinib on pain, quality of life, and physical functioning. (Phase II)\r\nIX. To determine baseline functional impairments secondary to PN, and the effect of selumetinib on functional outcomes depending on PN location. (Phase II)\r\nX. To determine the effect of selumetinib on the PN growth rate based on volumetric analysis of MRI studies obtained prior to enrollment (if available and amenable to volumetric analysis). (Phase II)\r\nXI. To determine time to progression (TTP) and progression free survival (PFS) in progressive PN (>= 20% increase in PN volume within 12-15 months prior to enrollment), and compare PFS to the placebo arm of the R115777 randomized trial (01-C-0222). (Phase II)\r\nXII. To determine day 1 and steady state pharmacokinetics of selumetinib. (Phase II)\r\nXIII. To evaluate bone marrow derived precursor cells and cytokines pretreatment and on treatment with selumetinib, and to assess if changes in cell and cytokine profiles correlate with imaging response to selumetinib. (Phase II)\r\nXIV. In patients who enroll on this trial with presence of an optic pathway tumor or other glioma not requiring treatment with chemotherapy or radiation therapy: to evaluate the effect of selumetinib on changes in the size of the optic pathway tumor or other glioma. (Phase II)\r\nXV. To evaluate the effect of selumetinib on extracellular-signal-regulated kinase (ERK) phosphorylation in peripheral blood mononuclear cell (PBMC). (Phase II)\r\n\r\nOUTLINE: This is a phase I dose-escalation study, followed by a phase II study.\r\n\r\nPatients receive selumetinib orally (PO) twice daily (BID) on days 1-28. Courses repeat every 28 days in the absence of disease progression or unacceptable toxicity.\r\n\r\nAfter completion of study treatment, patients are followed up for up to 5 years.",
-  "classification_code": "Safety/Efficacy",
-  "interventional_model": "Single Group",
-  "accepts_healthy_volunteers_indicator": "NO",
-  "study_protocol_type": "Interventional",
-  "study_subtype_code": null,
-  "study_population_description": null,
-  "study_model_code": null,
-  "study_model_other_text": null,
-  "sampling_method_code": null,
-  "bio_specimen": {
-    "f1": "bio_specimen_description",
-    "f2": null,
-    "f3": "bio_specimen_retention_code",
-    "f4": null
-  },
-  "primary_purpose": {
-    "primary_purpose_code": "TREATMENT",
-    "primary_purpose_other_text": null,
-    "primary_purpose_additional_qualifier_code": null
-  },
-  "phase": {
-    "phase": "I_II",
-    "phase_other_text": null,
-    "phase_additional_qualifier_code": null
-  },
-  "masking": {
-    "masking": "OPEN",
-    "masking_allocation_code": "NA",
-    "masking_role_investigator": null,
-    "masking_role_outcome_assessor": null,
-    "masking_role_subject": null,
-    "masking_role_caregiver": null
-  },
-  "principal_investigator": "Brigitte C. Widemann",
-  "central_contact": {
-    "central_contact_email": null,
-    "central_contact_name": null,
-    "central_contact_phone": null,
-    "central_contact_type": null
-  },
-  "lead_org": "NCI - Center for Cancer Research",
-  "collaborators": [{
-    "name": "Cancer Therapy Evaluation Program",
-    "functional_role": "AGENT_SOURCE"
-  }, {
-    "name": "Division of Cancer Treatment and Diagnosis",
-    "functional_role": "AGENT_SOURCE"
-  }, {
-    "name": "National Cancer Institute",
-    "functional_role": "FUNDING_SOURCE"
-  }],
-  "sites": [{
-    "contact_email": "aekim@childrensnational.org",
-    "contact_name": "AeRang Kim",
-    "contact_phone": "202-476-4744",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-11",
-    "local_site_identifier": "",
-    "org_address_line_1": "111 Michigan Avenue Northwest",
-    "org_address_line_2": null,
-    "org_city": "Washington",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": null,
-    "org_fax": null,
-    "org_name": "Children's National Medical Center",
-    "org_to_family_relationship": null,
-    "org_phone": "202-884-2549",
-    "org_postal_code": "20010",
-    "org_state_or_province": "DC",
-    "org_status": "ACTIVE",
-    "org_status_date": "2008-12-30",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 38.9322,
-      "lon": -77.028
-    }
-  }, {
-    "contact_email": "brian.weiss@cchmc.org",
-    "contact_name": "Brian David Weiss",
-    "contact_phone": "513-636-9863",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-11",
-    "local_site_identifier": "",
-    "org_address_line_1": "3333 Burnet Avenue",
-    "org_address_line_2": null,
-    "org_city": "Cincinnati",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": null,
-    "org_fax": null,
-    "org_name": "Cincinnati Children's Hospital Medical Center",
-    "org_to_family_relationship": null,
-    "org_phone": "513-636-2799",
-    "org_postal_code": "45229",
-    "org_state_or_province": "OH",
-    "org_status": "ACTIVE",
-    "org_status_date": "2008-12-31",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 39.1532,
-      "lon": -84.4859
-    }
-  }, {
-    "contact_email": "widemanb@pbmac.nci.nih.gov",
-    "contact_name": "Brigitte C. Widemann",
-    "contact_phone": "301-496-7387",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-21",
-    "local_site_identifier": null,
-    "org_address_line_1": "10 Center Drive",
-    "org_address_line_2": null,
-    "org_city": "Bethesda",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": null,
-    "org_fax": null,
-    "org_name": "National Institutes of Health Clinical Center",
-    "org_to_family_relationship": null,
-    "org_phone": "800-411-1222",
-    "org_postal_code": "20892",
-    "org_state_or_province": "MD",
-    "org_status": "ACTIVE",
-    "org_status_date": "2015-12-18",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 39.0003,
-      "lon": -77.1056
-    }
-  }, {
-    "contact_email": "fisherm@email.chop.edu",
-    "contact_name": "Michael J. Fisher",
-    "contact_phone": "215-590-2800",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-11",
-    "local_site_identifier": "",
-    "org_address_line_1": "34th Street and Civic Center Boulevard",
-    "org_address_line_2": null,
-    "org_city": "Philadelphia",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": "Abramson Cancer Center",
-    "org_fax": null,
-    "org_name": "Children's Hospital of Philadelphia",
-    "org_to_family_relationship": "ORGANIZATIONAL",
-    "org_phone": "215-590-2810",
-    "org_postal_code": "19104",
-    "org_state_or_province": "PA",
-    "org_status": "ACTIVE",
-    "org_status_date": "2008-12-31",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 39.9616,
-      "lon": -75.1995
-    }
-  }, {
-    "contact_email": "widemanb@mail.nih.gov",
-    "contact_name": "Brigitte C. Widemann",
-    "contact_phone": "301-496-7387",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-11",
-    "local_site_identifier": null,
-    "org_address_line_1": "9000 Rockville Pike",
-    "org_address_line_2": null,
-    "org_city": "Bethesda",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": "NCI Center for Cancer Research (CCR)",
-    "org_fax": null,
-    "org_name": "National Cancer Institute Pediatric Oncology Branch",
-    "org_to_family_relationship": "ORGANIZATIONAL",
-    "org_phone": "877-624-4878",
-    "org_postal_code": "20892",
-    "org_state_or_province": "MD",
-    "org_status": "ACTIVE",
-    "org_status_date": "2015-03-24",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 39.0003,
-      "lon": -77.1056
-    }
-  }, {
-    "contact_email": "krobert@iu.edu",
-    "contact_name": "Kent Allen Robertson",
-    "contact_phone": "317-274-0991",
-    "generic_contact": null,
-    "recruitment_status": "ACTIVE",
-    "recruitment_status_date": "2011-05-11",
-    "local_site_identifier": null,
-    "org_address_line_1": "702 Barnhill Drive",
-    "org_address_line_2": null,
-    "org_city": "Indianapolis",
-    "org_country": "United States",
-    "org_email": null,
-    "org_family": "Indiana University Melvin and Bren Simon Cancer Center",
-    "org_fax": null,
-    "org_name": "Riley Hospital for Children",
-    "org_to_family_relationship": "ORGANIZATIONAL",
-    "org_phone": null,
-    "org_postal_code": "46202",
-    "org_state_or_province": "IN",
-    "org_status": "ACTIVE",
-    "org_status_date": "2008-12-30",
-    "org_tty": null,
-    "org_coordinates": {
-      "lat": 39.7837,
-      "lon": -86.163
-    }
-  }],
-  "anatomic_sites": ["Brain and Nervous System"],
-  "diseases": [{
-    "disease_code": "CDR0000042845",
-    "inclusion_indicator": "TRIAL",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3273",
-    "preferred_name": "Neurofibromatosis Type 1",
-    "synonyms": ["NF1", "NF1", "Neurofibromatosis 1", "Neurofibromatosis Type 1 Microdeletion Syndrome", "Neurofibromatosis Type 1", "Neurofibromatosis Type 1", "Neurofibromatosis", "Peripheral Neurofibromatosis", "Von Recklinghausen Disease", "Von Recklinghausen Disease", "neurofibromatosis type 1"],
-    "display_name": "Neurofibromatosis Type 1",
-    "parents": ["C6727"]
-  }, {
-    "disease_code": "CDR0000472003",
-    "inclusion_indicator": "TRIAL",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3797",
-    "preferred_name": "Plexiform Neurofibroma",
-    "synonyms": ["Plexiform Neurofibroma", "Plexiform Neurofibroma", "Plexiform neurofibroma", "plexiform neurofibroma"],
-    "display_name": "Plexiform Neurofibroma",
-    "parents": ["C3272"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C7057",
-    "preferred_name": "Disease, Disorder or Finding",
-    "synonyms": ["Disease, Disorder or Finding"],
-    "display_name": "",
-    "parents": []
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C4741",
-    "preferred_name": "Neoplasm by Morphology",
-    "synonyms": ["Neoplasm by Morphology"],
-    "display_name": "",
-    "parents": ["C3262"]
-  }, {
-    "disease_code": "CDR0000580973",
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3321",
-    "preferred_name": "Peripheral Nervous System Neoplasm",
-    "synonyms": ["CNS-excluded nervous sys. cancer", "CNS-excluded nervous system cancer, NOS", "Neoplasm of PNS", "Neoplasm of Peripheral Nerve", "Neoplasm of Peripheral Nervous System", "Neoplasm of the PNS", "Neoplasm of the Peripheral Nerve", "Neoplasm of the Peripheral Nervous System", "Neoplasms, PNS", "Neoplasms, Peripheral Nervous System", "PNS Neoplasm", "PNS Neoplasms", "PNS Tumor", "Peripheral Nerve Neoplasm", "Peripheral Nerve Tumor", "Peripheral Nervous System Neoplasm", "Peripheral Nervous System Tumor", "Tumor of PNS", "Tumor of Peripheral Nerve", "Tumor of Peripheral Nervous System", "Tumor of the PNS", "Tumor of the Peripheral Nerve", "Tumor of the Peripheral Nervous System"],
-    "display_name": "Peripheral Nervous System Neoplasm",
-    "parents": ["C3268", "C27580"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3263",
-    "preferred_name": "Neoplasm by Site",
-    "synonyms": ["Neoplasm by Site"],
-    "display_name": "",
-    "parents": ["C3262"]
-  }, {
-    "disease_code": "CDR0000580834",
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3268",
-    "preferred_name": "Nervous System Neoplasm",
-    "synonyms": ["Neoplasm of Nervous System", "Neoplasm of Nervous System", "Neoplasm of the Nervous System", "Nervous System Neoplasm", "Nervous System Neoplasm", "Nervous System Neoplasms", "Nervous System Tumor", "Nervous System Tumour", "Tumor of Nervous System", "Tumor of the Nervous System"],
-    "display_name": "Nervous System Neoplasm",
-    "parents": ["C3263", "C26835"]
-  }, {
-    "disease_code": "CDR0000256156",
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3101",
-    "preferred_name": "Genetic Disorder",
-    "synonyms": ["Genetic Condition", "Genetic Disorder", "Genetic Disorder", "Genetic Disorder", "Hereditary Disease", "Hereditary Diseases", "Inherited Disease", "Molecular Disease"],
-    "display_name": "Genetic Disorder",
-    "parents": ["C2991"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C6727",
-    "preferred_name": "Neurofibromatosis",
-    "synonyms": ["Neurofibromatosis Syndrome", "Neurofibromatosis", "Neurofibromatosis", "Neurofibromatosis"],
-    "display_name": "",
-    "parents": ["C84348"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C4972",
-    "preferred_name": "Nerve Sheath Neoplasm",
-    "synonyms": ["Neoplasm of Nerve Sheath", "Neoplasm of the Nerve Sheath", "Nerve Sheath Neoplasm", "Nerve Sheath Tumor", "Tumor of Nerve Sheath"],
-    "display_name": "",
-    "parents": ["C35562"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C2991",
-    "preferred_name": "Disease or Disorder",
-    "synonyms": ["Disease or Disorder", "Disease or Disorder", "Disease or Disorder", "Disease", "Disease", "Diseases and Disorders", "Diseases", "Disorder", "Disorders", "condition", "disorder"],
-    "display_name": "",
-    "parents": ["C7057"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C27551",
-    "preferred_name": "Disorder by Site",
-    "synonyms": ["Disease by Site", "Disorder by Site"],
-    "display_name": "",
-    "parents": ["C2991"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C26835",
-    "preferred_name": "Nervous System Disorder",
-    "synonyms": ["Disorder of Nervous System", "Nervous System Disorder", "Nervous System Disorder", "Neurologic Disorder", "Neurologic Disorder"],
-    "display_name": "",
-    "parents": ["C27551"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3262",
-    "preferred_name": "Neoplasm",
-    "synonyms": ["Neoplasia", "Neoplasm", "Neoplasm", "Neoplasm", "Neoplastic Disease", "Neoplastic Growth", "neoplasia", "neoplasm", "tumor"],
-    "display_name": "",
-    "parents": ["C2991"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C84348",
-    "preferred_name": "Phakomatosis",
-    "synonyms": ["Neurocutaneous Syndrome", "Neurocutaneous Syndrome", "Phacomatosis", "Phakomatosis", "Phakomatosis"],
-    "display_name": "",
-    "parents": ["C3266"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C27580",
-    "preferred_name": "Peripheral Nervous System Disorder",
-    "synonyms": ["Disorder of Peripheral Nervous System", "Peripheral Nerve Disease", "Peripheral Nervous System Disease", "Peripheral Nervous System Disorder", "Peripheral Nervous System Disorder"],
-    "display_name": "",
-    "parents": ["C26835"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3266",
-    "preferred_name": "Hereditary Neoplastic Syndrome",
-    "synonyms": ["Familial Neoplastic Syndrome", "Familial Tumor Syndrome", "Hereditary Neoplastic Syndrome", "Hereditary Neoplastic Syndrome", "Hereditary Tumor Syndrome", "inherited cancer syndrome"],
-    "display_name": "Hereditary Neoplastic Syndrome",
-    "parents": ["C3101", "C54705"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C28193",
-    "preferred_name": "Syndrome",
-    "synonyms": ["Syndrome", "Syndrome", "syndrome"],
-    "display_name": "",
-    "parents": ["C2991"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C54705",
-    "preferred_name": "Neoplastic Syndrome",
-    "synonyms": ["Neoplastic Syndrome", "Tumor Syndrome"],
-    "display_name": "Neoplastic Syndrome",
-    "parents": ["C28193"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C3272",
-    "preferred_name": "Neurofibroma",
-    "synonyms": ["NEUROFIBROMA, BENIGN", "Neurofibroma (WHO Grade I)", "Neurofibroma", "Neurofibroma", "neurofibroma"],
-    "display_name": "",
-    "parents": ["C4972", "C3321"]
-  }, {
-    "disease_code": null,
-    "inclusion_indicator": "TREE",
-    "lead_disease_indicator": null,
-    "nci_thesaurus_concept_id": "C35562",
-    "preferred_name": "Neuroepithelial, Perineurial, and Schwann Cell Neoplasm",
-    "synonyms": ["Neural Neoplasm", "Neural Tumor", "Neuroepithelial, Perineurial, and Schwann Cell Neoplasm"],
-    "display_name": "",
-    "parents": ["C4741", "C3268"]
-  }],
-  "biomarkers": null,
-  "minimum_target_accrual_number": 104,
-  "eligibility": {
-    "structured": {
-      "gender": "BOTH",
-      "max_age": "18 Years",
-      "max_age_number": 18,
-      "max_age_unit": "Years",
-      "min_age": "2 Years",
-      "min_age_number": 2,
-      "min_age_unit": "Years",
-      "max_age_in_years": 18,
-      "min_age_in_years": 2
+    "nci_id": "NCI-2013-01491",
+    "nct_id": "NCT01362803",
+    "protocol_id": "8799",
+    "ccr_id": "11-C-0161",
+    "ctep_id": "8799",
+    "dcp_id": null,
+    "other_ids": [{
+        "name": "Study Protocol Other Identifier",
+        "value": "748727"
+    }, {
+        "name": "Study Protocol Other Identifier",
+        "value": "P11809"
+    }],
+    "associated_studies": null,
+    "outcome_measures": [{
+        "name": "Toxicity measured using CTCAE version 4.0 (Phase I)",
+        "description": "Summarized by dose level. The toxicities in pediatric patients on chronic dosing of selumetinib will be collected on all subjects during and after treatment and will be reported descriptively.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "PRIMARY"
+    }, {
+        "name": "Accumulation of selumetinib, evaluated using the area under the curve (AUC), clearance, half-life and volume of distribution presented for each dose level (Phase I)",
+        "description": "Estimated using summary statistics (mean, standard deviation, median and range). Average values obtained prior to treatment and at steady state will be compared using a Wilcoxon signed rank test by dose level.",
+        "timeframe": "Pre-dose, at 30 minutes, 1, 2, 3, 5, 8, 10, 12, 24, 30, and 36 hours on day 1, and on day 27",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "MTD, defined as the dose level immediately below the level at which >= 33% of patients in a cohort experience a DLT, graded according to the National Cancer Institute Common Terminology Criteria for Adverse Events (NCI CTCAE) version (v)4.0 (Phase I)",
+        "description": null,
+        "timeframe": "Up to 12 weeks",
+        "type_code": "PRIMARY"
+    }, {
+        "name": "Tolerability of selumetinib in pediatric patients with NF1 and inoperable PN, measured using CTCAE version 4.0 (Phase I)",
+        "description": "Summarized by dose level.",
+        "timeframe": "Up to 30 days",
+        "type_code": "PRIMARY"
+    }, {
+        "name": "Partial or complete response rate in patients with PN related morbidity using centrally read 3D MRI volumetric analysis (Phase II)",
+        "description": "Will be presented with corresponding 2-sided exact 95% confidence intervals.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "PRIMARY"
+    }, {
+        "name": "Change in physical functioning assessed using the Patient-Reported Outcome Measurement Information System Physical Functioning Scale (Phase II)",
+        "description": "The effect of selumetinib on physical function will be assessed. Changes noted will be assessed, focusing on descriptive measures of the change and primarily using confidence intervals to describe the results.",
+        "timeframe": "Baseline to up to at least 12 months",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Adherence percentage as assessed using pill counts obtained from patient medication diaries (Phase I)",
+        "description": "Estimated using summary statistics (mean, standard deviation, median and range).",
+        "timeframe": "Up to 2 years",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Overall response (Phase II)",
+        "description": "The overall response will be summarized by category (unconfirmed partial response [PR], confirmed PR, sustained PR, complete response, stable disease or progressive disease) for patients with PN related morbidity (stratum 1) as well as all patients together (stratum 1 and 2), as well as the duration of response, and the response rates for progressive (PN volume increase >= 20% within =<15 months prior to enrollment) and non-progressive PN.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Response rate for patients with no PN related morbidity at baseline (Phase II)",
+        "description": "Will be reported with appropriate confidence intervals as well as the observed fractions.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Response rate for patients with “typical PN” versus “nodular PN” versus “solitary nodular PN” (Phase II)",
+        "description": "Will be reported with appropriate confidence intervals as well as the observed fractions.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Change in pain assessed using the Numerical Rating Scale-11 and Pain Interference Index (Phase II)",
+        "description": "The effect of selumetinib on pain will be assessed. Changes noted will be assessed, focusing on descriptive measures of the change and primarily using confidence intervals to describe the results.",
+        "timeframe": "Baseline to up to at least 12 months",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Change in quality of life assessed using the Pediatric Quality of Life Inventory (Phase II)",
+        "description": "The effect of selumetinib on quality of life will be assessed. Changes noted will be assessed, focusing on descriptive measures of the change and primarily using confidence intervals to describe the results.",
+        "timeframe": "Baseline to up to at least 12 months",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Progression free survival (Phase II)",
+        "description": "Will be evaluated using Kaplan-Meier curves; this will be informally compared to the PFS from the placebo arm of the R115777 randomized trial conducted at the NCI, including potential use of a log-rank test and/or Cox model if the curves appear to be distinct from one another.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Change in bone mineral density (Phase II)",
+        "description": "A subset of patients treated at the NCI will have DEXA scans done at baseline and at 1 year on treatment to evaluate the effect of selumetinib on bone mineral density.",
+        "timeframe": "Baseline to 1 year after start of treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "PN growth rates (Phase II)",
+        "description": "For patients with MRI studies amenable to volumetric MRI analysis prior to enrollment on this trial, the PN growth rates (percent PN volume increase per year) will be compared prior to treatment and on treatment with selumetinib.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }, {
+        "name": "Time to progression (Phase II)",
+        "description": "Will be evaluated using Kaplan-Meier curves.",
+        "timeframe": "Up to 5 years post-treatment",
+        "type_code": "SECONDARY"
+    }],
+    "amendment_date": "2016-10-21T00:00:00",
+    "current_trial_status": "Active",
+    "current_trial_status_date": "2011-05-21",
+    "start_date": "2011-05-21",
+    "start_date_type_code": "ACTUAL",
+    "completion_date": null,
+    "completion_date_type_code": null,
+    "record_verification_date": "2017-11-02",
+    "brief_title": "Selumetinib in Treating Younger Patients with Neurofibromatosis Type 1 or Plexiform Neurofibromas That Cannot Be Removed by Surgery",
+    "official_title": "A Phase I / II Study of the Mitogen Activated Protein Kinase Kinase (MEK) 1 Inhibitor Selumetinib (AZD6244; HYD Sulfate) in Children with Neurofibromatosis Type 1 (NF1) and Inoperable Plexiform Neurofibromas (PN)",
+    "acronym": null,
+    "keywords": null,
+    "brief_summary": "This phase I / II trial studies the side effects and best dose of selumetinib and to see how well it works in treating younger patients with neurofibromatosis type 1 or plexiform neurofibromas that cannot be removed by surgery. Selumetinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth.",
+    "detail_description": "PRIMARY OBJECTIVES:\r\nI. To determine the maximum tolerated dose (MTD), extended tolerability, and recommended phase II dose of selumetinib administered orally every 12 hours on a continuous daily schedule for cycles of 28 days with no rest period between cycles in children and adolescents with neurofibromatosis type 1 (NF1) and inoperable plexiform neurofibromas (PN). (Phase I)\r\nII. To study the plasma pharmacokinetics (PK) of selumetinib at baseline and steady state. (Phase I)\r\nIII. To evaluate the confirmed partial and complete response rate of selumetinib using volumetric magnetic resonance imaging (MRI) analysis in children and young adults with NF1 and inoperable PN with PN related morbidity at the time of enrollment. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To determine the effect of selumetinib on the growth rate of PN using automated volumetric MRI analysis. (Phase I)\r\nII. To measure adherence of selumetinib chronic dosing in this patient population. (Phase I)\r\nIII. To describe and define the toxicities in pediatric patients on chronic dosing of selumetinib. (Phase I)\r\nIV. To evaluate the confirmed partial and complete response rate of selumetinib in the overall population of all patients treated (patients with and without PN related morbidity at the time of enrollment), and those with “typical PN” versus “nodular PN” versus “solitary nodular PN.” (Phase II)\r\nV. To determine the long-term tolerability and safety of selumetinib. (Phase II)\r\nVI. To determine the duration of response to selumetinib. (Phase II)\r\nVII. To evaluate the effect of selumetinib on bone mineral density in patients at the National Cancer Institute (NCI) with impaired bone mineral density at the time of enrollment. (Phase II)\r\nVIII. To characterize the effect of selumetinib on pain, quality of life, and physical functioning. (Phase II)\r\nIX. To determine baseline functional impairments secondary to PN, and the effect of selumetinib on functional outcomes depending on PN location. (Phase II)\r\nX. To determine the effect of selumetinib on the PN growth rate based on volumetric analysis of MRI studies obtained prior to enrollment (if available and amenable to volumetric analysis). (Phase II)\r\nXI. To determine time to progression (TTP) and progression free survival (PFS) in progressive PN (>= 20% increase in PN volume within 12-15 months prior to enrollment), and compare PFS to the placebo arm of the R115777 randomized trial (01-C-0222). (Phase II)\r\nXII. To determine day 1 and steady state pharmacokinetics of selumetinib. (Phase II)\r\nXIII. To evaluate bone marrow derived precursor cells and cytokines pretreatment and on treatment with selumetinib, and to assess if changes in cell and cytokine profiles correlate with imaging response to selumetinib. (Phase II)\r\nXIV. In patients who enroll on this trial with presence of an optic pathway tumor or other glioma not requiring treatment with chemotherapy or radiation therapy: to evaluate the effect of selumetinib on changes in the size of the optic pathway tumor or other glioma. (Phase II)\r\nXV. To evaluate the effect of selumetinib on extracellular-signal-regulated kinase (ERK) phosphorylation in peripheral blood mononuclear cell (PBMC). (Phase II)\r\n\r\nOUTLINE: This is a phase I dose-escalation study, followed by a phase II study.\r\n\r\nPatients receive selumetinib orally (PO) twice daily (BID) on days 1-28. Courses repeat every 28 days in the absence of disease progression or unacceptable toxicity.\r\n\r\nAfter completion of study treatment, patients are followed up for up to 5 years.",
+    "classification_code": "Safety/Efficacy",
+    "interventional_model": "Single Group",
+    "accepts_healthy_volunteers_indicator": "NO",
+    "study_protocol_type": "Interventional",
+    "study_subtype_code": null,
+    "study_population_description": null,
+    "study_model_code": null,
+    "study_model_other_text": null,
+    "sampling_method_code": null,
+    "bio_specimen": {
+        "f1": "bio_specimen_description",
+        "f2": null,
+        "f3": "bio_specimen_retention_code",
+        "f4": null
     },
-    "unstructured": [{
-      "display_order": 1,
-      "inclusion_indicator": true,
-      "description": "PHASE I: >= 3 years and =< 18 years of age at the time of study enrollment, if able to swallow whole capsules"
+    "primary_purpose": {
+        "primary_purpose_code": "TREATMENT",
+        "primary_purpose_other_text": null,
+        "primary_purpose_additional_qualifier_code": null
+    },
+    "phase": {
+        "phase": "I_II",
+        "phase_other_text": null,
+        "phase_additional_qualifier_code": null
+    },
+    "masking": {
+        "masking": "OPEN",
+        "masking_allocation_code": "NA",
+        "masking_role_investigator": null,
+        "masking_role_outcome_assessor": null,
+        "masking_role_subject": null,
+        "masking_role_caregiver": null
+    },
+    "principal_investigator": "Brigitte C. Widemann",
+    "central_contact": {
+        "central_contact_email": null,
+        "central_contact_name": null,
+        "central_contact_phone": null,
+        "central_contact_type": null
+    },
+    "lead_org": "NCI - Center for Cancer Research",
+    "collaborators": [{
+        "name": "Cancer Therapy Evaluation Program",
+        "functional_role": "AGENT_SOURCE"
     }, {
-      "display_order": 2,
-      "inclusion_indicator": true,
-      "description": "PHASE II: >= 2 and =< 18 years; body surface area (BSA) >= 0.55 m^2, and able to swallow whole capsules"
+        "name": "Division of Cancer Treatment and Diagnosis",
+        "functional_role": "AGENT_SOURCE"
     }, {
-      "display_order": 3,
-      "inclusion_indicator": true,
-      "description": "Patients with NF1 and inoperable PN defined as PN that cannot be surgically completely removed without risk for substantial morbidity due to encasement of, or close proximity to vital structures, invasiveness, or high vascularity of the PN; the PN has to cause (stratum 1) or have the potential to cause (stratum 2) significant morbidity, such as (but not limited to) head and neck lesions that could compromise the airway or great vessels, paraspinal lesions that can cause myelopathy, brachial or lumbar plexus lesions that could cause nerve compression and loss of function, lesions that could result in major deformity (e.g., orbital lesions) or are significantly disfiguring, lesions of the extremity that cause limb hypertrophy or loss of function, and painful lesions; patients will be enrolled into stratum 1 or 2 based on PN related morbidity; histologic confirmation of tumor is not necessary in the presence of consistent clinical and radiographic findings, but should be considered if malignant degeneration of a PN is clinically suspected; a PN is defined as a neurofibroma that has grown along the length of a nerve and may involve multiple fascicles and branches; a spinal PN involves two or more levels with connection between the levels or extending laterally along the nerve; in addition to PN, all study subjects must have either positive genetic testing for NF1 or have at least one other diagnostic criterion for NF1 listed below (National Institutes of Health [NIH] Consensus conference):\r\n* Six or more café-au-lait macules (>= 0.5 cm in prepubertal subjects or >= 1.5 cm in post pubertal subjects)\r\n* Freckling in axilla or groin\r\n* Optic glioma\r\n* Two or more Lisch nodules\r\n* A distinctive bony lesion (dysplasia of the sphenoid bone or dysplasia or thinning of long bone cortex)\r\n* A first-degree relative with NF1"
+        "name": "National Cancer Institute",
+        "functional_role": "FUNDING_SOURCE"
+    }],
+    "sites": [{
+        "contact_email": "brian.weiss@cchmc.org",
+        "contact_name": "Brian David Weiss",
+        "contact_phone": "513-636-9863",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-11",
+        "local_site_identifier": "",
+        "org_address_line_1": "3333 Burnet Avenue",
+        "org_address_line_2": null,
+        "org_city": "Cincinnati",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": null,
+        "org_fax": null,
+        "org_name": "Cincinnati Children's Hospital Medical Center",
+        "org_to_family_relationship": null,
+        "org_phone": "513-636-2799",
+        "org_postal_code": "45229",
+        "org_state_or_province": "OH",
+        "org_status": "ACTIVE",
+        "org_status_date": "2008-12-31",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 39.1532,
+            "lon": -84.4859
+        }
     }, {
-      "display_order": 4,
-      "inclusion_indicator": true,
-      "description": "Patients must have at least one measurable PN, defined as a lesion of at least 3 cm measured in one dimension; patients who underwent surgery for resection of a PN are eligible provided the PN was incompletely resected and is measurable"
+        "contact_email": "aekim@childrensnational.org",
+        "contact_name": "AeRang Kim",
+        "contact_phone": "202-476-4744",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-11",
+        "local_site_identifier": "",
+        "org_address_line_1": "111 Michigan Avenue Northwest",
+        "org_address_line_2": null,
+        "org_city": "Washington",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": null,
+        "org_fax": null,
+        "org_name": "Children's National Medical Center",
+        "org_to_family_relationship": null,
+        "org_phone": "202-884-2549",
+        "org_postal_code": "20010",
+        "org_state_or_province": "DC",
+        "org_status": "ACTIVE",
+        "org_status_date": "2008-12-30",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 38.9322,
+            "lon": -77.028
+        }
     }, {
-      "display_order": 5,
-      "inclusion_indicator": true,
-      "description": "PHASE II: Measurability and suitability for volumetric MRI analysis of the target PN must be confirmed with the NCI Pediatric Oncology Branch (POB) prior to enrolling a patient; the target PN will be defined as the clinically most relevant PN, which has to be amenable to volumetric MRI analysis; PN will be classified as “typical PN” versus “nodular PN” versus “solitary nodular PN prior to enrollment"
+        "contact_email": "widemanb@pbmac.nci.nih.gov",
+        "contact_name": "Brigitte C. Widemann",
+        "contact_phone": "301-496-7387",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-21",
+        "local_site_identifier": null,
+        "org_address_line_1": "10 Center Drive",
+        "org_address_line_2": null,
+        "org_city": "Bethesda",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": null,
+        "org_fax": null,
+        "org_name": "National Institutes of Health Clinical Center",
+        "org_to_family_relationship": null,
+        "org_phone": "800-411-1222",
+        "org_postal_code": "20892",
+        "org_state_or_province": "MD",
+        "org_status": "ACTIVE",
+        "org_status_date": "2015-12-18",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 39.0003,
+            "lon": -77.1056
+        }
     }, {
-      "display_order": 6,
-      "inclusion_indicator": true,
-      "description": "Patients with NF1 will only be eligible if complete tumor resection is not considered to be feasible without substantial risk or morbidity\r\n* Patients may be treated on this trial without having received prior medical therapy directed at their PN\r\n* There will be no limit to number of prior myelosuppressive regimen for PN or other tumor manifestations associated with NF1 such as optic glioma\r\n* Patients who have received previous investigational agents or biologic therapy, such as tipifarnib, pirfenidone, peginterferon alfa-2b (Peg-Intron), sorafenib, imatinib, or other targeted therapies are eligible for enrollment; at least 4 weeks must have elapsed since receiving medical therapy directed at the PN; patients who received prior medical therapy for their PN must have recovered from the acute toxic effects of all prior therapy to =< grade 1 Common Terminology Criteria for Adverse Events (CTCAE) version (v)4 before entering this study\r\n* Growth factors that support platelet or white cell number or function must not have been administered within the 7 days prior to enrollment\r\n* At least 6 weeks must have elapsed prior to enrollment since the patient received any prior radiation therapy\r\n* At least 4 weeks must have elapsed since any surgeries, with evidence of good wound healing"
+        "contact_email": "fisherm@email.chop.edu",
+        "contact_name": "Michael J. Fisher",
+        "contact_phone": "215-590-2800",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-11",
+        "local_site_identifier": "",
+        "org_address_line_1": "3401 Civic Center Boulevard",
+        "org_address_line_2": null,
+        "org_city": "Philadelphia",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": "Abramson Cancer Center",
+        "org_fax": null,
+        "org_name": "Children's Hospital of Philadelphia",
+        "org_to_family_relationship": "ORGANIZATIONAL",
+        "org_phone": "215-590-2810",
+        "org_postal_code": "19104",
+        "org_state_or_province": "PA",
+        "org_status": "ACTIVE",
+        "org_status_date": "2008-12-31",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 39.9616,
+            "lon": -75.1995
+        }
     }, {
-      "display_order": 7,
-      "inclusion_indicator": true,
-      "description": "Patients > 16 years of age must have a Karnofsky performance level of >= 70%, and children =< 16 years old must have a Lansky performance of >= 70%; patients who are wheelchair bound because of paralysis secondary to a plexiform neurofibroma should be considered ambulatory when they are up in their wheelchair; similarly, patients with limited mobility secondary to need for mechanical support (such as an airway PN requiring tracheostomy or continuous positive airway pressure [CPAP]) will also be considered ambulatory for the purpose of the study"
+        "contact_email": "widemanb@mail.nih.gov",
+        "contact_name": "Brigitte C. Widemann",
+        "contact_phone": "301-496-7387",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-11",
+        "local_site_identifier": null,
+        "org_address_line_1": "9000 Rockville Pike",
+        "org_address_line_2": null,
+        "org_city": "Bethesda",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": "NCI Center for Cancer Research (CCR)",
+        "org_fax": null,
+        "org_name": "National Cancer Institute Pediatric Oncology Branch",
+        "org_to_family_relationship": "ORGANIZATIONAL",
+        "org_phone": "877-624-4878",
+        "org_postal_code": "20892",
+        "org_state_or_province": "MD",
+        "org_status": "ACTIVE",
+        "org_status_date": "2015-03-24",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 39.0003,
+            "lon": -77.1056
+        }
     }, {
-      "display_order": 8,
-      "inclusion_indicator": true,
-      "description": "Absolute neutrophil count >= 1500/ul"
+        "contact_email": "krobert@iu.edu",
+        "contact_name": "Kent Allen Robertson",
+        "contact_phone": "317-274-0991",
+        "generic_contact": null,
+        "recruitment_status": "ACTIVE",
+        "recruitment_status_date": "2011-05-11",
+        "local_site_identifier": null,
+        "org_address_line_1": "702 Barnhill Drive",
+        "org_address_line_2": null,
+        "org_city": "Indianapolis",
+        "org_country": "United States",
+        "org_email": null,
+        "org_family": "Indiana University Melvin and Bren Simon Cancer Center",
+        "org_fax": null,
+        "org_name": "Riley Hospital for Children",
+        "org_to_family_relationship": "ORGANIZATIONAL",
+        "org_phone": null,
+        "org_postal_code": "46202",
+        "org_state_or_province": "IN",
+        "org_status": "ACTIVE",
+        "org_status_date": "2008-12-30",
+        "org_tty": null,
+        "org_va": false,
+        "org_coordinates": {
+            "lat": 39.7837,
+            "lon": -86.163
+        }
+    }],
+    "anatomic_sites": ["Brain and Nervous System"],
+    "diseases": [{
+        "disease_code": "CDR0000042845",
+        "inclusion_indicator": "TRIAL",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3273",
+        "preferred_name": "Neurofibromatosis Type 1",
+        "synonyms": ["NF1", "NF1", "Neurofibromatosis", "Neurofibromatosis 1", "Neurofibromatosis Type 1", "Neurofibromatosis Type 1", "Neurofibromatosis Type 1 Microdeletion Syndrome", "Peripheral Neurofibromatosis", "Von Recklinghausen Disease", "Von Recklinghausen Disease", "neurofibromatosis type 1"],
+        "display_name": "Neurofibromatosis Type 1",
+        "parents": ["C6727"],
+        "paths": [{
+            "direction": 1,
+            "concepts": [{
+                "idx": 0,
+                "label": "Neoplastic Syndrome",
+                "code": "C54705"
+            }]
+        }],
+        "type": ["subtype"]
     }, {
-      "display_order": 9,
-      "inclusion_indicator": true,
-      "description": "Hemoglobin >= 9 g/dl"
+        "disease_code": "CDR0000472003",
+        "inclusion_indicator": "TRIAL",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3797",
+        "preferred_name": "Plexiform Neurofibroma",
+        "synonyms": ["Plexiform Neurofibroma", "Plexiform Neurofibroma", "Plexiform neurofibroma", "plexiform neurofibroma"],
+        "display_name": "Plexiform Neurofibroma",
+        "parents": ["C3272"],
+        "paths": [{
+            "direction": 1,
+            "concepts": [{
+                "idx": 0,
+                "label": "Nervous System Neoplasm",
+                "code": "C3268"
+            }]
+        }],
+        "type": ["grade", "subtype"]
     }, {
-      "display_order": 10,
-      "inclusion_indicator": true,
-      "description": "Platelets >= 100,000/ul"
+        "disease_code": "CDR0000256156",
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3101",
+        "preferred_name": "Genetic Disorder",
+        "synonyms": ["Genetic Condition", "Genetic Disorder", "Genetic Disorder", "Genetic Disorder", "Hereditary Disease", "Hereditary Diseases", "Inherited Disease", "Molecular Disease"],
+        "display_name": "Genetic Disorder",
+        "parents": ["C2991"],
+        "paths": null
     }, {
-      "display_order": 11,
-      "inclusion_indicator": true,
-      "description": "Bilirubin within 1.5 x the upper limit of normal for age, with the exception of those with Gilbert syndrome"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C7057",
+        "preferred_name": "Disease, Disorder or Finding",
+        "synonyms": ["Disease, Disorder or Finding"],
+        "display_name": "Disease, Disorder or Finding",
+        "parents": [],
+        "paths": null
     }, {
-      "display_order": 12,
-      "inclusion_indicator": true,
-      "description": "Aspartate aminotransferase (AST)/alanine aminotransferase (ALT) within =< 3 x upper limit of normal"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C2991",
+        "preferred_name": "Disease or Disorder",
+        "synonyms": ["Disease", "Disease", "Disease or Disorder", "Disease or Disorder", "Disease or Disorder", "Disease or Disorder, Non-Neoplastic", "Diseases", "Diseases and Disorders", "Disorder", "Disorders", "Other Disease", "condition", "disease", "disorder"],
+        "display_name": "Other Disease",
+        "parents": ["C7057"],
+        "paths": null
     }, {
-      "display_order": 13,
-      "inclusion_indicator": true,
-      "description": "Creatinine clearance or radioisotope glomerular filtration rate (GFR) >= 60 ml/min/1.73 m^2 or a normal serum creatinine based on age described in the table below:\r\n* Age: =< 5 years; maximum serum creatinine: 0.8 mg/dL\r\n* Age: 5 < age =< 10 years; maximum serum creatinine: 1.0 mg/dL\r\n* Age: 10 < age =< 15 years; maximum serum creatinine: 1.2 mg/dL\r\n* Age: > 15 years; maximum serum creatinine: 1.5 mg/dL"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3266",
+        "preferred_name": "Hereditary Neoplastic Syndrome",
+        "synonyms": ["Familial Neoplastic Syndrome", "Familial Tumor Syndrome", "Hereditary Neoplastic Syndrome", "Hereditary Neoplastic Syndrome", "Hereditary Tumor Syndrome", "inherited cancer syndrome"],
+        "display_name": "Hereditary Neoplastic Syndrome",
+        "parents": ["C3101", "C54705"],
+        "paths": null
     }, {
-      "display_order": 14,
-      "inclusion_indicator": true,
-      "description": "Normal ejection fraction (echocardiogram [ECHO] or cardiac MRI) >= 53% (or the institutional normal; if a range is given then the upper value of the range will be used); corrected QT (QTC) or Fridericia's correction formula (QTcF) =< 450 msec"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C54705",
+        "preferred_name": "Neoplastic Syndrome",
+        "synonyms": ["Cancer-Related Syndrome", "Neoplastic Syndrome", "Tumor Syndrome"],
+        "display_name": "Cancer-Related Syndrome",
+        "parents": ["C28193"],
+        "paths": null
     }, {
-      "display_order": 15,
-      "inclusion_indicator": true,
-      "description": "Adequate blood pressure defined as:\r\n* A blood pressure (BP) =< the 95th percentile for age, height, and gender measured; adequate blood pressure can be achieved using medication for treatment of hypertension"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C6727",
+        "preferred_name": "Neurofibromatosis",
+        "synonyms": ["Neurofibromatosis", "Neurofibromatosis", "Neurofibromatosis", "Neurofibromatosis Syndrome"],
+        "display_name": "Neurofibromatosis",
+        "parents": ["C84348"],
+        "paths": null
     }, {
-      "display_order": 16,
-      "inclusion_indicator": true,
-      "description": "Diagnostic or laboratory studies performed exclusively to determine eligibility for this trial must only be done after obtaining written informed consent from all patients or their legal guardians (if the patient is < 18 years old); when appropriate, pediatric patients will be included in all discussions; this can be accomplished through one of the following mechanisms: a) the NCI, POB screening protocol, b) an Institutional Review Board (IRB)-approved institutional screening protocol or c) the study-specific protocol; documentation of the informed consent for screening will be maintained in the patient’s research chart; studies or procedures that were performed for clinical indications (not exclusively to determine eligibility) may be used for baseline values even if the studies were done before informed consent was obtained"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C84348",
+        "preferred_name": "Phakomatosis",
+        "synonyms": ["Neurocutaneous Syndrome", "Neurocutaneous Syndrome", "Phacomatosis", "Phakomatosis", "Phakomatosis"],
+        "display_name": "Phakomatosis",
+        "parents": ["C3266"],
+        "paths": null
     }, {
-      "display_order": 17,
-      "inclusion_indicator": true,
-      "description": "Willingness to avoid excessive sun exposure and use adequate sunscreen protection if sun exposure is anticipated"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C28193",
+        "preferred_name": "Syndrome",
+        "synonyms": ["Syndrome", "Syndrome", "syndrome"],
+        "display_name": "Syndrome",
+        "parents": ["C2991"],
+        "paths": null
     }, {
-      "display_order": 18,
-      "inclusion_indicator": true,
-      "description": "Willingness to avoid the ingestion of grapefruit and Seville oranges (as well as other products containing these fruits, e.g. grapefruit juice or marmalade) during the study, as these may affect selumetinib metabolism"
+        "disease_code": "CDR0000580834",
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3268",
+        "preferred_name": "Nervous System Neoplasm",
+        "synonyms": ["Neoplasm of Nervous System", "Neoplasm of Nervous System", "Neoplasm of the Nervous System", "Nervous System Neoplasm", "Nervous System Neoplasm", "Nervous System Neoplasms", "Nervous System Tumor", "Nervous System Tumour", "Tumor of Nervous System", "Tumor of the Nervous System"],
+        "display_name": "Nervous System Neoplasm",
+        "parents": ["C3263", "C26835"],
+        "paths": null
     }, {
-      "display_order": 19,
-      "inclusion_indicator": false,
-      "description": "Pregnant or breast-feeding females are excluded; pregnancy tests must be obtained prior to enrollment for all females of childbearing potential as per institutional standards (at National Institutes of Health [NIH] subjects 9 years and older or those showing pubertal development); males or females of reproductive potential may not participate unless they have agreed to use an effective contraceptive method; abstinence is an acceptable method of birth control"
+        "disease_code": "CDR0000580973",
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3321",
+        "preferred_name": "Peripheral Nervous System Neoplasm",
+        "synonyms": ["CNS-excluded nervous sys. cancer", "CNS-excluded nervous system cancer, NOS", "Neoplasm of PNS", "Neoplasm of Peripheral Nerve", "Neoplasm of Peripheral Nervous System", "Neoplasm of the PNS", "Neoplasm of the Peripheral Nerve", "Neoplasm of the Peripheral Nervous System", "Neoplasms, PNS", "Neoplasms, Peripheral Nervous System", "PNS Neoplasm", "PNS Neoplasms", "PNS Tumor", "Peripheral Nerve Neoplasm", "Peripheral Nerve Tumor", "Peripheral Nervous System Neoplasm", "Peripheral Nervous System Tumor", "Tumor of PNS", "Tumor of Peripheral Nerve", "Tumor of Peripheral Nervous System", "Tumor of the PNS", "Tumor of the Peripheral Nerve", "Tumor of the Peripheral Nervous System"],
+        "display_name": "Peripheral Nervous System Neoplasm",
+        "parents": ["C3268", "C27580"],
+        "paths": null
     }, {
-      "display_order": 20,
-      "inclusion_indicator": false,
-      "description": "PHASE I: Patients who anticipate the need for surgical intervention within the first three cycles (3 months), as surgical intervention during the period of dose limiting toxicity (DLT) evaluation may affect analysis of adherence and/or make the subject inevaluable"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C27551",
+        "preferred_name": "Disorder by Site",
+        "synonyms": ["Disease by Site", "Disorder by Site"],
+        "display_name": "Disorder by Site",
+        "parents": ["C2991"],
+        "paths": null
     }, {
-      "display_order": 21,
-      "inclusion_indicator": false,
-      "description": "Use of an investigational agent within the past 30 days"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3262",
+        "preferred_name": "Neoplasm",
+        "synonyms": ["Neoplasia", "Neoplasm", "Neoplasm", "Neoplasm", "Neoplastic Disease", "Neoplastic Growth", "Other Neoplasm", "neoplasia", "neoplasm", "tumor"],
+        "display_name": "Other Neoplasm",
+        "parents": ["C2991"],
+        "paths": null
     }, {
-      "display_order": 22,
-      "inclusion_indicator": false,
-      "description": "Ongoing radiation therapy, chemotherapy, hormonal therapy directed at the tumor, immunotherapy, or biologic therapy"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C4741",
+        "preferred_name": "Neoplasm by Morphology",
+        "synonyms": ["Neoplasm by Morphology", "Neoplasm by Morphology"],
+        "display_name": "Neoplasm by Morphology",
+        "parents": ["C3262"],
+        "paths": null
     }, {
-      "display_order": 23,
-      "inclusion_indicator": false,
-      "description": "Any evidence of severe or uncontrolled systemic disease, active infection, active bleeding diatheses or renal transplant, including any patient known to have hepatitis B, hepatitis C or human immunodeficiency virus (HIV) will be excluded; patients with HIV who have adequate cluster of differentiation (CD)4 count, not requiring antiretroviral medication will not be excluded"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3263",
+        "preferred_name": "Neoplasm by Site",
+        "synonyms": ["Neoplasm by Site", "Neoplasm by Site"],
+        "display_name": "Neoplasm by Site",
+        "parents": ["C3262"],
+        "paths": null
     }, {
-      "display_order": 24,
-      "inclusion_indicator": false,
-      "description": "Patients who in the opinion of the investigator may not be able to comply with the safety monitoring requirements of the study"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C4972",
+        "preferred_name": "Nerve Sheath Neoplasm",
+        "synonyms": ["Neoplasm of Nerve Sheath", "Neoplasm of the Nerve Sheath", "Nerve Sheath Neoplasm", "Nerve Sheath Tumor", "Tumor of Nerve Sheath"],
+        "display_name": "Nerve Sheath Neoplasm",
+        "parents": ["C35562"],
+        "paths": null
     }, {
-      "display_order": 25,
-      "inclusion_indicator": false,
-      "description": "Inability to swallow capsules, since capsules cannot be crushed or broken"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C26835",
+        "preferred_name": "Nervous System Disorder",
+        "synonyms": ["Disorder of Nervous System", "Nervous System Disorder", "Nervous System Disorder", "Neurologic Disorder", "Neurologic Disorder"],
+        "display_name": "Nervous System Disorder",
+        "parents": ["C27551"],
+        "paths": null
     }, {
-      "display_order": 26,
-      "inclusion_indicator": false,
-      "description": "Inability to undergo MRI and/or contraindication for MRI examinations following the MRI protocol; prosthesis or orthopedic or dental braces that would interfere with volumetric analysis of target PN on MRI"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C35562",
+        "preferred_name": "Neuroepithelial, Perineurial, and Schwann Cell Neoplasm",
+        "synonyms": ["Neural Neoplasm", "Neural Tumor", "Neuroepithelial, Perineurial, and Schwann Cell Neoplasm"],
+        "display_name": "Neuroepithelial, Perineurial, and Schwann Cell Neoplasm",
+        "parents": ["C4741", "C3268"],
+        "paths": null
     }, {
-      "display_order": 27,
-      "inclusion_indicator": false,
-      "description": "Refractory nausea and vomiting, chronic gastrointestinal diseases (e.g., inflammatory bowel disease), or significant bowel resection that would preclude adequate absorption"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C3272",
+        "preferred_name": "Neurofibroma",
+        "synonyms": ["NEUROFIBROMA, BENIGN", "Neurofibroma", "Neurofibroma", "Neurofibroma (WHO Grade I)", "neurofibroma"],
+        "display_name": "Neurofibroma",
+        "parents": ["C4972", "C3321"],
+        "paths": null
     }, {
-      "display_order": 28,
-      "inclusion_indicator": false,
-      "description": "Prior treatment with selumetinib or another specific mitogen-activated protein kinase (MEK)1/2 inhibitor (unless the subject meets criteria for re-treatment)"
-    }, {
-      "display_order": 29,
-      "inclusion_indicator": false,
-      "description": "Evidence of an optic glioma, malignant glioma, malignant peripheral nerve sheath tumor, or other cancer requiring treatment with chemotherapy or radiation therapy"
-    }, {
-      "display_order": 30,
-      "inclusion_indicator": false,
-      "description": "Supplementation with vitamin E greater than 100% of the daily recommended dose; any multivitamin containing vitamin E must be stopped prior to initiation of therapy"
-    }, {
-      "display_order": 31,
-      "inclusion_indicator": false,
-      "description": "Patients not achieving adequate blood pressure in spite of antihypertensive therapy for control of blood pressure"
-    }, {
-      "display_order": 32,
-      "inclusion_indicator": false,
-      "description": "Cardiac function:\r\n* Known inherited coronary disease\r\n* Symptomatic heart failure (New York Heart Association [NYHA] class II-IV prior or current cardiomyopathy, or severe valvular heart disease)\r\n* Prior or current cardiomyopathy\r\n* Severe valvular heart disease\r\n* History of atrial fibrillation"
-    }, {
-      "display_order": 33,
-      "inclusion_indicator": false,
-      "description": "Ophthalmologic conditions:\r\n* Current or past history of central serous retinopathy\r\n* Current or past history of retinal vein occlusion\r\n* Known intraocular pressure (IOP) > 21 mmHg (or ULN adjusted by age) or uncontrolled glaucoma (irrespective of IOP); patients with known glaucoma and increased IOP who do not have meaningful vision (light perception only or no light perception) and are not experiencing pain related to the glaucoma may be eligible after discussion with the study chair\r\n* Subjects with any other significant abnormality on ophthalmic examination should be discussed with the study chair for potential eligibility\r\n* Ophthalmological findings secondary to long-standing optic pathway glioma (such as visual loss, optic nerve pallor or strabismus) or long-standing orbito-temporal PN (such as visual loss, strabismus) will NOT be considered a significant abnormality for the purposes of the study"
-    }, {
-      "display_order": 34,
-      "inclusion_indicator": false,
-      "description": "Known severe hypersensitivity to selumetinib or any excipient of selumetinib or history of allergic reactions attributed to compounds of similar chemical or biologic composition to selumetinib"
-    }, {
-      "display_order": 35,
-      "inclusion_indicator": false,
-      "description": "Recent major surgery within a minimum of 4 weeks prior to starting study treatment, with the exception of surgical placement for vascular access"
-    }, {
-      "display_order": 36,
-      "inclusion_indicator": false,
-      "description": "Any unresolved chronic toxicity with CTCAE grade >= 2, from previous anti-NF1 therapy, except for alopecia"
-    }, {
-      "display_order": 37,
-      "inclusion_indicator": false,
-      "description": "Clinical judgement by the investigator that the patient should not participate in the study"
-    }, {
-      "display_order": 38,
-      "inclusion_indicator": false,
-      "description": "While not an exclusion criterion, unless considered clinically indicated, patients should avoid taking other additional non-study medications that may interfere with the study medication; in particular, patients should avoid medications that are known to either induce or inhibit the activity of hepatic microsomal isoenzymes CYP1A2, CYP2C19 and CYP3A4"
+        "disease_code": null,
+        "inclusion_indicator": "TREE",
+        "lead_disease_indicator": null,
+        "nci_thesaurus_concept_id": "C27580",
+        "preferred_name": "Peripheral Nervous System Disorder",
+        "synonyms": ["Disorder of Peripheral Nervous System", "Peripheral Nerve Disease", "Peripheral Nervous System Disease", "Peripheral Nervous System Disorder", "Peripheral Nervous System Disorder"],
+        "display_name": "Peripheral Nervous System Disorder",
+        "parents": ["C26835"],
+        "paths": null
+    }],
+    "biomarkers": null,
+    "minimum_target_accrual_number": 104,
+    "eligibility": {
+        "structured": {
+            "gender": "BOTH",
+            "max_age": "18 Years",
+            "max_age_number": 18,
+            "max_age_unit": "Years",
+            "min_age": "2 Years",
+            "min_age_number": 2,
+            "min_age_unit": "Years",
+            "max_age_in_years": 18,
+            "min_age_in_years": 2
+        },
+        "unstructured": [{
+            "display_order": 1,
+            "inclusion_indicator": true,
+            "description": "PHASE I: >= 3 years and =< 18 years of age at the time of study enrollment, if able to swallow whole capsules"
+        }, {
+            "display_order": 2,
+            "inclusion_indicator": true,
+            "description": "PHASE II: >= 2 and =< 18 years; body surface area (BSA) >= 0.55 m^2, and able to swallow whole capsules"
+        }, {
+            "display_order": 3,
+            "inclusion_indicator": true,
+            "description": "Patients with NF1 and inoperable PN defined as PN that cannot be surgically completely removed without risk for substantial morbidity due to encasement of, or close proximity to vital structures, invasiveness, or high vascularity of the PN; the PN has to cause (stratum 1) or have the potential to cause (stratum 2) significant morbidity, such as (but not limited to) head and neck lesions that could compromise the airway or great vessels, paraspinal lesions that can cause myelopathy, brachial or lumbar plexus lesions that could cause nerve compression and loss of function, lesions that could result in major deformity (e.g., orbital lesions) or are significantly disfiguring, lesions of the extremity that cause limb hypertrophy or loss of function, and painful lesions; patients will be enrolled into stratum 1 or 2 based on PN related morbidity; histologic confirmation of tumor is not necessary in the presence of consistent clinical and radiographic findings, but should be considered if malignant degeneration of a PN is clinically suspected; a PN is defined as a neurofibroma that has grown along the length of a nerve and may involve multiple fascicles and branches; a spinal PN involves two or more levels with connection between the levels or extending laterally along the nerve; in addition to PN, all study subjects must have either positive genetic testing for NF1 or have at least one other diagnostic criterion for NF1 listed below (National Institutes of Health [NIH] Consensus conference):\r\n* Six or more café-au-lait macules (>= 0.5 cm in prepubertal subjects or >= 1.5 cm in post pubertal subjects)\r\n* Freckling in axilla or groin\r\n* Optic glioma\r\n* Two or more Lisch nodules\r\n* A distinctive bony lesion (dysplasia of the sphenoid bone or dysplasia or thinning of long bone cortex)\r\n* A first-degree relative with NF1"
+        }, {
+            "display_order": 4,
+            "inclusion_indicator": true,
+            "description": "Patients must have at least one measurable PN, defined as a lesion of at least 3 cm measured in one dimension; patients who underwent surgery for resection of a PN are eligible provided the PN was incompletely resected and is measurable"
+        }, {
+            "display_order": 5,
+            "inclusion_indicator": true,
+            "description": "PHASE II: Measurability and suitability for volumetric MRI analysis of the target PN must be confirmed with the NCI Pediatric Oncology Branch (POB) prior to enrolling a patient; the target PN will be defined as the clinically most relevant PN, which has to be amenable to volumetric MRI analysis; PN will be classified as “typical PN” versus “nodular PN” versus “solitary nodular PN prior to enrollment"
+        }, {
+            "display_order": 6,
+            "inclusion_indicator": true,
+            "description": "Patients with NF1 will only be eligible if complete tumor resection is not considered to be feasible without substantial risk or morbidity\r\n* Patients may be treated on this trial without having received prior medical therapy directed at their PN\r\n* There will be no limit to number of prior myelosuppressive regimen for PN or other tumor manifestations associated with NF1 such as optic glioma\r\n* Patients who have received previous investigational agents or biologic therapy, such as tipifarnib, pirfenidone, peginterferon alfa-2b (Peg-Intron), sorafenib, imatinib, or other targeted therapies are eligible for enrollment; at least 4 weeks must have elapsed since receiving medical therapy directed at the PN; patients who received prior medical therapy for their PN must have recovered from the acute toxic effects of all prior therapy to =< grade 1 Common Terminology Criteria for Adverse Events (CTCAE) version (v)4 before entering this study\r\n* Growth factors that support platelet or white cell number or function must not have been administered within the 7 days prior to enrollment\r\n* At least 6 weeks must have elapsed prior to enrollment since the patient received any prior radiation therapy\r\n* At least 4 weeks must have elapsed since any surgeries, with evidence of good wound healing"
+        }, {
+            "display_order": 7,
+            "inclusion_indicator": true,
+            "description": "Patients > 16 years of age must have a Karnofsky performance level of >= 70%, and children =< 16 years old must have a Lansky performance of >= 70%; patients who are wheelchair bound because of paralysis secondary to a plexiform neurofibroma should be considered ambulatory when they are up in their wheelchair; similarly, patients with limited mobility secondary to need for mechanical support (such as an airway PN requiring tracheostomy or continuous positive airway pressure [CPAP]) will also be considered ambulatory for the purpose of the study"
+        }, {
+            "display_order": 8,
+            "inclusion_indicator": true,
+            "description": "Absolute neutrophil count >= 1500/ul"
+        }, {
+            "display_order": 9,
+            "inclusion_indicator": true,
+            "description": "Hemoglobin >= 9 g/dl"
+        }, {
+            "display_order": 10,
+            "inclusion_indicator": true,
+            "description": "Platelets >= 100,000/ul"
+        }, {
+            "display_order": 11,
+            "inclusion_indicator": true,
+            "description": "Bilirubin within 1.5 x the upper limit of normal for age, with the exception of those with Gilbert syndrome"
+        }, {
+            "display_order": 12,
+            "inclusion_indicator": true,
+            "description": "Aspartate aminotransferase (AST)/alanine aminotransferase (ALT) within =< 3 x upper limit of normal"
+        }, {
+            "display_order": 13,
+            "inclusion_indicator": true,
+            "description": "Creatinine clearance or radioisotope glomerular filtration rate (GFR) >= 60 ml/min/1.73 m^2 or a normal serum creatinine based on age described in the table below:\r\n* Age: =< 5 years; maximum serum creatinine: 0.8 mg/dL\r\n* Age: 5 < age =< 10 years; maximum serum creatinine: 1.0 mg/dL\r\n* Age: 10 < age =< 15 years; maximum serum creatinine: 1.2 mg/dL\r\n* Age: > 15 years; maximum serum creatinine: 1.5 mg/dL"
+        }, {
+            "display_order": 14,
+            "inclusion_indicator": true,
+            "description": "Normal ejection fraction (echocardiogram [ECHO] or cardiac MRI) >= 53% (or the institutional normal; if a range is given then the upper value of the range will be used); corrected QT (QTC) or Fridericia's correction formula (QTcF) =< 450 msec"
+        }, {
+            "display_order": 15,
+            "inclusion_indicator": true,
+            "description": "Adequate blood pressure defined as:\r\n* A blood pressure (BP) =< the 95th percentile for age, height, and gender measured; adequate blood pressure can be achieved using medication for treatment of hypertension"
+        }, {
+            "display_order": 16,
+            "inclusion_indicator": true,
+            "description": "Diagnostic or laboratory studies performed exclusively to determine eligibility for this trial must only be done after obtaining written informed consent from all patients or their legal guardians (if the patient is < 18 years old); when appropriate, pediatric patients will be included in all discussions; this can be accomplished through one of the following mechanisms: a) the NCI, POB screening protocol, b) an Institutional Review Board (IRB)-approved institutional screening protocol or c) the study-specific protocol; documentation of the informed consent for screening will be maintained in the patient’s research chart; studies or procedures that were performed for clinical indications (not exclusively to determine eligibility) may be used for baseline values even if the studies were done before informed consent was obtained"
+        }, {
+            "display_order": 17,
+            "inclusion_indicator": true,
+            "description": "Willingness to avoid excessive sun exposure and use adequate sunscreen protection if sun exposure is anticipated"
+        }, {
+            "display_order": 18,
+            "inclusion_indicator": true,
+            "description": "Willingness to avoid the ingestion of grapefruit and Seville oranges (as well as other products containing these fruits, e.g. grapefruit juice or marmalade) during the study, as these may affect selumetinib metabolism"
+        }, {
+            "display_order": 19,
+            "inclusion_indicator": false,
+            "description": "Pregnant or breast-feeding females are excluded; pregnancy tests must be obtained prior to enrollment for all females of childbearing potential as per institutional standards (at National Institutes of Health [NIH] subjects 9 years and older or those showing pubertal development); males or females of reproductive potential may not participate unless they have agreed to use an effective contraceptive method; abstinence is an acceptable method of birth control"
+        }, {
+            "display_order": 20,
+            "inclusion_indicator": false,
+            "description": "PHASE I: Patients who anticipate the need for surgical intervention within the first three cycles (3 months), as surgical intervention during the period of dose limiting toxicity (DLT) evaluation may affect analysis of adherence and/or make the subject inevaluable"
+        }, {
+            "display_order": 21,
+            "inclusion_indicator": false,
+            "description": "Use of an investigational agent within the past 30 days"
+        }, {
+            "display_order": 22,
+            "inclusion_indicator": false,
+            "description": "Ongoing radiation therapy, chemotherapy, hormonal therapy directed at the tumor, immunotherapy, or biologic therapy"
+        }, {
+            "display_order": 23,
+            "inclusion_indicator": false,
+            "description": "Any evidence of severe or uncontrolled systemic disease, active infection, active bleeding diatheses or renal transplant, including any patient known to have hepatitis B, hepatitis C or human immunodeficiency virus (HIV) will be excluded; patients with HIV who have adequate cluster of differentiation (CD)4 count, not requiring antiretroviral medication will not be excluded"
+        }, {
+            "display_order": 24,
+            "inclusion_indicator": false,
+            "description": "Patients who in the opinion of the investigator may not be able to comply with the safety monitoring requirements of the study"
+        }, {
+            "display_order": 25,
+            "inclusion_indicator": false,
+            "description": "Inability to swallow capsules, since capsules cannot be crushed or broken"
+        }, {
+            "display_order": 26,
+            "inclusion_indicator": false,
+            "description": "Inability to undergo MRI and/or contraindication for MRI examinations following the MRI protocol; prosthesis or orthopedic or dental braces that would interfere with volumetric analysis of target PN on MRI"
+        }, {
+            "display_order": 27,
+            "inclusion_indicator": false,
+            "description": "Refractory nausea and vomiting, chronic gastrointestinal diseases (e.g., inflammatory bowel disease), or significant bowel resection that would preclude adequate absorption"
+        }, {
+            "display_order": 28,
+            "inclusion_indicator": false,
+            "description": "Prior treatment with selumetinib or another specific mitogen-activated protein kinase (MEK)1/2 inhibitor (unless the subject meets criteria for re-treatment)"
+        }, {
+            "display_order": 29,
+            "inclusion_indicator": false,
+            "description": "Evidence of an optic glioma, malignant glioma, malignant peripheral nerve sheath tumor, or other cancer requiring treatment with chemotherapy or radiation therapy"
+        }, {
+            "display_order": 30,
+            "inclusion_indicator": false,
+            "description": "Supplementation with vitamin E greater than 100% of the daily recommended dose; any multivitamin containing vitamin E must be stopped prior to initiation of therapy"
+        }, {
+            "display_order": 31,
+            "inclusion_indicator": false,
+            "description": "Patients not achieving adequate blood pressure in spite of antihypertensive therapy for control of blood pressure"
+        }, {
+            "display_order": 32,
+            "inclusion_indicator": false,
+            "description": "Cardiac function:\r\n* Known inherited coronary disease\r\n* Symptomatic heart failure (New York Heart Association [NYHA] class II-IV prior or current cardiomyopathy, or severe valvular heart disease)\r\n* Prior or current cardiomyopathy\r\n* Severe valvular heart disease\r\n* History of atrial fibrillation"
+        }, {
+            "display_order": 33,
+            "inclusion_indicator": false,
+            "description": "Ophthalmologic conditions:\r\n* Current or past history of central serous retinopathy\r\n* Current or past history of retinal vein occlusion\r\n* Known intraocular pressure (IOP) > 21 mmHg (or ULN adjusted by age) or uncontrolled glaucoma (irrespective of IOP); patients with known glaucoma and increased IOP who do not have meaningful vision (light perception only or no light perception) and are not experiencing pain related to the glaucoma may be eligible after discussion with the study chair\r\n* Subjects with any other significant abnormality on ophthalmic examination should be discussed with the study chair for potential eligibility\r\n* Ophthalmological findings secondary to long-standing optic pathway glioma (such as visual loss, optic nerve pallor or strabismus) or long-standing orbito-temporal PN (such as visual loss, strabismus) will NOT be considered a significant abnormality for the purposes of the study"
+        }, {
+            "display_order": 34,
+            "inclusion_indicator": false,
+            "description": "Known severe hypersensitivity to selumetinib or any excipient of selumetinib or history of allergic reactions attributed to compounds of similar chemical or biologic composition to selumetinib"
+        }, {
+            "display_order": 35,
+            "inclusion_indicator": false,
+            "description": "Recent major surgery within a minimum of 4 weeks prior to starting study treatment, with the exception of surgical placement for vascular access"
+        }, {
+            "display_order": 36,
+            "inclusion_indicator": false,
+            "description": "Any unresolved chronic toxicity with CTCAE grade >= 2, from previous anti-NF1 therapy, except for alopecia"
+        }, {
+            "display_order": 37,
+            "inclusion_indicator": false,
+            "description": "Clinical judgement by the investigator that the patient should not participate in the study"
+        }, {
+            "display_order": 38,
+            "inclusion_indicator": false,
+            "description": "While not an exclusion criterion, unless considered clinically indicated, patients should avoid taking other additional non-study medications that may interfere with the study medication; in particular, patients should avoid medications that are known to either induce or inhibit the activity of hepatic microsomal isoenzymes CYP1A2, CYP2C19 and CYP3A4"
+        }]
+    },
+    "number_of_arms": 1,
+    "arms": [{
+        "arm_name": "Treatment (selumetinib)",
+        "arm_type": "EXPERIMENTAL",
+        "arm_description": "Patients receive selumetinib PO BID on days 1-28. Courses repeat every 28 days in the absence of disease progression or unacceptable toxicity.",
+        "interventions": [{
+            "intervention_name": "Selumetinib",
+            "intervention_type": "Drug",
+            "intervention_code": "C66939",
+            "intervention_description": "An orally active, small molecule with potential antineoplastic activity. Selumetinib is an ATP-independent inhibitor of mitogen-activated protein kinase kinase (MEK or MAPK/ERK kinase) 1 and 2. MEK 1 and 2 are dual-specificity kinases that are essential mediators in the activation of the RAS/RAF/MEK/ERK pathway, are often upregulated in various cancer cells, and are drivers of diverse cellular responses, including proliferation. Inhibition of both MEK1 and 2 by selumetinib prevents the activation of MEK1/2 dependent effector proteins and transcription factors, thereby leading to an inhibition of cellular proliferation in various cancers.  Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+            "parents": ["C129825", "C69145"],
+            "inclusion_indicator": "TRIAL",
+            "synonyms": [],
+            "intervention_category": "Agent"
+        }, {
+            "intervention_name": "Laboratory Biomarker Analysis",
+            "intervention_type": "Other",
+            "intervention_code": "C64263",
+            "intervention_description": null,
+            "parents": ["C63333", "C74957"],
+            "inclusion_indicator": "TRIAL",
+            "synonyms": [],
+            "intervention_category": "Other"
+        }, {
+            "intervention_name": "Pharmacological Study",
+            "intervention_type": "Other",
+            "intervention_code": "C62674",
+            "intervention_description": null,
+            "parents": ["C63536"],
+            "inclusion_indicator": "TRIAL",
+            "synonyms": [],
+            "intervention_category": "Other"
+        }, {
+            "intervention_name": "Quality-of-Life Assessment",
+            "intervention_type": "Other",
+            "intervention_code": "C15584",
+            "intervention_description": null,
+            "parents": ["C15747"],
+            "inclusion_indicator": "TRIAL",
+            "synonyms": ["Quality of Life Assessment"],
+            "intervention_category": "Other"
+        }, {
+            "intervention_code": "C129825",
+            "intervention_name": "Antineoplastic Enzyme Inhibitor",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C129824", "C471"],
+            "synonyms": ["Anti-cancer Enzyme Inhibitor"]
+        }, {
+            "intervention_code": "C129824",
+            "intervention_name": "Antineoplastic Protein Inhibitor",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C274"],
+            "synonyms": ["Anti-cancer Protein Inhibitor"]
+        }, {
+            "intervention_code": "C274",
+            "intervention_name": "Antineoplastic Agent",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C1909"],
+            "synonyms": ["Anti-Cancer Agents", "Anti-Tumor Agents", "Anti-Tumor Drugs", "Antineoplastic Drugs", "Antineoplastics", "Antiproliferative Agents", "Antiproliferative Drugs", "Cancer Drug", "Chemotherapeutic Agents, Neoplastic Disease", "Tumor-Specific Treatment Agents"]
+        }, {
+            "intervention_code": "C1909",
+            "intervention_name": "Pharmacologic Substance",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C1908"],
+            "synonyms": ["Agent", "Drug", "Drug Substance", "Pharmaceutical Agent", "Pharmaceuticals", "Pharmacologic Agent", "Pharmacologic Substance", "Pharmacological Substance"]
+        }, {
+            "intervention_code": "C1908",
+            "intervention_name": "Drug, Food, Chemical or Biomedical Material",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": [],
+            "synonyms": []
+        }, {
+            "intervention_code": "C471",
+            "intervention_name": "Enzyme Inhibitor",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C1909"],
+            "synonyms": ["Enzyme Antagonist", "Enzyme Inhibitor Agent", "Enzyme Inhibitor Drug"]
+        }, {
+            "intervention_code": "C69145",
+            "intervention_name": "Mitogen-Activated Protein Kinase Kinase Inhibitor",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C1404"],
+            "synonyms": ["MAP2K Inhibitor", "MAPK / ERK Kinase Inhibitor", "MAPKK Inhibitor", "MEK Inhibitor", "MKK Inhibitor"]
+        }, {
+            "intervention_code": "C1404",
+            "intervention_name": "Protein Kinase Inhibitor",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Drug",
+            "intervention_description": "",
+            "intervention_category": "Agent Category",
+            "parents": ["C471"],
+            "synonyms": []
+        }, {
+            "intervention_code": "C63333",
+            "intervention_name": "Biomarker Analysis",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C25218"],
+            "synonyms": []
+        }, {
+            "intervention_code": "C25218",
+            "intervention_name": "Intervention or Procedure",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C16203"],
+            "synonyms": ["Intervention", "Intervention Strategies", "Procedure"]
+        }, {
+            "intervention_code": "C16203",
+            "intervention_name": "Clinical or Research Activity",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C43431"],
+            "synonyms": []
+        }, {
+            "intervention_code": "C43431",
+            "intervention_name": "Activity",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": [],
+            "synonyms": ["Activity", "General activity"]
+        }, {
+            "intervention_code": "C74957",
+            "intervention_name": "Mixed Category Laboratory Procedure",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C25294"],
+            "synonyms": []
+        }, {
+            "intervention_code": "C25294",
+            "intervention_name": "Laboratory Procedure",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C25218"],
+            "synonyms": ["Lab Test", "Lab Tests", "Laboratory Procedure", "Laboratory Test", "Test", "Tests"]
+        }, {
+            "intervention_code": "C63536",
+            "intervention_name": "Study",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C15429"],
+            "synonyms": []
+        }, {
+            "intervention_code": "C15429",
+            "intervention_name": "Research Activity",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C16203"],
+            "synonyms": ["Research"]
+        }, {
+            "intervention_code": "C15747",
+            "intervention_name": "Supportive Care",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C49236"],
+            "synonyms": ["Supportive Therapy", "Symptom Management", "Therapy, Supportive"]
+        }, {
+            "intervention_code": "C49236",
+            "intervention_name": "Therapeutic Procedure",
+            "inclusion_indicator": "TREE",
+            "intervention_type": "Other",
+            "intervention_description": "",
+            "intervention_category": "NONE",
+            "parents": ["C25218"],
+            "synonyms": ["TX", "Therapeutic Interventions", "Therapeutic Method", "Therapeutic Procedure", "Therapeutic Technique", "Therapy", "Treatment"]
+        }]
     }]
-  },
-  "number_of_arms": 1,
-  "arms": [{
-    "arm_name": "Treatment (selumetinib)",
-    "arm_type": "EXPERIMENTAL",
-    "arm_description": "Patients receive selumetinib PO BID on days 1-28. Courses repeat every 28 days in the absence of disease progression or unacceptable toxicity.",
-    "interventions": [{
-      "intervention_name": "Selumetinib",
-      "intervention_type": "Drug",
-      "intervention_code": "C66939",
-      "intervention_description": "An orally active, small molecule with potential antineoplastic activity. Selumetinib is an ATP-independent inhibitor of mitogen-activated protein kinase kinase (MEK or MAPK/ERK kinase) 1 and 2. MEK 1 and 2 are dual-specificity kinases that are essential mediators in the activation of the RAS/RAF/MEK/ERK pathway, are often upregulated in various cancer cells, and are drivers of diverse cellular responses, including proliferation. Inhibition of both MEK1 and 2 by selumetinib prevents the activation of MEK1/2 dependent effector proteins and transcription factors, thereby leading to an inhibition of cellular proliferation in various cancers.  Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
-      "synonyms": ["Selumetinib"]
-    }, {
-      "intervention_name": "Laboratory Biomarker Analysis",
-      "intervention_type": "Other",
-      "intervention_code": "C64263",
-      "intervention_description": null,
-      "synonyms": ["Laboratory Biomarker Analysis"]
-    }, {
-      "intervention_name": "Pharmacological Study",
-      "intervention_type": "Other",
-      "intervention_code": "C62674",
-      "intervention_description": null,
-      "synonyms": ["Pharmacological Study"]
-    }, {
-      "intervention_name": "Quality-of-Life Assessment",
-      "intervention_type": "Other",
-      "intervention_code": "C15584",
-      "intervention_description": null,
-      "synonyms": ["Quality-of-Life Assessment"]
-    }]
-  }]
 }

@@ -612,7 +612,18 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             Location = LocationType.None
                         },
                         FormFields.SubTypes
+                    },
+
+                    // TEST 43 - Test VA Only
+                    new object[] { "?va=1", 
+                        new CTSSearchParams() {
+                            IsVAOnly = true,
+                            ResultsLinkFlag = ResultsLinkType.Basic,
+                            Location = LocationType.None
+                        },
+                        FormFields.IsVAOnly
                     }
+
                 };
             }
         }
@@ -627,7 +638,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                     //URL at index 0, Expected object at index 1. 
                     
                     // TEST 1 - all parameters with zip location
-                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=1&z=20850&zp=100&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&rl=2",                         
+                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=1&z=20850&zp=100&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&va=1&rl=2",
                         new FormFields[] {
                             FormFields.MainType,
                             FormFields.SubTypes,
@@ -641,7 +652,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             FormFields.OtherTreatments,
                             FormFields.TrialPhases,
                             FormFields.LeadOrg,
-                            FormFields.Investigator
+                            FormFields.Investigator,
+                            FormFields.IsVAOnly
                         },
                         new FormFields[] {
                             FormFields.ZipCode,
@@ -650,7 +662,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                     },
 
                     // TEST 2 - all parameters with country/city/state location
-                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=2&lcnty=United+States&lst=MD&lcty=Baltimore&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&rl=2",                         
+                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=2&lcnty=United+States&lst=MD&lcty=Baltimore&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&va=1&rl=2",
                         new FormFields[] {
                             FormFields.MainType,
                             FormFields.SubTypes,
@@ -664,7 +676,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             FormFields.OtherTreatments,
                             FormFields.TrialPhases,
                             FormFields.LeadOrg,
-                            FormFields.Investigator
+                            FormFields.Investigator,
+                            FormFields.IsVAOnly
                         },
                         new FormFields[] {
                             FormFields.Country,
@@ -674,7 +687,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                     },
 
                     // TEST 3 - all parameters with hospital location
-                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=3&hos=Mayo+Clinic&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&rl=2",                         
+                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=3&hos=Mayo+Clinic&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&va=1&rl=2",                         
                         new FormFields[] {
                             FormFields.MainType,
                             FormFields.SubTypes,
@@ -688,7 +701,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             FormFields.OtherTreatments,
                             FormFields.TrialPhases,
                             FormFields.LeadOrg,
-                            FormFields.Investigator
+                            FormFields.Investigator,
+                            FormFields.IsVAOnly
                         },
                         new FormFields[] {
                             FormFields.Hospital
@@ -696,7 +710,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                     },
 
                     // TEST 4 - all parameters with At NIH location
-                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=4&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&rl=2",                         
+                    new object[] { "?t=C4872&st=C5214&stg=C36301&fin=C26696&a=25&q=PSA&loc=4&tt=treatment&d=C2039&i=C116464&tp=I&tid=NCI-2014-01509&in=Adam+David+Cohen&lo=Mayo+Clinic+Cancer+Center+LAO&va=1&rl=2",
                         new FormFields[] {
                             FormFields.MainType,
                             FormFields.SubTypes,
@@ -710,7 +724,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             FormFields.OtherTreatments,
                             FormFields.TrialPhases,
                             FormFields.LeadOrg,
-                            FormFields.Investigator
+                            FormFields.Investigator,
+                            FormFields.IsVAOnly
                         },
                         new FormFields[] {
                             FormFields.AtNIH
