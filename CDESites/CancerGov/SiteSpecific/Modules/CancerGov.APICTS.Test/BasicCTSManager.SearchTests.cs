@@ -145,8 +145,23 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
                         }
                     },
-
-
+                    new object[] {
+                        new CTSSearchParams() {
+                            IsVAOnly = true
+                        },
+                        new Dictionary<string, object>() {
+                            { "sites.org_va", true },
+                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                        }
+                    },                    
+                    new object[] {
+                        new CTSSearchParams() {
+                            IsVAOnly = false
+                        },
+                        new Dictionary<string, object>() {
+                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                        }
+                    },
 
                     /*
 
