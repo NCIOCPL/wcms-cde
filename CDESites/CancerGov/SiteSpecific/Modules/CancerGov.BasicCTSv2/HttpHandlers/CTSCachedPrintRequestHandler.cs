@@ -135,19 +135,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.HttpHandlers
             NciUrl parsedReqUrlParams = new NciUrl(true, true, true);  //We need this to be lowercase and collapse duplicate params. (Or not use an NCI URL)
             parsedReqUrlParams.SetUrl(request.Url.Query);
 
-            string apiURL = BasicClinicalTrialSearchAPISection.GetAPIUrl();
-            if (string.IsNullOrEmpty(apiURL))
-            {
-                string err = String.Format("Could not load APIURL for {0}", this.GetType().ToString());
-                //TODO: Update error logging.
-                //log.Error(err);
-                throw new Exception(err);
-            }
 
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(apiURL);
-
-            ClinicalTrialsAPIClient apiClient = new ClinicalTrialsAPIClient(httpClient);
+            ClinicalTrialsAPIClient apiClient = APIClientHelper.GetV1ClientInstance();
 
             CTSSearchParams searchParams = null;
             try

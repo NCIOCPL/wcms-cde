@@ -44,18 +44,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 
             //////////////////////////////
             // Create an instance of a BasicCTSManager.
-            string apiURL = BasicClinicalTrialSearchAPISection.GetAPIUrl();
-            if (string.IsNullOrEmpty(apiURL))
-            {
-                string err = String.Format("Could not load APIURL for {0}", this.GetType().ToString());
-                log.Error(err);
-                throw new Exception(err);
-            }
-
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(apiURL);
-
-            ClinicalTrialsAPIClient apiClient = new ClinicalTrialsAPIClient(httpClient);
+            ClinicalTrialsAPIClient apiClient = APIClientHelper.GetV1ClientInstance();
 
             CTSManager = new BasicCTSManager(apiClient);
 

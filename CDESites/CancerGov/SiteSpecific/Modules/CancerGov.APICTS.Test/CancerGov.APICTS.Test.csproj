@@ -115,6 +115,7 @@
     <Compile Include="TrialVelocityTools\GetFilteredLocations.AtNIHTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <Content Include="MappingFiles\EVSWithMultiple.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

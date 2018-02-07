@@ -21,27 +21,6 @@ namespace CancerGov.ClinicalTrialsAPI
         private HttpClient _client = null;
 
         /// <summary>
-        /// Base path (API version) set in the web.config.
-        /// This can also be an empty string
-        /// </summary>
-        protected string BasePath
-        {
-            get
-            {
-                string basepath = ConfigurationManager.AppSettings["ClinicalTrialsAPIBasepath"];
-                if (basepath == null)
-                {
-                    basepath = String.Empty;
-                }
-                else
-                {
-                    basepath = "/" + basepath;
-                }
-                return basepath;
-            }
-        }
-
-        /// <summary>
         /// Creates a new instance of a Clinicaltrials API client.
         /// </summary>
         /// <param name="client">An HttpClient that has the BaseAddress set to the API address.</param>
@@ -313,14 +292,15 @@ namespace CancerGov.ClinicalTrialsAPI
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
             // We want this to be synchronus, so call Result right away.
-            response = _client.GetAsync(BasePath + "/" + path + "/" + param).Result;
+            //NOTE: When using HttpClient.BaseAddress as we are, the path must not have a preceeding slash
+            response = _client.GetAsync(path + "/" + param).Result;
             if (response.IsSuccessStatusCode)
             {
                 content = response.Content;
             }
             else
             {
-                string errorMessage = "Response: " + response.Content.ReadAsStringAsync().Result + "\nAPI path: " + BasePath + "/" + path + "/" + param;
+                string errorMessage = "Response: " + response.Content.ReadAsStringAsync().Result + "\nAPI path: " + this._client.BaseAddress.ToString() + path + "/" + param;
                 if (response.StatusCode.ToString() == notFound)
                 {
                     // If trial is not found, log 404 message and return content as null
@@ -353,7 +333,8 @@ namespace CancerGov.ClinicalTrialsAPI
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
             //We want this to be synchronus, so call Result right away.
-            response = _client.PostAsync(BasePath + "/" + path, new StringContent(requestBody.ToString(), Encoding.UTF8, "application/json")).Result;
+            //NOTE: When using HttpClient.BaseAddress as we are, the path must not have a preceeding slash
+            response = _client.PostAsync(path, new StringContent(requestBody.ToString(), Encoding.UTF8, "application/json")).Result;
             if (response.IsSuccessStatusCode)
             {
                 content = response.Content;
@@ -361,7 +342,7 @@ namespace CancerGov.ClinicalTrialsAPI
             else
             {
                 //TODO: Add more checking here if the respone does not actually have any content
-                string errorMessage = "Response: " + response.Content.ReadAsStringAsync().Result + "\nAPI path: " + BasePath + "/" + path;
+                string errorMessage = "Response: " + response.Content.ReadAsStringAsync().Result + "\nAPI path: " + this._client.BaseAddress.ToString() + path;
                 throw new Exception(errorMessage);
             }
 

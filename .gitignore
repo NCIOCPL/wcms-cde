@@ -309,6 +309,7 @@ OpenCover/
 
 ## Exclude config files
 *.config
+!app.config
 !packages.config
 !build.config
 !NuGet.Config

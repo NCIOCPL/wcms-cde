@@ -86,12 +86,17 @@
     <Compile Include="StudySiteComparer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <Content Include="TrialExamples\NCT02194738.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.TestingTools\NCILibrary.TestingTools.csproj">
+      <Project>{364bc997-48f1-450a-9751-8252fd5ebd78}</Project>
+      <Name>NCILibrary.TestingTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CancerGov.ClinicalTrialsAPI\CancerGov.ClinicalTrialsAPI.csproj">
       <Project>{07db8185-53dc-4434-9d4a-ffc0efc9078a}</Project>
       <Name>CancerGov.ClinicalTrialsAPI</Name>
