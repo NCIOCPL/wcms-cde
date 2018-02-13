@@ -162,7 +162,32 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
                         }
                     },
-
+                    new object[] {
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Any
+                        },
+                        new Dictionary<string, object>() {
+                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                        }
+                    },
+                    new object[] {
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Healthy
+                        },
+                        new Dictionary<string, object>() {
+                            { "accepts_healthy_volunteers_indicator", "YES" },
+                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                        }
+                    },
+                    new object[] {
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Infirmed
+                        },
+                        new Dictionary<string, object>() {
+                            { "accepts_healthy_volunteers_indicator", "NO" },
+                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                        }
+                    },
                     /*
 
 

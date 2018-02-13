@@ -781,6 +781,56 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                                 { "rl", "1" }
                             }
                         }
+                    },
+                    // TEST 37a - Healthy Volunteers (any)
+                    new object[] {
+                        new CTSSearchParams() {
+                            //Since this was set, a param will be generated. Not setting it and leaving the default will not, and
+                            //that is tested by the empty test at the top of this file
+                            HealthyVolunteer = HealthyVolunteerType.Any,  
+                            IsVAOnly = false,
+                            ResultsLinkFlag = ResultsLinkType.Basic
+                        },
+                        new NciUrl() {
+                            QueryParameters = new Dictionary<string,string>() {
+                                { "hv", "0" },
+                                { "va", "0" },
+                                { "loc", "0" },
+                                { "rl", "1" }
+                            }
+                        }
+                    },
+                    // TEST 37b - Healthy Volunteers (healthy only)
+                    new object[] {
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Healthy,
+                            IsVAOnly = false,
+                            ResultsLinkFlag = ResultsLinkType.Basic
+                        },
+                        new NciUrl() {
+                            QueryParameters = new Dictionary<string,string>() {
+                                { "hv", "1"},
+                                { "va", "0" },
+                                { "loc", "0" },
+                                { "rl", "1" }
+                            }
+                        }
+                    },
+                    // TEST 37c - Healthy Volunteers (unhealthy only)
+                    new object[] {
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Infirmed,
+                            IsVAOnly = false,
+                            ResultsLinkFlag = ResultsLinkType.Basic
+                        },
+                        new NciUrl() {
+                            QueryParameters = new Dictionary<string,string>() {
+                                { "hv", "2"},
+                                { "va", "0" },
+                                { "loc", "0" },
+                                { "rl", "1" }
+                            }
+                        }
                     }
                 };
             }

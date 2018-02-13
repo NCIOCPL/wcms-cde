@@ -34,6 +34,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         ResultsLinkType _resultsLinkFlag = ResultsLinkType.Unknown;
         bool _redirectFlag          = false;
         int _age                    = 0;
+        HealthyVolunteerType _healthyVols = HealthyVolunteerType.Any;
         string _gender              = string.Empty;
         string _phrase              = string.Empty;
         string _investigator        = string.Empty;
@@ -161,6 +162,15 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                     case FormFields.Phrase:
                         {
                             return Phrase;
+                        }
+                    case FormFields.HealthyVolunteers:
+                        {
+                            switch(_healthyVols)
+                            {
+                                case HealthyVolunteerType.Healthy   : { return "Only Accepting Healthy Volunteers"; }
+                                case HealthyVolunteerType.Infirmed  : { return "Not Accepting Healthy Volunteers"; }
+                                default                             : { return "Accepting All Volunteers"; }
+                            }
                         }
                     case FormFields.Gender:
                         {
@@ -335,6 +345,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         public String Phrase {
             get { return _phrase; }
             set { _phrase = value; _usedFields |= FormFields.Phrase; } 
+        }
+
+        public HealthyVolunteerType HealthyVolunteer
+        {
+            get { return _healthyVols; }
+            set { _healthyVols = value; _usedFields |= FormFields.HealthyVolunteers; }
         }
 
         /// <summary>

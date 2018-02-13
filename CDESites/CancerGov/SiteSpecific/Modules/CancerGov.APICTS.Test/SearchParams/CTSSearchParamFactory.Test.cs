@@ -622,7 +622,35 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             Location = LocationType.None
                         },
                         FormFields.IsVAOnly
-                    }
+                    },
+                    //TEST 44a - Test Healthy Volunteers
+                    new object[] { "?hv=1",
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Healthy,
+                            ResultsLinkFlag = ResultsLinkType.Basic,
+                            Location = LocationType.None
+                        },
+                        FormFields.HealthyVolunteers
+                    },
+                    //TEST 44a - Test Healthy Volunteers
+                    new object[] { "?hv=2",
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Infirmed,
+                            ResultsLinkFlag = ResultsLinkType.Basic,
+                            Location = LocationType.None
+                        },
+                        FormFields.HealthyVolunteers
+                    },
+                    //TEST 44a - Test Healthy Volunteers
+                    new object[] { "?hv=0",
+                        new CTSSearchParams() {
+                            HealthyVolunteer = HealthyVolunteerType.Any,
+                            ResultsLinkFlag = ResultsLinkType.Basic,
+                            Location = LocationType.None
+                        },
+                        FormFields.HealthyVolunteers
+                    },
+
 
                 };
             }

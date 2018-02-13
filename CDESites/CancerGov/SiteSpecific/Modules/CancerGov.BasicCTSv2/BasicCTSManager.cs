@@ -425,6 +425,20 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 filterCriteria.Add("lead_org_fulltext", searchParams.LeadOrg);
             }
 
+            //Add Healthy Volunteers Filter
+            if (searchParams.IsFieldSet(FormFields.HealthyVolunteers) && (searchParams.HealthyVolunteer != HealthyVolunteerType.Any))
+            {
+                if (searchParams.HealthyVolunteer == HealthyVolunteerType.Healthy)
+                {
+                    filterCriteria.Add("accepts_healthy_volunteers_indicator", "YES");
+                }
+                else if (searchParams.HealthyVolunteer == HealthyVolunteerType.Infirmed)
+                {
+                    filterCriteria.Add("accepts_healthy_volunteers_indicator", "NO");
+                }
+                //Else there is probably an issue, but we will assume not.
+            }
+
             //Add Gender Filter
             if (searchParams.IsFieldSet(FormFields.Gender))
             {

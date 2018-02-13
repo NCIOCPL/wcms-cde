@@ -63,6 +63,26 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test.SearchParams
             Assert.Equal("female", searchParams.GetFieldAsString("Gender"));
         }
 
+        [Fact()]
+        public void FieldAsString_HealthyVolunteer_Healthy()
+        {
+            CTSSearchParams searchParams = new CTSSearchParams() { HealthyVolunteer = HealthyVolunteerType.Healthy };
+            Assert.Equal("Only Accepting Healthy Volunteers", searchParams.GetFieldAsString("HealthyVolunteers"));
+        }
+
+        [Fact()]
+        public void FieldAsString_HealthyVolunteer_Unhealthy()
+        {
+            CTSSearchParams searchParams = new CTSSearchParams() { HealthyVolunteer = HealthyVolunteerType.Infirmed };
+            Assert.Equal("Not Accepting Healthy Volunteers", searchParams.GetFieldAsString("HealthyVolunteers"));
+        }
+
+        [Fact()]
+        public void FieldAsString_HealthyVolunteer_Any()
+        {
+            CTSSearchParams searchParams = new CTSSearchParams() { HealthyVolunteer = HealthyVolunteerType.Any };
+            Assert.Equal("Accepting All Volunteers", searchParams.GetFieldAsString("HealthyVolunteers"));
+        }
 
         #endregion
 

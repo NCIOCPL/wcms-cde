@@ -78,6 +78,7 @@
     <Compile Include="IZipCodeGeoLookupService.cs" />
     <Compile Include="LegacyPDQIDRedirectionMap.cs" />
     <Compile Include="SearchParams\CTSWebAnalyticsHelper.cs" />
+    <Compile Include="SearchParams\HealthyVolunteerEnum.cs" />
     <Compile Include="SearchParams\LocationEnum.cs" />
     <Compile Include="SearchParams\LocationParams\AtNIHLocationSearchParams.cs" />
     <Compile Include="SearchParams\LocationParams\CountryCityStateLocationSearchParams.cs" />

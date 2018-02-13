@@ -530,6 +530,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         ResultsLinkFlag = ResultsLinkType.Basic
                     }},
 
+                    // TEST 18.0 - Healthy Volunteers with invalid param (not int)
+                    new object[] { "?hv=chicken", new CTSSearchParams() {
+                        ResultsLinkFlag = ResultsLinkType.Basic
+                    }},
                 };
             }
         }

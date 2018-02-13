@@ -35,6 +35,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 SerializeFindings +
                 SerializeAge +
                 SerializeKeyword +
+                SerializeHealthyVolunteers +
                 SerializeGender +
                 SerializeIsVAOnly +
                 SerializeLocation +
@@ -67,6 +68,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 ParseFindings +
                 ParseAge +
                 ParseKeyword +
+                ParseHealthyVolunteers +
                 ParseGender +
                 ParseIsVAOnly +
                 ParseLocation +
@@ -192,6 +194,15 @@ namespace CancerGov.ClinicalTrials.Basic.v2
             if (searchParams.IsFieldSet(FormFields.Phrase))
             {
                 url.QueryParameters.Add("q", HttpUtility.UrlEncode(searchParams.Phrase));
+            }
+        }
+
+        // Parameter hv (Healthy Volunteers)
+        private static void SerializeHealthyVolunteers(NciUrl url, CTSSearchParams searchParams)
+        {
+            if (searchParams.IsFieldSet(FormFields.HealthyVolunteers))
+            {                
+                url.QueryParameters.Add("hv", searchParams.HealthyVolunteer.ToString("d")); //Output the decimal value of the enum as a string.
             }
         }
 
@@ -491,6 +502,24 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                 }
             }
         }
+
+        // Parameter hv (HealthyVolunteers)
+        private void ParseHealthyVolunteers(NciUrl url, CTSSearchParams searchParams)
+        {
+            if (IsInUrl(url, "hv"))
+            {
+                int hvType = ParamAsInt(url.QueryParameters["hv"], -1);
+                if (hvType == 0 || hvType == 1 || hvType == 2)
+                {
+                    searchParams.HealthyVolunteer = (HealthyVolunteerType)hvType;
+                }
+                else
+                {
+                    LogParseError(FormFields.HealthyVolunteers, "Please enter a valid healthy volunteer indicator.", searchParams);
+                }
+            }
+        }
+    
 
         // Parameter g (Gender)
         private void ParseGender(NciUrl url, CTSSearchParams searchParams)

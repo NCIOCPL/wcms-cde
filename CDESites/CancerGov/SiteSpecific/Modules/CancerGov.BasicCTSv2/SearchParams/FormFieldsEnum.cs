@@ -35,6 +35,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         TrialIDs        = 1 << 19,
         Investigator    = 1 << 20,
         LeadOrg         = 1 << 21,
-        IsVAOnly        = 1 << 22
+        IsVAOnly        = 1 << 22,
+        HealthyVolunteers = 1 << 23
     }
 }
