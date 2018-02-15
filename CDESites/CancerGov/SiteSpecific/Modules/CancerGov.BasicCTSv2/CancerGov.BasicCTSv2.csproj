@@ -66,17 +66,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIClientHelper.cs" />
-    <Compile Include="BasicCTSManager.cs" />
+    <Compile Include="ManagerLayer\BasicCTSManager.cs" />
     <Compile Include="ClinicalTrialExtensions.cs" />
     <Compile Include="Configuration\BasicClinicalTrialSearchAPISection.cs" />
     <Compile Include="Configuration\TermMappingFileElement.cs" />
     <Compile Include="Configuration\TermMappingFileElementCollection.cs" />
-    <Compile Include="CTSPrintException.cs" />
-    <Compile Include="CTSPrintManager.cs" />
-    <Compile Include="DynamicTrialListingFriendlyNameMapping.cs" />
-    <Compile Include="ITerminologyLookupService.cs" />
-    <Compile Include="IZipCodeGeoLookupService.cs" />
-    <Compile Include="LegacyPDQIDRedirectionMap.cs" />
+    <Compile Include="ManagerLayer\CTSPrintException.cs" />
+    <Compile Include="ManagerLayer\CTSPrintManager.cs" />
+    <Compile Include="Lookups\DynamicTrialListingFriendlyNameMapping.cs" />
+    <Compile Include="Lookups\ITerminologyLookupService.cs" />
+    <Compile Include="Lookups\IZipCodeGeoLookupService.cs" />
+    <Compile Include="Lookups\LegacyPDQIDRedirectionMap.cs" />
     <Compile Include="SearchParams\CTSWebAnalyticsHelper.cs" />
     <Compile Include="SearchParams\HealthyVolunteerEnum.cs" />
     <Compile Include="SearchParams\LocationEnum.cs" />
@@ -87,13 +87,13 @@
     <Compile Include="SearchParams\CTSSearchParamFactory.cs" />
     <Compile Include="SearchParams\CTSSearchParams.cs" />
     <Compile Include="DataManagers\CTSPrintResultsDataManager.cs" />
-    <Compile Include="DynamicTrialListingMapping.cs" />
+    <Compile Include="Lookups\DynamicTrialListingMapping.cs" />
     <Compile Include="HttpHandlers\CTSCachedPrintRequestHandler.cs" />
-    <Compile Include="NCTIDRedirectModule.cs" />
-    <Compile Include="GeoLocation.cs" />
-    <Compile Include="LegacyCancerTypeDictionary.cs" />
-    <Compile Include="LegacyIDLoader.cs" />
-    <Compile Include="LegacyIDLookup.cs" />
+    <Compile Include="HttpModules\NCTIDRedirectModule.cs" />
+    <Compile Include="Lookups\GeoLocation.cs" />
+    <Compile Include="Lookups\LegacyCancerTypeDictionary.cs" />
+    <Compile Include="Lookups\LegacyIDLoader.cs" />
+    <Compile Include="Lookups\LegacyIDLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchParams\Legacy\BaseCTSSearchParam.cs" />
     <Compile Include="SearchParams\Legacy\CancerTypeSearchParam.cs" />
@@ -165,12 +165,12 @@
     </Compile>
     <Compile Include="SnippetControls\TrialListings\TrialListingPageInfo.cs" />
     <Compile Include="SnippetControls\TrialVelocityTools.cs" />
-    <Compile Include="TrialTermLookupConfig.cs" />
-    <Compile Include="TrialTermLookupService.cs" />
-    <Compile Include="ZipCodeDictionary.cs" />
-    <Compile Include="ZipCodeGeoEntry.cs" />
-    <Compile Include="ZipCodeGeoLookup.cs" />
-    <Compile Include="ZipLookup.cs" />
+    <Compile Include="Lookups\TrialTermLookupConfig.cs" />
+    <Compile Include="Lookups\TrialTermLookupService.cs" />
+    <Compile Include="Lookups\ZipCodeDictionary.cs" />
+    <Compile Include="Lookups\ZipCodeGeoEntry.cs" />
+    <Compile Include="Lookups\ZipCodeGeoLookup.cs" />
+    <Compile Include="Lookups\ZipLookup.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Core\NCILibrary.Core.csproj">
