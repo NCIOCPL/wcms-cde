@@ -18,7 +18,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 {
     public class APICTSDetailsControl : BaseMgrAPICTSControl
     {
-        static ILog log = LogManager.GetLogger(typeof(BasicCTSViewControl));
+        static ILog log = LogManager.GetLogger(typeof(APICTSDetailsControl));
 
         private bool _showingAll = false;
         private string _trialID = string.Empty;

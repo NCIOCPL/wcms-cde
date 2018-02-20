@@ -91,9 +91,6 @@
     <Compile Include="HttpHandlers\CTSCachedPrintRequestHandler.cs" />
     <Compile Include="HttpModules\NCTIDRedirectModule.cs" />
     <Compile Include="Lookups\GeoLocation.cs" />
-    <Compile Include="Lookups\LegacyCancerTypeDictionary.cs" />
-    <Compile Include="Lookups\LegacyIDLoader.cs" />
-    <Compile Include="Lookups\LegacyIDLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchParams\Legacy\BaseCTSSearchParam.cs" />
     <Compile Include="SearchParams\Legacy\CancerTypeSearchParam.cs" />
@@ -128,22 +125,7 @@
     <Compile Include="SnippetControls\TrialListings\BaseTrialListingControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SnippetControls\Search\BasicCTSAdvSearchControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SnippetControls\Search\BasicCTSBaseControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="SnippetControls\Search\Configs\BasicCTSPageInfo.cs" />
-    <Compile Include="SnippetControls\Search\BasicCTSResultsControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SnippetControls\Search\BasicCTSSearchControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SnippetControls\Search\BasicCTSViewControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="SnippetControls\TrialListings\Configs\BaseTrialListingConfig.cs" />
     <Compile Include="SnippetControls\TrialListings\Configs\DynamicTrialListingConfig.cs" />
     <Compile Include="SnippetControls\TrialListings\Configs\DynamicTrialListingConfigPattern.cs" />
