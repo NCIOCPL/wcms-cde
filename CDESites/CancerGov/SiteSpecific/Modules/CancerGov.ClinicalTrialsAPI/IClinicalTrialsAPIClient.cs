@@ -12,30 +12,36 @@ namespace CancerGov.ClinicalTrialsAPI
         /// <summary>
         /// Calls the listing endpoint (/clinical-trials) of the clinical trials API
         /// </summary>
+        /// <param name="searchParams">Search parameters (optional)</param>
+        /// <param name="size"># of results to return (optional)</param>
+        /// <param name="from">Beginning index for results (optional)</param>
+        /// <param name="includeFields">Fields to include (optional)</param>
+        /// <param name="excludeFields">Fields to exclude (optional)</param>        
+        /// <returns>Collection of Clinical Trials</returns>
+        ClinicalTrialsCollection List(
+            Dictionary<string, object> searchParams,
+            int size = 10,
+            int from = 0,
+            string[] includeFields = null,
+            string[] excludeFields = null            
+            );
+
+        /// <summary>
+        /// Calls the listing endpoint (/clinical-trials) of the clinical trials API
+        /// </summary>
+        /// <param name="searchParams">Search parameters (optional)</param>
         /// <param name="size"># of results to return (optional)</param>
         /// <param name="from">Beginning index for results (optional)</param>
         /// <param name="includeFields">Fields to include (optional)</param>
         /// <param name="excludeFields">Fields to exclude (optional)</param>
-        /// <param name="searchParams">Search parameters (optional)</param>
         /// <returns>Collection of Clinical Trials</returns>
         ClinicalTrialsCollection List(
+            JObject searchParams,
             int size = 10,
             int from = 0,
             string[] includeFields = null,
-            string[] excludeFields = null,
-            Dictionary<string, object> searchParams = null
+            string[] excludeFields = null            
             );
-        
-        /// <summary>
-        /// Calls the listing endpoint (/clinical-trials) of the clinical trials API using dynamically
-        /// created search params (see Trial Listing pages)
-        /// </summary>
-        /// <param name="size"># of results to return</param>
-        /// <param name="from">Beginning index for results</param>
-        /// <param name="searchParams">Default search parameters</param>
-        /// <param name="dynamicSearchParams">Dynamic search parameters</param>
-        /// <returns>Collection of Clinical Trials</returns>
-        ClinicalTrialsCollection GetTrialsList(int size, int from, Dictionary<string, object> searchParams, JObject dynamicSearchParams);
 
         /// <summary>
         /// Gets a clinical trial from the API via its ID.

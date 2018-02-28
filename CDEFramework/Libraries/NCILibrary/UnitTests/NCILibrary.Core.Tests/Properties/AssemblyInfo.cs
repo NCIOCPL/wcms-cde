@@ -8,19 +8,19 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("NCILibrary.Core.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("OTSA")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NCILibrary.Core.Tests")]
-[assembly: AssemblyCopyright("Copyright © OTSA 2008")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
-// to COM componenets.  If you need to access a type in this assembly from 
+// to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8c4eea5e-1c7f-48f6-8702-7a8da95e33aa")]
+[assembly: Guid("72e2b6c1-bd63-4639-bf80-24860406f9ab")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,7 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Revision and Build Numbers 
+// You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

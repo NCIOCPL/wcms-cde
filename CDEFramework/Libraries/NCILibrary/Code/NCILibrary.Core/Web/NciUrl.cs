@@ -155,7 +155,18 @@ namespace NCI.Web
 
             return rtn;
         }
-         
+
+        /// <summary>
+        /// Helper function to check if a param is used. (And not just set with an empty string.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="paramName"></param>
+        /// <returns></returns>
+        public bool IsInUrl(string paramName)
+        {
+            return this.QueryParameters.ContainsKey(paramName) && !String.IsNullOrWhiteSpace(this.QueryParameters[paramName]);
+        }
+
         /// <summary>
         /// Appends a segment onto the end of an existing url path, handling "slash issues" so we 
         /// are sure we have one and only one slash.

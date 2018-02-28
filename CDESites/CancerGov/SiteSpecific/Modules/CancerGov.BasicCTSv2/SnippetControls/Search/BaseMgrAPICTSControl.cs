@@ -69,13 +69,13 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             // Parse the page specific parameters            
             if (IsInUrl(ParsedReqUrlParams, "pn"))
             {
-                this._pageNum = ParamAsInt(ParsedReqUrlParams.QueryParameters["pn"], 1);
+                this._pageNum = ParsedReqUrlParams.CTSParamAsInt("pn", 1);
             }
 
             _itemsPerPage = Config.DefaultItemsPerPage;
             if (IsInUrl(ParsedReqUrlParams, "ni"))
             {
-                this._itemsPerPage = ParamAsInt(ParsedReqUrlParams.QueryParameters["ni"], _itemsPerPage);
+                this._itemsPerPage = ParsedReqUrlParams.CTSParamAsInt("ni", _itemsPerPage);
             }
         }
 
@@ -93,25 +93,25 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// <summary>
         /// Converts a query param to an int; returns 0 if unable to parse
         /// </summary>
-        protected int ParamAsInt(string paramVal, int def)
-        {
-            if (string.IsNullOrWhiteSpace(paramVal))
-            {
-                return def;
-            }
-            else
-            {
-                int tmpInt = 0;
-                if (int.TryParse(paramVal.Trim(), out tmpInt))
-                {
-                    return tmpInt;
-                }
-                else
-                {
-                    return def;
-                }
-            }
-        }
+        //protected int ParamAsInt(string paramVal, int def)
+        //{
+        //    if (string.IsNullOrWhiteSpace(paramVal))
+        //    {
+        //        return def;
+        //    }
+        //    else
+        //    {
+        //        int tmpInt = 0;
+        //        if (int.TryParse(paramVal.Trim(), out tmpInt))
+        //        {
+        //            return tmpInt;
+        //        }
+        //        else
+        //        {
+        //            return def;
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Converts a query param to a bool; returns 0 if unable to parse

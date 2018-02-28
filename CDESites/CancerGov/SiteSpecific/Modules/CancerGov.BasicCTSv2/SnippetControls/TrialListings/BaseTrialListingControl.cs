@@ -40,6 +40,11 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         private BasicCTSManager _basicCTSManager = null;
         protected bool hasInvalidSearchParam;
 
+        private int _pageNum = 1;
+        private int _itemsPerPage = 10;
+
+        #region Abstract Methods
+
         /// <summary>
         /// Gets the configuration type of the derrieved class
         /// </summary>
@@ -66,41 +71,59 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         protected abstract void SetAnalytics();
 
         /// <summary>
+        ///    This method is called when no results are returned by the query
+        /// </summary>
+        protected abstract void OnEmptyResults();
+
+        #endregion
+
+        /// <summary>
         /// The configuration from the page xml
         /// </summary>
         protected BaseTrialListingConfig BaseConfig { get; private set; }
 
         /// <summary>
+        /// Gets the Parsed Request URL
+        /// </summary>
+        protected NciUrl ParsedReqUrlParams { get; private set; }
+
+        /// <summary>
         /// The configuration from the page xml
         /// </summary>
-        public BaseCTSSearchParam SearchParams { get; private set; }
+        public VelocitySearchParams SearchParams { get; private set; }
 
         /// <summary>
         /// The number of items per page (for pager)
         /// </summary>
-        private int ItemsPerPage { get; set; }
+        private int ItemsPerPage { get { return _itemsPerPage; } }
 
         /// <summary>
         /// The current page number (for pager) 
         /// </summary>
-        private int PageNum { get; set; }
+        private int PageNum { get { return _pageNum; } }
 
         /// <summary>
         /// The total results returned from the API from a search.
         /// </summary>
         protected int TotalSearchResults { get; set; }
         
-        /// <summary>
-        /// Create the Regex pattern for finding filters in the URL.
-        /// Match the following pattern: "filter" + open square bracket ([) + any string value + close square bracket (]).
-        /// </summary>
-        private readonly Regex FilterPattern = new Regex(@"filter\[([^]]*)\]", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-
         protected sealed override void OnInit(EventArgs e)
         {
             base.OnInit(e);
 
             this.LoadConfig();
+
+            //This is referenced by the listing page templates.  Those templates
+            //should be updated to reference the Page Number directly.
+            this.SearchParams = new VelocitySearchParams(this);
+
+            //Set our default items per page based on the config
+            _itemsPerPage = this.GetItemsPerPage();
+
+            //Using NciUrl for handling parameters instead of raw URL query
+            //This is mainly for pagination
+            ParsedReqUrlParams = new NciUrl(true, true, true);  //We need this to be lowercase and collapse duplicate params. (Or not use an NCI URL)
+            ParsedReqUrlParams.SetUrl(this.Request.Url.Query);
 
             _basicCTSManager = new BasicCTSManager(APIClientHelper.GetV1ClientInstance());
         }
@@ -108,35 +131,29 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         protected sealed override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);
-            
-            //Get Trial Query, inject pager stuff, call manager
-            JObject query;
 
-            if(this.GetTrialQuery() != null)
+            ///////////////////////////
+            // Parse the page specific parameters            
+            if (ParsedReqUrlParams.IsInUrl("pn"))
             {
-                query = new JObject(this.GetTrialQuery());
-            }
-            else
-            {
-                query = new JObject();
+                this._pageNum = ParsedReqUrlParams.CTSParamAsInt(PAGENUM_PARAM, 1);
             }
 
-            // Get the filter parameters from the URL. URL filter params should NOT override any matching params set in the JSON
-            String urlFilters = GetUrlFilters();
-            JObject urlParams = GetDeserializedJSON(urlFilters);
+            if (ParsedReqUrlParams.IsInUrl("ni"))
+            {
+                //_itemsPerPage can come from the config.  This is setup on init
+                this._itemsPerPage = ParsedReqUrlParams.CTSParamAsInt(ITEMSPP_PARAM, _itemsPerPage);
+            }
 
-            // Merge both sets of dynamic filter params.'query' overrides 'urlParams', meaning that any duplicate elements in urlParams 
-            // will not be included, e.g., given
-            // query == { "key1":value1, "key2":["value2,value3"] }
-            // and urlParms == { "key2":["value4,value5"], "key3":"value6" }
-            // merged query == { "key1":value1, "key2":["value2,value3"], "key3":"value6" }
-            query = MergeJObjects(query, urlParams);
-
-            //Setup the pager.
-            SearchParams = this.GetSearchParamsForListing();
+            //Get the Query object
+            JObject query = SetupQueryForListing();
 
             //fetch results
-            var results = _basicCTSManager.Search(SearchParams, query);
+            var results = _basicCTSManager.GetClinicalTrials(
+                query,
+                this._pageNum,
+                this._itemsPerPage
+            );
            
             //CODE ADDED BY CHRISTIAN RIKONG ON 12/07/2017 at 03:07 PM - THE GOAL IS THAT WHEN THERE ARE NO TRIALS RESULTS, WE 
             //REDIRECT TO THE NOTRIALS PAGE
@@ -146,29 +163,51 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 this.OnEmptyResults();
             }
            
-                this.TotalSearchResults = results.TotalResults;
+            this.TotalSearchResults = results.TotalResults;
 
-                //Load VM File and show search results
-                LiteralControl ltl = new LiteralControl(VelocityTemplate.MergeTemplateWithResultsByFilepath(
-                    this.BaseConfig.ResultsPageTemplatePath,
-                    new
-                    {
-                        Results = results,
-                        Control = this,
-                        TrialTools = new TrialVelocityTools()
-                    }
-                ));
-                Controls.Add(ltl);
+            //Load VM File and show search results
+            LiteralControl ltl = new LiteralControl(VelocityTemplate.MergeTemplateWithResultsByFilepath(
+                this.BaseConfig.ResultsPageTemplatePath,
+                new
+                {
+                    Results = results,
+                    Control = this,
+                    TrialTools = new TrialVelocityTools()
+                }
+            ));
+            Controls.Add(ltl);
 
-                // Setup web analytics
-                this.SetAnalytics();
+            //DO WE NOT SETUP URLS?
+
+            // Setup web analytics
+            this.SetAnalytics();
         }
 
 
-         /// <summary>
-         ///    This method is called when no results are returned by the query
-         /// </summary>
-        protected abstract void OnEmptyResults();
+        private JObject SetupQueryForListing()
+        {
+            //Get Trial Query, inject pager stuff, call manager
+            JObject query;
+
+            //The query comes from the concrete implementation
+            if (this.GetTrialQuery() != null)
+            {
+                query = new JObject(this.GetTrialQuery());
+            }
+            else
+            {
+                query = new JObject();
+            }
+
+            // Merge both sets of dynamic filter params.'query' overrides 'urlParams', meaning that any duplicate elements in urlParams 
+            // will not be included, e.g., given
+            // query == { "key1":value1, "key2":["value2,value3"] }
+            // and urlParms == { "key2":["value4,value5"], "key3":"value6" }
+            // merged query == { "key1":value1, "key2":["value2,value3"], "key3":"value6" }
+            JObject filteredQuery = TrialListingQueryHelper.MergeQueryAndURLFilters(query, HttpContext.Current.Request.QueryString);
+            
+            return filteredQuery;
+        }
 
         /// <summary>
         /// Loads the JSON configuration from the SnippetInfo's Data
@@ -202,170 +241,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             }
         }
 
-        /// <summary>
-        /// Assemble the default (non-dynamic) search parameters for a listing page.
-        /// </summary>
-        /// <returns>Search params object</returns>
-        private BaseCTSSearchParam GetSearchParamsForListing()
-        {
-            //Parse Parameters
-            int pageNum = this.ParmAsInt(PAGENUM_PARAM, 1);
-            int itemsPerPage = this.ParmAsInt(ITEMSPP_PARAM, this.GetItemsPerPage());
-
-            //BaseCTSSearchParam searchParams = null;
-            BaseCTSSearchParam searchParams = new ListingSearchParam();
-
-            // Set Page and Items Per Page
-            if (pageNum < 1)
-            {
-                searchParams.Page = 1;
-            }
-            else
-            {
-                searchParams.Page = pageNum;
-            }
-            searchParams.ItemsPerPage = itemsPerPage;
-
-            // Set ItemsPerPage and PageNum for use in Velocity Helpers
-            this.ItemsPerPage = itemsPerPage;
-            this.PageNum = pageNum;
-
-            return searchParams;
-        }
-
-        /// <summary>
-        /// Gets a query parameter as a string or uses a default
-        /// </summary>
-        /// <param name="param"></param>
-        /// <param name="def"></param>
-        /// <returns></returns>
-        private string ParmAsStr(string param, string def)
-        {
-            string paramval = Request.QueryString[param];
-
-            if (string.IsNullOrWhiteSpace(paramval))
-                return def;
-            else
-                return paramval.Trim();
-        }
-
-        /// <summary>
-        /// Gets a query parameter as an int or uses a default
-        /// </summary>
-        /// <param name="param"></param>
-        /// <param name="def"></param>
-        /// <returns></returns>
-        private int ParmAsInt(string param, int def)
-        {
-            string paramval = Request.QueryString[param];
-
-            if (string.IsNullOrWhiteSpace(paramval))
-            {
-                return def;
-            }
-            else
-            {
-                int tmpInt = 0;
-                if (int.TryParse(paramval.Trim(), out tmpInt))
-                {
-                    if (tmpInt == 0)
-                        hasInvalidSearchParam = true;
-
-                    return tmpInt;
-                }
-                else
-                {
-                    hasInvalidSearchParam = true;
-                    return def;
-                }
-            }
-        }
-
-        #region JSON manipulation methods
-        /// <summary>
-        /// Get filter params from URL and format them.
-        /// </summary>
-        /// <returns>JSON-formatted string</returns>
-        protected string GetUrlFilters()
-        {
-            Dictionary<string, string> urlParams = new Dictionary<string, string>();
-            List<string> values = new List<string>();
-            String result = "{}";
-
-            // For each query param that matches the "filter[]" pattern, add it to the list of filter values
-            foreach (string key in HttpContext.Current.Request.QueryString.AllKeys)
-            {
-                if (!string.IsNullOrWhiteSpace(key) && FilterPattern.IsMatch(key))
-                {
-                    Match match = FilterPattern.Match(key);
-                    string queryValue = match.Groups[1].Value;
-                    string queryParam = HttpContext.Current.Request.QueryString[match.Value];
-                    if (!string.IsNullOrWhiteSpace(queryParam)) // Don't filter empty params
-                    {
-                        if (queryParam.IndexOf(",") > -1) // Splic comma-separated values
-                        {
-                            values.Add("\"" + queryValue + "\":[\"" + queryParam.Replace(",", "\",\"") + "\"]");
-                        }
-                        else
-                        {
-                            values.Add("\"" + queryValue + "\":\"" + queryParam + "\"");
-                        }
-                    }
-                }
-            }
-            // Join all of our valid key-value pairs 
-            result = result.Insert(1, string.Join(",", values.ToArray()));
-
-            return result;
-        }
-
-        /// <summary>
-        /// Deserialize a JSON-formatted string that into a JObject.
-        /// </summary>
-        /// <param name="jsonBlob">JSON-formatted String object</param>
-        /// <returns>JSON object</returns>
-        protected JObject GetDeserializedJSON(String jsonBlob)
-        {
-            JObject result = new JObject();
-
-            if (!String.IsNullOrWhiteSpace(jsonBlob))
-            {
-                //Deserialize our JSON string into a dictionary object, then add it to our Json.NET object 
-                try
-                {
-                    Dictionary<string, object> kvps = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonBlob);
-                    foreach (KeyValuePair<string, object> kvp in kvps)
-                    {
-                        result.Add(new JProperty(kvp.Key, kvp.Value));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log.Error("TrialListingPageControl:GetDeserializedJSON() - Error converting String to JSON.", ex);
-                    return null;
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Take two JObjects and merge, with the first arg being the override
-        /// </summary>
-        /// <param name="primary">Primary JSON object (overrides duplicates)</param>
-        /// <param name="secondary">Secondary JSON object (duplicates are overridden)</param>
-        /// <returns>Merged JSON object</returns>
-        protected JObject MergeJObjects(JObject primary, JObject secondary)
-        {
-            //Add dynamic filter criteria
-            if (primary != null && secondary != null)
-            {
-                //Merge objects (primary overrides secondary)
-                secondary.Merge(primary, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Concat });
-            }
-            return secondary;
-        }
-
-        #endregion
 
         #region Velocity Helpers
 
@@ -422,19 +297,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// Returns a boolean that defines whether an invalid search parameter has been entered or not.
         /// </summary>
         /// <returns></returns>
+        [Obsolete("I think this can go away now that we do not use the old CTSSearchParams")]
         public bool HasInvalidParams()
         {
             return this.hasInvalidSearchParam;
-        }
-
-        /// <summary>
-        /// Returns a boolean that defines whether the cancer type is being searched for as a phrase.
-        /// This will happen when autosuggest is broken.
-        /// </summary>
-        /// <returns></returns>
-        public bool HasBrokenCTSearchParam()
-        {
-            return SearchParams is PhraseSearchParam ? ((PhraseSearchParam)SearchParams).IsBrokenCTSearchParam : false;
         }
 
         /// <summary>
@@ -458,30 +324,21 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         {
             NciUrl url = this.PageInstruction.GetUrl("CurrentURL");
 
-            if (!url.QueryParameters.ContainsKey("pn"))
+            if (!url.QueryParameters.ContainsKey(PAGENUM_PARAM))
             {
-                url.QueryParameters.Add("pn", pageNum.ToString());
+                url.QueryParameters.Add(PAGENUM_PARAM, pageNum.ToString());
             }
             else
             {
-                url.QueryParameters["pn"] = pageNum.ToString();
+                url.QueryParameters[PAGENUM_PARAM] = pageNum.ToString();
             }
 
-            // For each query param that matches the "filter[]" pattern, add it to our query parameters
-            foreach (string key in HttpContext.Current.Request.QueryString.AllKeys)
-            {
-                if (!string.IsNullOrWhiteSpace(key) && FilterPattern.IsMatch(key))
-                {
-                    Match match = FilterPattern.Match(key);
-                    string queryValue = key;
-                    string queryParam = HttpContext.Current.Request.QueryString[match.Value];
-                    // Don't carry over empty or preexisting contained queries
-                    if (!string.IsNullOrWhiteSpace(queryParam) && !url.QueryParameters.ContainsKey(key))
-                    {
-                        url.QueryParameters.Add(queryValue, queryParam);
-                    }
-                }
-            }
+            //TODO: What about items per page?
+
+            //TODO: Why are the filters not part of the URL already?
+
+            //Add the filters back into the URL
+            TrialListingQueryHelper.AddFilterParamsToUrl(url, HttpContext.Current.Request.QueryString);
 
             return url.ToString();
         }
@@ -689,5 +546,28 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 
         #endregion
 
+        /// <summary>
+        /// This is a helper wrapper to replace the SearchParams references until
+        /// velocity templates get updated.
+        /// </summary>
+        public class VelocitySearchParams
+        {
+            private BaseTrialListingControl _control;
+
+            public int Page
+            {
+                get {
+                    if (this._control != null) {
+                        return this._control.PageNum;
+                    } else { return -1;  }
+                }
+            }
+
+            public VelocitySearchParams(BaseTrialListingControl control)
+            {
+                _control = control;
+            }
+        }
     }
+
 }
