@@ -284,7 +284,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             // 5. Join the lists with USA as the first group of items and all other countries alphabetized afterward
             if (trial.Sites != null)
             {
-                trial.Sites = new List<ClinicalTrial.StudySite>(trial.Sites.Where(site => BasicCTSManager.ActiveRecruitmentStatuses.Any(status => status.ToLower() == site.RecruitmentStatus.ToLower())));
+                trial.Sites = new List<ClinicalTrial.StudySite>(trial.Sites.Where(site => CTSConstants.ActiveRecruitmentStatuses.Any(status => status.ToLower() == site.RecruitmentStatus.ToLower())));
                 var usaSites = trial.Sites.Where(s => s.Country == "United States").OrderBy(s => s.StateOrProvince).ThenBy(s => s.City).ThenBy(s => s.Name).ToArray();
                 var canadaSites = trial.Sites.Where(s => s.Country == "Canada").OrderBy(s => s.StateOrProvince).ThenBy(s => s.City).ThenBy(s => s.Name).ToArray();
                 var otherSites = trial.Sites.Where(s => s.Country != "United States" && s.Country != "Canada").OrderBy(s => s.City).ThenBy(s => s.Name).ToArray();

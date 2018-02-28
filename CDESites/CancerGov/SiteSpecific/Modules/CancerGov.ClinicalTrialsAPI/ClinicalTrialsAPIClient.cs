@@ -34,28 +34,30 @@ namespace CancerGov.ClinicalTrialsAPI
         /// <summary>
         /// Calls the listing endpoint (/clinical-trials) of the clinical trials API
         /// </summary>
+        /// <param name="query">Search query (without paging and fields to include) (optional)</param>
         /// <param name="size"># of results to return (optional)</param>
         /// <param name="from">Beginning index for results (optional)</param>
         /// <param name="includeFields">Fields to include (optional)</param>
-        /// <param name="excludeFields">Fields to exclude (optional)</param>
-        /// <param name="searchParams">Search parameters (optional)</param>
+        /// <param name="excludeFields">Fields to exclude (optional)</param>        
         /// <returns>Collection of Clinical Trials</returns>
         public ClinicalTrialsCollection List(
-            int size = 10, 
-            int from = 0, 
-            string[] includeFields = null, 
-            string[] excludeFields = null,
-            Dictionary<string, object> searchParams = null
+            JObject query,
+            int size = 10,
+            int from = 0,
+            string[] includeFields = null,
+            string[] excludeFields = null
             )
         {
             ClinicalTrialsCollection rtnResults = null;
 
             //Handle Null include/exclude field
+            query = query ?? new JObject();
             includeFields = includeFields ?? new string[0];
             excludeFields = excludeFields ?? new string[0];
-            searchParams = searchParams ?? new Dictionary<string, object>();
 
-            JObject requestBody = new JObject();
+            //Make a copy of our search query so that we don't muck with the original.
+            //(The query will need to contain the size, from, etc
+            JObject requestBody = (JObject)query.DeepClone();
             requestBody.Add(new JProperty("size", size));
             requestBody.Add(new JProperty("from", from));
 
@@ -66,12 +68,7 @@ namespace CancerGov.ClinicalTrialsAPI
 
             if (excludeFields.Length > 0)
             {
-                requestBody.Add(new JProperty("exclude", includeFields));
-            }
-
-            foreach (KeyValuePair<string, object> sp in searchParams)
-            {
-                requestBody.Add(new JProperty(sp.Key, sp.Value));
+                requestBody.Add(new JProperty("exclude", excludeFields));
             }
 
             //Get the HTTP response content from POST request
@@ -79,49 +76,38 @@ namespace CancerGov.ClinicalTrialsAPI
             rtnResults = httpContent.ReadAsAsync<ClinicalTrialsCollection>().Result;
 
             return rtnResults;
-
         }
 
         /// <summary>
-        /// Calls the listing endpoint (/clinical-trials) of the clinical trials API using dynamically
-        /// created search params (see Trial Listing pages)
+        /// Calls the listing endpoint (/clinical-trials) of the clinical trials API
         /// </summary>
-        /// <param name="size"># of results to return</param>
-        /// <param name="from">Beginning index for results</param>
-        /// <param name="searchParams">Default search parameters</param>
-        /// <param name="dynamicSearchParams">Dynamic search parameters</param>
+        /// <param name="searchParams">Search parameters (optional)</param>
+        /// <param name="size"># of results to return (optional)</param>
+        /// <param name="from">Beginning index for results (optional)</param>
+        /// <param name="includeFields">Fields to include (optional)</param>
+        /// <param name="excludeFields">Fields to exclude (optional)</param>        
         /// <returns>Collection of Clinical Trials</returns>
-        public ClinicalTrialsCollection GetTrialsList(int size, int from, Dictionary<string, object> searchParams, JObject dynamicSearchParams)
+        public ClinicalTrialsCollection List(
+            Dictionary<string, object> searchParams,
+            int size = 10, 
+            int from = 0, 
+            string[] includeFields = null, 
+            string[] excludeFields = null            
+            )
         {
-            ClinicalTrialsCollection rtnResults = null;
 
-            //Handle null fields
+            //Handle Null include/exclude field
             searchParams = searchParams ?? new Dictionary<string, object>();
-            dynamicSearchParams = dynamicSearchParams ?? new JObject();
 
-                JObject requestBody = new JObject();
-                requestBody.Add(new JProperty("size", size));
-                requestBody.Add(new JProperty("from", from));
+            JObject query = new JObject();
 
-                //Add common filter criteria to request
-                foreach (KeyValuePair<string, object> sp in searchParams)
-                {
-                    requestBody.Add(new JProperty(sp.Key, sp.Value));
-                }
 
-                //Add dynamic filter criteria to request
-                if (dynamicSearchParams != null)
-                {
-                    //Merge dynamic and common filters (dynamic values override common)
-                    requestBody.Merge(dynamicSearchParams, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Concat });
-                }
+            foreach (KeyValuePair<string, object> sp in searchParams)
+            {
+                query.Add(new JProperty(sp.Key, sp.Value));
+            }
 
-                //Get the HTTP response content from POST request
-                HttpContent httpContent = ReturnPostRespContent("clinical-trials", requestBody);
-                rtnResults = httpContent.ReadAsAsync<ClinicalTrialsCollection>().Result;
-
-            return rtnResults;
-
+            return List(query, size, from, includeFields, excludeFields);
         }
 
         /// <summary>

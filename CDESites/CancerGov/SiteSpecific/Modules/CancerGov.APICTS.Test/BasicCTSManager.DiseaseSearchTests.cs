@@ -31,7 +31,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_maintypes", new string[] { "C4872" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One maintype, one code
@@ -44,7 +44,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_maintypes", new string[] { "C4872", "C6789" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Subtype/One Code
@@ -59,7 +59,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_subtypes", new string[] { "C4001" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Subtype/Two Code
@@ -74,7 +74,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_subtypes", new string[] { "C5678", "C1234" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Two Subtype/One and Two
@@ -94,7 +94,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_subtypes", new string[] { "C4001", "C5678", "C1234" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Stage/One Code
@@ -109,7 +109,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_stages", new string[] { "C9246" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Stage/Two Code
@@ -124,7 +124,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_stages", new string[] { "C12345", "C678910" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Two Stage/One and Two
@@ -143,7 +143,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_stages", new string[] { "C9246", "C12345", "C678910" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Finding/One Code
@@ -158,7 +158,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_findings", new string[] { "C1234" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //One Finding/Two Code
@@ -173,7 +173,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_findings", new string[] { "C2345", "C3456" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Two Findings/One and Two
@@ -192,7 +192,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "_findings", new string[] { "C1234", "C2345", "C3456" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //TODO: Handle combo

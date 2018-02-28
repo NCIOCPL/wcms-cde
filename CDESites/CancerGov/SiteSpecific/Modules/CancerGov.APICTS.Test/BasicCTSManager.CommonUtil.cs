@@ -26,7 +26,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
 
             //When search gets called trap the criteria and set the actualCriteria
             var mockClient = GetClientMock(
-                (size, from, include, exclude, filterCriteria) => actualCriteria = filterCriteria,
+                (filterCriteria, size, from, include, exclude) => actualCriteria = filterCriteria,
                 new ClinicalTrialsCollection() { TotalResults = 0, Trials = new ClinicalTrial[] { } }
             );
 
@@ -52,18 +52,18 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
         /// 
         /// <returns>A mock to be used as the service.</returns>
         private Mock<IClinicalTrialsAPIClient> GetClientMock(
-            Action<int, int, string[], string[], Dictionary<string, object>> criteriaIntercept, ClinicalTrialsCollection rtnCollection)
+            Action<Dictionary<string, object>, int, int, string[], string[]> criteriaIntercept, ClinicalTrialsCollection rtnCollection)
         {
             Mock<IClinicalTrialsAPIClient> rtnMock = new Mock<IClinicalTrialsAPIClient>();
 
             //Handle the case when a string of C4872 is passed in to GetTitleCase and return the label "Breast Cancer"
             //This makes it so that we do not have to create a fake class that returns fake data.
             rtnMock.Setup(client => client.List(
+                It.IsAny<Dictionary<string, object>>(),
                 It.IsAny<int>(),
                 It.IsAny<int>(),
                 It.IsAny<string[]>(),
-                It.IsAny<string[]>(),
-                It.IsAny<Dictionary<string, object>>()))
+                It.IsAny<string[]>()))
                 .Callback(criteriaIntercept) //This should be fleshed out to accept more params
                 .Returns(rtnCollection);
 

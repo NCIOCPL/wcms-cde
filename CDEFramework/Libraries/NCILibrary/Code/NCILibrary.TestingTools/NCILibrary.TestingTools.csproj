@@ -65,6 +65,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer\DictionaryComparer.cs" />
     <Compile Include="IO\TestFileTools.cs" />
     <Compile Include="Net\HttpClientMockHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

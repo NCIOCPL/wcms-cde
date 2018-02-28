@@ -199,7 +199,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 
             if (Config.RedirectIfInactive)
             {
-                string[] actives = BasicCTSManager.ActiveTrialStatuses;
+                string[] actives = CTSConstants.ActiveTrialStatuses;
                 if (Array.IndexOf(actives, trial.CurrentTrialStatus) < 0)
                 {
                     throw new HttpException(404, "Trial status is not active.");

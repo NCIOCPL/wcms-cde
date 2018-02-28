@@ -28,8 +28,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object> {
                             { "sites.org_postal_code", "20892" },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     // TEST 14 - Hospital                     
@@ -42,8 +42,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object> {
                             { "sites.org_name_fulltext", "M D Anderson Cancer Center" },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     // TEST 11 - Country
@@ -56,8 +56,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object> {
                             { "sites.org_country", "United States" },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
 
@@ -76,8 +76,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object> {
                             { "sites.org_state_or_province", new string[] { "MD" } },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     }, 
                     // TEST 13 - City
@@ -90,8 +90,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object> {
                             { "sites.org_city", "Baltimore" },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
 
@@ -112,8 +112,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         new Dictionary<string, object> {
                             { "sites.org_city", "Baltimore" },
                             { "sites.org_state_or_province", new string[] { "MD" } },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     // TEST 13 - City & State & country
@@ -135,8 +135,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             { "sites.org_country", "United States" },
                             { "sites.org_city", "Baltimore" },
                             { "sites.org_state_or_province", new string[] { "MD" } },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
 
@@ -153,8 +153,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                             { "sites.org_coordinates_lat", 39.0897 },
                             { "sites.org_coordinates_lon", -77.1798 },
                             { "sites.org_coordinates_dist", "500mi" },
-                            { "sites.recruitment_status", BasicCTSManager.ActiveRecruitmentStatuses },
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "sites.recruitment_status", CTSConstants.ActiveRecruitmentStatuses },
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     }
 

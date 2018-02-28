@@ -34,7 +34,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "arms.interventions.intervention_code", new string[] { "C1674" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Two Drug
@@ -53,7 +53,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "arms.interventions.intervention_code", new string[] { "C1674", "C1411" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     // TEST 1 - One Other
@@ -68,7 +68,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "arms.interventions.intervention_code", new string[] { "C17173" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Two Other
@@ -87,7 +87,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "arms.interventions.intervention_code", new string[] { "C17173", "C15313" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },
                     //Combo
@@ -116,7 +116,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Test
                         },
                         new Dictionary<string, object>{
                             { "arms.interventions.intervention_code", new string[] { "C1674", "C1411", "C17173", "C15313" }},
-                            { "current_trial_status", BasicCTSManager.ActiveTrialStatuses }
+                            { "current_trial_status", CTSConstants.ActiveTrialStatuses }
                         }
                     },                    
                     
