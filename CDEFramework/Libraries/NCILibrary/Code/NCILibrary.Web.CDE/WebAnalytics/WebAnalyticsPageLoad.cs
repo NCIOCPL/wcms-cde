@@ -362,11 +362,14 @@ namespace NCI.Web.CDE.WebAnalytics
             }
         }
 
+        /// <summary>Draws a meta tag.</summary>
+        /// <param name="stringBuilder">String builder object</param>
+        /// <param name="name">Meta name attribute</param>
+        /// <param name="content">Meta content attribute</param>
         public void drawMetaTag(StringBuilder stringBuilder, string name, string content)
         {
-            ////    stringBuilder.app
-            //output.AppendLine("<meta name=\"prop" + p.ToString() + "\" content=" + props[p] + " />");
-            stringBuilder.AppendLine("<!-- dummy -->");
+            char[] charsToTrim = { '\'', ' ', '"' };
+            content = content.Trim(charsToTrim);
             stringBuilder.AppendLine("<meta name=\"" + name + "\" content=\"" + content + "\" />");
         }
 
