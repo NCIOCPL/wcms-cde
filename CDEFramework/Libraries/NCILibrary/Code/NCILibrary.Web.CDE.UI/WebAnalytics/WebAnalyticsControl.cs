@@ -76,7 +76,7 @@ namespace NCI.Web.CDE.UI.WebControls
                 foreach (KeyValuePair<WebAnalyticsOptions.Props, string> kvp in webAnalyticsSettings.Props)
                     webAnalyticsPageLoad.AddProp( kvp.Key, kvp.Value );
 
-                output.Write(webAnalyticsPageLoad.Tag());
+                output.Write(webAnalyticsPageLoad.DrawMetaTags());
             }
         }
     }

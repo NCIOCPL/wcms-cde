@@ -30,6 +30,7 @@ namespace NCI.Web.CDE.WebAnalytics
         private String concatProps = "";
         private String concatEvars = "";
         private String concatEvents = "";
+        private String suites = "";
         private string channel = "";
         private string pageName = null;
         private string pageType = "";
@@ -62,33 +63,69 @@ namespace NCI.Web.CDE.WebAnalytics
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
+        public string DrawMetaTags()
+        {
+            StringBuilder output = new StringBuilder();
+
+            if (WebAnalyticsOptions.IsEnabled)
+            {
+                suites = getReportSuites();
+
+                // TODO: clean / refactor this 
+                // if props are set, output them to the tag
+                if (props.Count > 0)
+                {
+                    foreach (var k in props.Keys.OrderBy(k => k))
+                    {
+                        concatProps += ("data-prop" + k.ToString() + "=\"" + props[k] + "\" ");
+                    }
+                }
+
+                // if eVars are set, output them to the tag
+                if (evars.Count > 0)
+                {
+                    var items = from k in evars.Keys
+                                orderby k ascending
+                                select k;
+                    foreach (int k in items)
+                    {
+                        concatEvars += ("data-evar" + k.ToString() + "=\"" + evars[k] + "\" ");
+                    }
+                }
+
+                // if events have been defined, output then to the tag
+                if (events.Count > 0)
+                {
+                    concatEvents = string.Join(",", events.ToArray<string>());
+                }
+
+                // Output analytics values to an HTML data element. 
+                // This element will be queried by the DTM analytics JavaScript
+                // waDataID is set in the Web.config
+                output.AppendLine("<meta id=\"" + waDataID + "\" "
+                                   + "data-suites=\"" + suites + "\" "
+                                   + "data-channel=\"" + channel + "\" "
+                                   + "data-pagename=\"" + pageName + "\" "
+                                   + "data-pagetype=\"" + pageType + "\" "
+                                   + "data-events=\"" + concatEvents + "\" "
+                                   + concatProps + concatEvars + " />");
+                output.Append(pageLoadPreTag.ToString());
+
+
+            }
+            return output.ToString();
+        }
+
+        /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
         public string Tag()
         {
             StringBuilder output = new StringBuilder();
-            string reportSuites = "";
 
             if (WebAnalyticsOptions.IsEnabled)
             {
                 output.AppendLine("");
                 output.AppendLine(WEB_ANALYTICS_COMMENT_START);
-
-                // Report Suites JavaScript variable (s_account) must be set before the s_code file is loaded
-                // Get custom suites that are set on the navon. Default suites are being set in wa_wcms_pre.js
-                try
-                {
-                    string sectionPath = pgInstruction.SectionPath;
-                    SectionDetail detail = SectionDetailFactory.GetSectionDetail(sectionPath);
-                    string customSuites = detail.GetWASuites();
-                    if (!string.IsNullOrEmpty(customSuites))
-                    {
-                        reportSuites += customSuites;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log.Debug("Tag(): Exception encountered while retrieving web analytics suites.", ex);
-                    reportSuites += "";
-                }
+                suites = getReportSuites();
 
                 // TODO: clean / refactor this 
                 // if props are set, output them to the tag
@@ -121,8 +158,8 @@ namespace NCI.Web.CDE.WebAnalytics
                 // Output analytics values to an HTML data element. 
                 // This element will be queried by the DTM analytics JavaScript
                 // waDataID is set in the Web.config
-                output.AppendLine("<meta id=\"" + waDataID + "\" "
-                                   + "data-suites=\"" + reportSuites + "\" "
+                output.AppendLine("<div id=\"" + waDataID + "\" "
+                                   + "data-suites=\"" + suites + "\" "
                                    + "data-channel=\"" + channel + "\" "
                                    + "data-pagename=\"" + pageName + "\" "
                                    + "data-pagetype=\"" + pageType + "\" "
@@ -311,6 +348,28 @@ namespace NCI.Web.CDE.WebAnalytics
         public void SetPageType(string pageTypeValue)
         {
             pageType = pageTypeValue;
+        }
+
+        /// <summary>Get custom suites that are set on the navon. Default suites are being set in wa_wcms_pre.js.</summary>
+        public String getReportSuites()
+        {
+            string reportSuites = "";
+            try
+            {
+                string sectionPath = pgInstruction.SectionPath;
+                SectionDetail detail = SectionDetailFactory.GetSectionDetail(sectionPath);
+                string customSuites = detail.GetWASuites();
+                if (!string.IsNullOrEmpty(customSuites))
+                {
+                    reportSuites += customSuites;
+                }
+                return reportSuites;
+            }
+            catch (Exception ex)
+            {
+                log.Debug("Tag(): Exception encountered while retrieving web analytics suites.", ex);
+                return "";
+            }
         }
 
         /// <summary>Clears all previously set props, eVars, events, channel, pageName, and pageType.</summary>
