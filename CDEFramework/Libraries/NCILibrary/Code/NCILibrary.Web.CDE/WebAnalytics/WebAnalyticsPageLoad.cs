@@ -28,7 +28,7 @@ namespace NCI.Web.CDE.WebAnalytics
         private Dictionary<int, string> evars = new Dictionary<int, string>();
         private List<string> events = new List<string>();
         private String concatProps = "";
-        private String concatEvars = "";
+        private String concateVars = "";
         private String concatEvents = "";
         private String suites = "";
         private string channel = "";
@@ -63,33 +63,26 @@ namespace NCI.Web.CDE.WebAnalytics
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
-        public string DrawMetaTags()
+        public string TagHead()
         {
             StringBuilder output = new StringBuilder();
-
             if (WebAnalyticsOptions.IsEnabled)
             {
-                suites = getReportSuites();
-
-                // TODO: clean / refactor this 
                 // if props are set, output them to the tag
                 if (props.Count > 0)
                 {
-                    foreach (var k in props.Keys.OrderBy(k => k))
+                    foreach (int p in props.Keys.OrderBy(p => p))
                     {
-                        concatProps += ("data-prop" + k.ToString() + "=\"" + props[k] + "\" ");
+                        drawMetaTag(output, "prop" + p.ToString(), props[p]);
                     }
                 }
 
                 // if eVars are set, output them to the tag
                 if (evars.Count > 0)
                 {
-                    var items = from k in evars.Keys
-                                orderby k ascending
-                                select k;
-                    foreach (int k in items)
+                    foreach (int v in evars.Keys.OrderBy(v => v))
                     {
-                        concatEvars += ("data-evar" + k.ToString() + "=\"" + evars[k] + "\" ");
+                        drawMetaTag(output, "evar" + v.ToString(), evars[v]);
                     }
                 }
 
@@ -97,20 +90,17 @@ namespace NCI.Web.CDE.WebAnalytics
                 if (events.Count > 0)
                 {
                     concatEvents = string.Join(",", events.ToArray<string>());
+                    drawMetaTag(output, "events", concatEvents);
                 }
 
                 // Output analytics values to an HTML data element. 
                 // This element will be queried by the DTM analytics JavaScript
                 // waDataID is set in the Web.config
+                suites = getReportSuites();
                 output.AppendLine("<meta id=\"" + waDataID + "\" "
                                    + "data-suites=\"" + suites + "\" "
-                                   + "data-channel=\"" + channel + "\" "
-                                   + "data-pagename=\"" + pageName + "\" "
-                                   + "data-pagetype=\"" + pageType + "\" "
-                                   + "data-events=\"" + concatEvents + "\" "
-                                   + concatProps + concatEvars + " />");
-                output.Append(pageLoadPreTag.ToString());
-
+                                   + "data-channel=\"" + channel + "\" />");
+                output.AppendLine(pageLoadPreTag.ToString());
 
             }
             return output.ToString();
@@ -145,7 +135,7 @@ namespace NCI.Web.CDE.WebAnalytics
                                 select k;
                     foreach (int k in items)
                     {
-                        concatEvars += ("data-evar" + k.ToString() + "=\"" + evars[k] + "\" ");
+                        concateVars += ("data-evar" + k.ToString() + "=\"" + evars[k] + "\" ");
                     }
                 }
 
@@ -164,7 +154,7 @@ namespace NCI.Web.CDE.WebAnalytics
                                    + "data-pagename=\"" + pageName + "\" "
                                    + "data-pagetype=\"" + pageType + "\" "
                                    + "data-events=\"" + concatEvents + "\" "
-                                   + concatProps + concatEvars + " />");
+                                   + concatProps + concateVars + " />");
                 output.Append(pageLoadPreTag.ToString());
 
                 // Add calls to special page-load functions for a specific channel
@@ -370,6 +360,14 @@ namespace NCI.Web.CDE.WebAnalytics
                 log.Debug("Tag(): Exception encountered while retrieving web analytics suites.", ex);
                 return "";
             }
+        }
+
+        public void drawMetaTag(StringBuilder stringBuilder, string name, string content)
+        {
+            ////    stringBuilder.app
+            //output.AppendLine("<meta name=\"prop" + p.ToString() + "\" content=" + props[p] + " />");
+            stringBuilder.AppendLine("<!-- dummy -->");
+            stringBuilder.AppendLine("<meta name=\"" + name + "\" content=\"" + content + "\" />");
         }
 
         /// <summary>Clears all previously set props, eVars, events, channel, pageName, and pageType.</summary>
