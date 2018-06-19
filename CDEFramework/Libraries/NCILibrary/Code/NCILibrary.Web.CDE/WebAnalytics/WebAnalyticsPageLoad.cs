@@ -121,7 +121,7 @@ namespace NCI.Web.CDE.WebAnalytics
                 // Output analytics values to an HTML data element. 
                 // This element will be queried by the DTM analytics JavaScript
                 // waDataID is set in the Web.config
-                output.AppendLine("<div id=\"" + waDataID + "\" "
+                output.AppendLine("<meta id=\"" + waDataID + "\" "
                                    + "data-suites=\"" + reportSuites + "\" "
                                    + "data-channel=\"" + channel + "\" "
                                    + "data-pagename=\"" + pageName + "\" "

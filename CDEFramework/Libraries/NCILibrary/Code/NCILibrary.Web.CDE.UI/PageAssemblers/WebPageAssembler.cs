@@ -709,7 +709,7 @@ namespace NCI.Web.CDE.UI
                     {
                         String url = appendFileFingerprint(jsLastInfo.JavascriptPath);
                         // Add script to end of body control, before WebAnalyticsControl
-                        NCI.Web.UI.WebControls.JSManager.AddFooterScript(CurrentPageBody, AnalyticsControl, url, jsLastInfo.Async, jsLastInfo.Defer);
+                        NCI.Web.UI.WebControls.JSManager.AddFooterScript(CurrentPageBody, null, url, jsLastInfo.Async, jsLastInfo.Defer);
                     }
 
                     //Load Stylesheets marked as "End"
