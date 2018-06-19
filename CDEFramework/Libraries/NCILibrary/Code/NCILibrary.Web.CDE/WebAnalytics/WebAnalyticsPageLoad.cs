@@ -27,10 +27,7 @@ namespace NCI.Web.CDE.WebAnalytics
         private bool pageWideLinkTracking = false;
         private Dictionary<int, string> props = new Dictionary<int, string>();
         private Dictionary<int, string> evars = new Dictionary<int, string>();
-        private List<string> events = new List<string>(); 
-        private String concatProps = "";
-        private String concateVars = "";
-        private String concatEvents = "";
+        private List<string> events = new List<string>();
         private String suites = "";
         private string channel = "";
         private string pageName = null;
@@ -64,7 +61,7 @@ namespace NCI.Web.CDE.WebAnalytics
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
-        public string TagHead()
+        public String TagHead()
         {
             StringBuilder output = new StringBuilder();
             if (WebAnalyticsOptions.IsEnabled)
@@ -90,7 +87,7 @@ namespace NCI.Web.CDE.WebAnalytics
                 // if events have been defined, output then to the tag
                 if (events.Count > 0)
                 {
-                    concatEvents = string.Join(",", events.ToArray<string>());
+                    string concatEvents = string.Join(",", events.ToArray<string>());
                     drawMetaTag(output, "events", concatEvents);
                 }
 
@@ -101,8 +98,6 @@ namespace NCI.Web.CDE.WebAnalytics
                 output.AppendLine("<meta id=\"" + waDataID + "\" "
                                    + "data-suites=\"" + suites + "\" "
                                    + "data-channel=\"" + channel + "\" />");
-                output.AppendLine(pageLoadPreTag.ToString());
-
             }
             return output.ToString();
         }
