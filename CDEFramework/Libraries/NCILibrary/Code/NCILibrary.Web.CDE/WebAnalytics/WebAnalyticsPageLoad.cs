@@ -64,41 +64,53 @@ namespace NCI.Web.CDE.WebAnalytics
         public String TagHead()
         {
             StringBuilder output = new StringBuilder();
-            if (WebAnalyticsOptions.IsEnabled)
+            // TODO - remove debugging / newlines when done
+            output.AppendLine(" ");
+            output.AppendLine(" ");
+            output.AppendLine("<!-- BEGIN WA meta debugging -->");
+            String concatEvents = "";
+            String concatProps = "";
+            String concateVars = "";
+
+            // if props are set, output them to the tag
+            if (props.Count > 0)
             {
-                // if props are set, output them to the tag
-                if (props.Count > 0)
+                foreach (int p in props.Keys.OrderBy(p => p))
                 {
-                    foreach (int p in props.Keys.OrderBy(p => p))
-                    {
-                        drawMetaTag(output, "prop" + p.ToString(), props[p]);
-                    }
+                    //drawMetaTag(output, "prop" + p.ToString(), props[p]);
+                    concatProps += ("data-prop" + p.ToString() + "=\"" + props[p] + "\" ");
                 }
-
-                // if eVars are set, output them to the tag
-                if (evars.Count > 0)
-                {
-                    foreach (int v in evars.Keys.OrderBy(v => v))
-                    {
-                        drawMetaTag(output, "evar" + v.ToString(), evars[v]);
-                    }
-                }
-
-                // if events have been defined, output then to the tag
-                if (events.Count > 0)
-                {
-                    string concatEvents = string.Join(",", events.ToArray<string>());
-                    drawMetaTag(output, "events", concatEvents);
-                }
-
-                // Output analytics values to an HTML data element. 
-                // This element will be queried by the DTM analytics JavaScript
-                // waDataID is set in the Web.config
-                suites = getReportSuites();
-                output.AppendLine("<meta id=\"" + waDataID + "\" "
-                                   + "data-suites=\"" + suites + "\" "
-                                   + "data-channel=\"" + channel + "\" />");
             }
+
+            // if eVars are set, output them to the tag
+            if (evars.Count > 0)
+            {
+                foreach (int v in evars.Keys.OrderBy(v => v))
+                {
+                    //drawMetaTag(output, "evar" + v.ToString(), evars[v]);
+                    concateVars += ("data-evar" + v.ToString() + "=\"" + evars[v] + "\" ");
+                }
+            }
+
+            // if events have been defined, output then to the tag
+            if (events.Count > 0)
+            {
+                concatEvents = string.Join(",", events.ToArray<string>());
+                // drawMetaTag(output, "events", concatEvents);
+            }
+
+            // Output analytics values to an HTML data element. 
+            // This element will be queried by the DTM analytics JavaScript
+            // waDataID is set in the Web.config
+            suites = getReportSuites();
+            output.AppendLine("<meta id=\"" + waDataID + "\" "
+                              + "data-suites=\"" + suites + "\" "
+                              + "data-channel=\"" + channel + "\" "
+                              + "data-events=\"" + concatEvents + "\" "
+                              + concatProps + concateVars + " />");
+
+            output.AppendLine("<!-- END WA meta debugging -->");
+            output.AppendLine(" ");
             return output.ToString();
         }
 
@@ -355,8 +367,6 @@ namespace NCI.Web.CDE.WebAnalytics
                     languageValue = "english";
                     break;
             }
-            this.AddProp(WebAnalyticsOptions.Props.prop8, languageValue); // Language
-            this.AddEvar(WebAnalyticsOptions.eVars.evar2, languageValue); // Language
             language = languageValue;
         }
 
