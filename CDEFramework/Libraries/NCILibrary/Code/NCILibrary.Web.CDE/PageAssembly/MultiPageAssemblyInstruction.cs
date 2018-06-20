@@ -1090,11 +1090,6 @@ namespace NCI.Web.CDE
         {
             base.RegisterWebAnalyticsFieldFilters();
 
-            SetWebAnalytics(WebAnalyticsOptions.Props.prop6.ToString(), wbField =>
-            {
-                wbField.Value = this.GetField("short_title");
-            });
-
             SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
             {
                 wbField.Value = String.Format("{0:MM/dd/yyyy}", this.ContentDates.FirstPublished);

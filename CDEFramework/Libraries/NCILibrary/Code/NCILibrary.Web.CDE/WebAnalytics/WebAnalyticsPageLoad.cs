@@ -375,7 +375,6 @@ namespace NCI.Web.CDE.WebAnalytics
         public void SetPageName(string pageNameValue)
         {
             pageName = pageNameValue.Replace("'", "\\'");
-            this.AddEvar(WebAnalyticsOptions.eVars.evar1, pageName); // Page name
         }
 
         /// <summary>Sets the value of the Omniture pageType  variable in the Omniture page load JavaScript code.</summary>

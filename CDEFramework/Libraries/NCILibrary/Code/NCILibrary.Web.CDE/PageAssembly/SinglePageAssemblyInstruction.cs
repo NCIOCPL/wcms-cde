@@ -939,12 +939,6 @@ namespace NCI.Web.CDE
         {
             base.RegisterWebAnalyticsFieldFilters();
 
-            // Add short title
-            SetWebAnalytics(WebAnalyticsOptions.Props.prop6.ToString(), wbField =>
-            {
-                wbField.Value = GetField("short_title");
-            });
-
             // Add posted date
             SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
             {
