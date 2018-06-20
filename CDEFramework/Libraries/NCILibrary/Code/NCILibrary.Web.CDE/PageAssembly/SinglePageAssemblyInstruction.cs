@@ -938,13 +938,6 @@ namespace NCI.Web.CDE
         protected override void RegisterWebAnalyticsFieldFilters()
         {
             base.RegisterWebAnalyticsFieldFilters();
-
-            // Add posted date
-            SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
-            {
-                wbField.Value = String.Format("{0:MM/dd/yyyy}", this.ContentDates.FirstPublished);
-            });
-
             RegisterCustomWebAnalytics();
         }
 

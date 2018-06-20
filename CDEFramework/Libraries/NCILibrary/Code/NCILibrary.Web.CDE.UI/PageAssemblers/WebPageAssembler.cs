@@ -123,18 +123,18 @@ namespace NCI.Web.CDE.UI
                     case HtmlMetaDataType.Description:
                         metaData = asmInstr.GetField(PageAssemblyInstructionFields.HTML_MetaDescription);
                         break;
-
                     case HtmlMetaDataType.KeyWords:
                         metaData = asmInstr.GetField(PageAssemblyInstructionFields.HTML_MetaKeywords);
                         break;
-
                     case HtmlMetaDataType.Robots:
                         metaData = asmInstr.GetField(PageAssemblyInstructionFields.HTML_MetaRobots);
                         break;
-
                     case HtmlMetaDataType.ContentLanguage:
                         metaData = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
                         break;
+                    case HtmlMetaDataType.DatePublished:
+                        metaData = String.Format("{0:MM/dd/yyyy}", ((BasePageAssemblyInstruction)PageAssemblyInstruction).ContentDates.FirstPublished);
+                        break; 
                     case HtmlMetaDataType.EnglishLinkingPolicy:
                         metaData = ContentDeliveryEngineConfig.PathInformation.EnglishLinkingPolicyPath.Path;
                         break;
@@ -268,6 +268,8 @@ namespace NCI.Web.CDE.UI
                 hm.Name = "content-language";
             else if (htmlMetaDataType == HtmlMetaDataType.ContentType)
                 hm.Name = "dcterms.type";
+            else if (htmlMetaDataType == HtmlMetaDataType.DatePublished)
+                hm.Name = "dcterms.issued";
             else if (htmlMetaDataType == HtmlMetaDataType.EnglishLinkingPolicy)
                 hm.Name = "english-linking-policy";
             else if (htmlMetaDataType == HtmlMetaDataType.EspanolLinkingPolicy)
@@ -563,6 +565,7 @@ namespace NCI.Web.CDE.UI
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.KeyWords);
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.Description);
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.ContentLanguage);
+                addMetaDataItem(CurrentPageHead, HtmlMetaDataType.DatePublished);
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.EnglishLinkingPolicy);
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.EspanolLinkingPolicy);
                 addMetaDataItem(CurrentPageHead, HtmlMetaDataType.Robots);

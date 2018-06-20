@@ -15,6 +15,7 @@ namespace NCI.Web.CDE.UI
         ContentType,
         ContentLanguage,
         Title,
+        DatePublished,
         EnglishLinkingPolicy,
         EspanolLinkingPolicy,
         Robots

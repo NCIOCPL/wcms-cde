@@ -1090,11 +1090,6 @@ namespace NCI.Web.CDE
         {
             base.RegisterWebAnalyticsFieldFilters();
 
-            SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
-            {
-                wbField.Value = String.Format("{0:MM/dd/yyyy}", this.ContentDates.FirstPublished);
-            });
-
             if (PageAssemblyContext.CurrentDisplayVersion == DisplayVersions.ViewAll)
             {
                 SetWebAnalytics(WebAnalyticsOptions.Events.event8, wbField =>
