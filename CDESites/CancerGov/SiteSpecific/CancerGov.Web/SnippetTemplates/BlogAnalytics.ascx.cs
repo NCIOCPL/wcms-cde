@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NCI.Web.CDE;
 using NCI.Web.CDE.UI;
+using NCI.Web.CDE.WebAnalytics;
 
 namespace CancerGov.Web.SnippetTemplates
 {
@@ -15,19 +16,20 @@ namespace CancerGov.Web.SnippetTemplates
         {
             BasePageAssemblyInstruction basePage = PageAssemblyContext.Current.PageAssemblyInstruction as BasePageAssemblyInstruction;
             string blogName = "";
+            string blogContentType = "rx:cgvBlogPost";
 
-            if (basePage.ContentItemInfo.ContentItemType == "rx:cgvBlogPost")
+            if (basePage.ContentItemInfo.ContentItemType == blogContentType)
             {
-                blogName = basePage.GetWebAnalytics("prop44");
+                blogName = basePage.GetWebAnalytics(WebAnalyticsOptions.Props.prop44.ToString());
                 if (!String.IsNullOrWhiteSpace(blogName))
                 {
-                    basePage.SetWebAnalytics("evar48", ffD =>
+                    basePage.SetWebAnalytics(WebAnalyticsOptions.eVars.evar48.ToString(), ffD =>
                     {
                         ffD.Value = blogName + " Viewer";
                     });
-                    basePage.SetWebAnalytics("event53", ffD =>
+                    basePage.SetWebAnalytics(WebAnalyticsOptions.Events.event53.ToString(), ffD =>
                     {
-                        // only fires off event
+                        ffD.Value = String.Empty; // only fires off event number; no value needed
                     });
                 }
             }
