@@ -40,10 +40,12 @@ namespace NCI.Web.CDE.UI.WebControls
             IPageAssemblyInstruction pgInstruction = PageAssemblyContext.Current.PageAssemblyInstruction;
             WebAnalyticsSettings webAnalyticsSettings = pgInstruction.GetWebAnalytics();
             string configChannelName = "";
+
+            // If web analytics are present, create a new instance of WebAnalyticsPageload, 
+            // set its variables, and use those to draw the analytics HTML.
             if (webAnalyticsSettings != null)
             {
                 WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-
                 webAnalyticsPageLoad.SetLanguage(PageAssemblyContext.Current.PageAssemblyInstruction.GetField("language"));
                 
                 // Use pretty url to get channel name from the mapping, mapping information is in web.config
@@ -61,21 +63,30 @@ namespace NCI.Web.CDE.UI.WebControls
                     SectionDetail detail = SectionDetailFactory.GetSectionDetail(sectionPath);
                     string channelName = WebAnalyticsOptions.GetChannelsFromSectionDetail(detail);
                     webAnalyticsPageLoad.SetChannel(channelName);
+                    webAnalyticsPageLoad.SetReportSuites(detail);
                 }
                 catch (Exception ex)
                 {
                     log.Warn("RenderContents(): Error retrieving analytics channel.", ex);
                     webAnalyticsPageLoad.SetChannel(configChannelName);
                 }
+
                 foreach (KeyValuePair<WebAnalyticsOptions.eVars, string> kvp in webAnalyticsSettings.Evars)
-                    webAnalyticsPageLoad.AddEvar(kvp.Key, kvp.Value ); 
+                { 
+                    webAnalyticsPageLoad.AddEvar(kvp.Key, kvp.Value);
+                }
 
                 foreach (KeyValuePair<WebAnalyticsOptions.Events, string> kvp in webAnalyticsSettings.Events)
-                    webAnalyticsPageLoad.AddEvent(kvp.Key); 
+                {
+                    webAnalyticsPageLoad.AddEvent(kvp.Key);
+                }
 
                 foreach (KeyValuePair<WebAnalyticsOptions.Props, string> kvp in webAnalyticsSettings.Props)
-                    webAnalyticsPageLoad.AddProp( kvp.Key, kvp.Value );
+                { 
+                    webAnalyticsPageLoad.AddProp(kvp.Key, kvp.Value);
+                }
 
+                // Draw the control HTML
                 webAnalyticsPageLoad.TagHead(output);
             }
         }

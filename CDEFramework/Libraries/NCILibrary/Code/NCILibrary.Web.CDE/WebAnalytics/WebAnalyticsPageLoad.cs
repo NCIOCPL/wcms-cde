@@ -64,15 +64,9 @@ namespace NCI.Web.CDE.WebAnalytics
         /// <param name="writer">Text writer object used to output HTML tags</param>
         public void TagHead(HtmlTextWriter writer)
         {
-            suites = getReportSuites();
             string concatEvents = string.Empty;
             string propValue = string.Empty;
             string eVarValue = string.Empty;
-
-            // TODO: get rid of debug statements once this is up and running
-            writer.WriteLine("");
-            writer.WriteLine("");
-            writer.WriteLine("<!-- BEGIN WA meta debugging -->");
 
             // Draw meta tag ID, suites, channel attributes
             writer.AddAttribute(HtmlTextWriterAttribute.Id, waDataID);
@@ -106,11 +100,9 @@ namespace NCI.Web.CDE.WebAnalytics
                 }
             }
 
-            // Draw the <meta> tag HTML
+            // Draw the <meta> tag 
             writer.RenderBeginTag(HtmlTextWriterTag.Meta);
             writer.RenderEndTag();
-            writer.WriteLine("");
-            writer.WriteLine("<!-- END WA meta debugging -->");
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
@@ -383,25 +375,23 @@ namespace NCI.Web.CDE.WebAnalytics
             pageType = pageTypeValue;
         }
 
-        /// <summary>Get custom suites that are set on the navon. Default suites are being set in wa_wcms_pre.js.</summary>
-        public String getReportSuites()
+        /// <summary>Set custom suites based on section details. Default suites are being set in wa_wcms_pre.js.</summary>
+        public void SetReportSuites(SectionDetail detail)
         {
             string reportSuites = "";
             try
             {
-                string sectionPath = pgInstruction.SectionPath;
-                SectionDetail detail = SectionDetailFactory.GetSectionDetail(sectionPath);
                 string customSuites = detail.GetWASuites();
                 if (!string.IsNullOrEmpty(customSuites))
                 {
                     reportSuites += customSuites;
                 }
-                return reportSuites;
+                suites = reportSuites;
             }
             catch (Exception ex)
             {
-                log.Debug("Tag(): Exception encountered while retrieving web analytics suites.", ex);
-                return "";
+                log.Debug("WebAnalyticsPageLoad:SetReportSuites(): Exception encountered while retrieving web analytics suites.", ex);
+                suites = string.Empty;
             }
         }
 
