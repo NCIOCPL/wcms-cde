@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using Common.Logging;
+using System.Web.UI;
 
 namespace NCI.Web.CDE.WebAnalytics
 {
@@ -47,7 +48,6 @@ namespace NCI.Web.CDE.WebAnalytics
 
         /**
          * No script tag 
-         * TODO: update or remove
          */
         private StringBuilder NoScriptTag()
         {
@@ -60,58 +60,57 @@ namespace NCI.Web.CDE.WebAnalytics
             return noScriptTag;
         }
 
-        /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
-        public String TagHead()
+        /// <summary>Draw the analytics metadata to be used in the document head.</summary>
+        /// <param name="writer">Text writer object used to output HTML tags</param>
+        public void TagHead(HtmlTextWriter writer)
         {
-            StringBuilder output = new StringBuilder();
-            // TODO - remove debugging / newlines when done
-            output.AppendLine(" ");
-            output.AppendLine(" ");
-            output.AppendLine("<!-- BEGIN WA meta debugging -->");
-            String concatEvents = "";
-            String concatProps = "";
-            String concateVars = "";
+            suites = getReportSuites();
+            string concatEvents = string.Empty;
+            string propValue = string.Empty;
+            string eVarValue = string.Empty;
+
+            // TODO: get rid of debug statements once this is up and running
+            writer.WriteLine("");
+            writer.WriteLine("");
+            writer.WriteLine("<!-- BEGIN WA meta debugging -->");
+
+            // Draw meta tag ID, suites, channel attributes
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, waDataID);
+            writer.AddAttribute("data-suites", suites);
+            writer.AddAttribute("data-channel", channel);
+
+            // if events have been defined, output then to the tag
+            if (events.Count > 0)
+            {
+                concatEvents = string.Join(",", events.ToArray<string>());
+                writer.AddAttribute("data-events", concatEvents);
+            }
 
             // if props are set, output them to the tag
             if (props.Count > 0)
             {
-                foreach (int p in props.Keys.OrderBy(p => p))
+                foreach (int k in props.Keys.OrderBy(k => k))
                 {
-                    //drawMetaTag(output, "prop" + p.ToString(), props[p]);
-                    concatProps += ("data-prop" + p.ToString() + "=\"" + props[p] + "\" ");
+                    propValue = cleanQuotes(props[k]);
+                    writer.AddAttribute(("data-prop" + k.ToString()), propValue);
                 }
             }
 
             // if eVars are set, output them to the tag
             if (evars.Count > 0)
             {
-                foreach (int v in evars.Keys.OrderBy(v => v))
+                foreach (int k in evars.Keys.OrderBy(k => k))
                 {
-                    //drawMetaTag(output, "evar" + v.ToString(), evars[v]);
-                    concateVars += ("data-evar" + v.ToString() + "=\"" + evars[v] + "\" ");
+                    eVarValue = cleanQuotes(evars[k]);
+                    writer.AddAttribute("data-evar" + k.ToString(), eVarValue);
                 }
             }
 
-            // if events have been defined, output then to the tag
-            if (events.Count > 0)
-            {
-                concatEvents = string.Join(",", events.ToArray<string>());
-                // drawMetaTag(output, "events", concatEvents);
-            }
-
-            // Output analytics values to an HTML data element. 
-            // This element will be queried by the DTM analytics JavaScript
-            // waDataID is set in the Web.config
-            suites = getReportSuites();
-            output.AppendLine("<meta id=\"" + waDataID + "\" "
-                              + "data-suites=\"" + suites + "\" "
-                              + "data-channel=\"" + channel + "\" "
-                              + "data-events=\"" + concatEvents + "\" "
-                              + concatProps + concateVars + " />");
-
-            output.AppendLine("<!-- END WA meta debugging -->");
-            output.AppendLine(" ");
-            return output.ToString();
+            // Draw the <meta> tag HTML
+            writer.RenderBeginTag(HtmlTextWriterTag.Meta);
+            writer.RenderEndTag();
+            writer.WriteLine("");
+            writer.WriteLine("<!-- END WA meta debugging -->");
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>
@@ -406,15 +405,13 @@ namespace NCI.Web.CDE.WebAnalytics
             }
         }
 
-        /// <summary>Draws a meta tag.</summary>
-        /// <param name="stringBuilder">String builder object</param>
-        /// <param name="name">Meta name attribute</param>
+        /// <summary>Trim quotes and spaces from string and replace with double quotes</summary>
         /// <param name="content">Meta content attribute</param>
-        public void drawMetaTag(StringBuilder stringBuilder, string name, string content)
+        /// <returns>Cleaned string</returns>
+        public String cleanQuotes(string value)
         {
             char[] charsToTrim = { '\'', ' ', '"' };
-            content = content.Trim(charsToTrim);
-            stringBuilder.AppendLine("<meta name=\"" + name + "\" content=\"" + content + "\" />");
+            return value.Trim(charsToTrim);
         }
 
         /// <summary>Clears all previously set props, eVars, events, channel, pageName, and pageType.</summary>
