@@ -87,7 +87,7 @@ namespace NCI.Web.CDE.UI.WebControls
                 }
 
                 // Draw the control HTML
-                webAnalyticsPageLoad.TagHead(output);
+                webAnalyticsPageLoad.DrawHeadTags(output);
             }
         }
     }

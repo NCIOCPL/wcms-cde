@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
@@ -61,9 +62,23 @@ namespace NCI.Web.CDE.WebAnalytics
             return noScriptTag;
         }
 
+        /// <summary>Get the analytics metadata to be used in the document head.</summary>
+        /// <returns>HTML string</returns>
+        public String GetHeadTags()
+        {
+            StringWriter stringWriter = new StringWriter();
+
+            // Put HtmlTextWsriter in using block because it needs to call Dispose()
+            using (HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter))
+            {
+                DrawHeadTags(htmlWriter);
+            }
+            return stringWriter.ToString();
+        }
+
         /// <summary>Draw the analytics metadata to be used in the document head.</summary>
         /// <param name="writer">Text writer object used to output HTML tags</param>
-        public void TagHead(HtmlTextWriter writer)
+        public void DrawHeadTags(HtmlTextWriter writer)
         {
             string concatEvents = string.Empty;
             string propValue = string.Empty;
