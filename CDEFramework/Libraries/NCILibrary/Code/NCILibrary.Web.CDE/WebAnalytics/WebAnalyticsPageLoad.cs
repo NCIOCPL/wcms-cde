@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using Common.Logging;
 using System.Web.UI;
+using Common.Logging;
 
 namespace NCI.Web.CDE.WebAnalytics
 {
@@ -46,9 +46,7 @@ namespace NCI.Web.CDE.WebAnalytics
             pageLoadPostTag.AppendLine(WEB_ANALYTICS_COMMENT_END);
         }
 
-        /**
-         * No script tag 
-         */
+        /// <summary>Draw noscript tag</noscript></summary>
         private StringBuilder NoScriptTag()
         {
             StringBuilder noScriptTag = new StringBuilder();
@@ -376,22 +374,20 @@ namespace NCI.Web.CDE.WebAnalytics
         }
 
         /// <summary>Set custom suites based on section details. Default suites are being set in wa_wcms_pre.js.</summary>
+        /// <param name="detail">Nav details for the current page</param>
         public void SetReportSuites(SectionDetail detail)
         {
-            string reportSuites = "";
             try
             {
                 string customSuites = detail.GetWASuites();
                 if (!string.IsNullOrEmpty(customSuites))
                 {
-                    reportSuites += customSuites;
+                    suites += customSuites;
                 }
-                suites = reportSuites;
             }
             catch (Exception ex)
             {
                 log.Debug("WebAnalyticsPageLoad:SetReportSuites(): Exception encountered while retrieving web analytics suites.", ex);
-                suites = string.Empty;
             }
         }
 
