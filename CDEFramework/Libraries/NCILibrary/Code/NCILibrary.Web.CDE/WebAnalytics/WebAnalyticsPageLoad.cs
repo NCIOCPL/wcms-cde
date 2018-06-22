@@ -35,7 +35,10 @@ namespace NCI.Web.CDE.WebAnalytics
         private string pageType = "";
         private string language = "";
         private IPageAssemblyInstruction pgInstruction = PageAssemblyContext.Current.PageAssemblyInstruction;
-        private String waDataID = ConfigurationManager.AppSettings["WADataElementID"].ToString();
+
+        public String WaDataID = ConfigurationManager.AppSettings["WADataElementID"].ToString();
+        public String DTMTop = ConfigurationManager.AppSettings["DTMUrl"].ToString();
+        public String DTMBottom = "_satellite.pageBottom();";
 
         /// <summary>the constructor builds base Omniture page load code.   
         /// Also sets the default custom variables (props), custom conversion variables (eVars), and events. .</summary>
@@ -67,7 +70,7 @@ namespace NCI.Web.CDE.WebAnalytics
             string eVarValue = string.Empty;
 
             // Draw meta tag ID, suites, channel attributes
-            writer.AddAttribute(HtmlTextWriterAttribute.Id, waDataID);
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, WaDataID);
             writer.AddAttribute("data-suites", suites);
             writer.AddAttribute("data-channel", channel);
 
