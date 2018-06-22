@@ -26,6 +26,7 @@ namespace CancerGov.Web.Common.PopUps
         protected string strSendPrinter = "Send to Printer";
         //protected string strHeading = "<h3 class='popup-definition'>Definition from NCI's Dictionary of Cancer Terms</h3>";
         protected string strHeading = "<div class=\"heading\">Definition:</div>";
+        public DisplayLanguage dl = new DisplayLanguage();
 
         #region Page properties
 
@@ -61,7 +62,6 @@ namespace CancerGov.Web.Common.PopUps
             string pronunciation;
             string termDefinition;
 
-            DisplayLanguage dl=new DisplayLanguage();
 
             if (Request.QueryString["language"] == "English")
                 dl = DisplayLanguage.English;
@@ -163,24 +163,8 @@ namespace CancerGov.Web.Common.PopUps
                 + String.Format("<div class=\"definitionImage\">{0}</div>", mediaHtml)
                 );
 
-           // Web Analytics *************************************************
-           WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-
-           if (dl == DisplayLanguage.Spanish)
-           {
-               webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
-               webAnalyticsPageLoad.SetLanguage("es");
-           }
-           else
-           {
-               webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
-               webAnalyticsPageLoad.SetLanguage("en");
-           }
-           webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-           litOmniturePageLoad.Text = webAnalyticsPageLoad.Tag();  // Load page load script 
-           // End Web Analytics *********************************************
-
-
+            // Set analytics 
+            this.DrawAnalyticsTags();
         }
 
         private void ValidateParams()
@@ -243,6 +227,25 @@ namespace CancerGov.Web.Common.PopUps
             ArrayList returnvalue = new ArrayList(3);
             returnvalue = CancerGov.CDR.TermDictionary.TermDictionaryManager.GetDefinition(type, param, pdqVersion, lng);
             return returnvalue;
+        }
+
+        /// <summary>
+        /// Set web analytics values and draw the required meta and script tags.
+        /// </summary>
+        private void DrawAnalyticsTags()
+        {
+            WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+
+            if (dl == DisplayLanguage.Spanish)
+            {
+                webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
+            }
+            else
+            {
+                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
+            }
+            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+            litOmniturePageLoad.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
         }
 
         protected void Page_Init(object sender, EventArgs e)

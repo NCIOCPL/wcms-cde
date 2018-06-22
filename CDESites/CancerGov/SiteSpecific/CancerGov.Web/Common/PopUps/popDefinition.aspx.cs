@@ -92,23 +92,8 @@ namespace Www.Common.PopUps
                     phNoResult.Visible = true;
                 }
 
-                // Web Analytics *************************************************
-                WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-
-                if (dictionaryLanguage == "es")
-                {
-                    webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
-                    webAnalyticsPageLoad.SetLanguage("es");
-                }
-                else
-                {
-                    webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
-                    webAnalyticsPageLoad.SetLanguage("en");
-                }
-                webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-                litOmniturePageLoad.Text = webAnalyticsPageLoad.Tag();  // Load page load script 
-                // End Web Analytics *********************************************
-
+                // Set analytics 
+                this.DrawAnalyticsTags();
             }
             
         }
@@ -293,6 +278,25 @@ namespace Www.Common.PopUps
             return ConvertEnum<DictionaryType>.Convert(dictionary, DictionaryType.Unknown);
         }
 
+        /// <summary>
+        /// Set web analytics values and draw the required meta and script tags.
+        /// </summary>
+        private void DrawAnalyticsTags()
+        {
+            WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+
+            if (dictionaryLanguage == "es")
+            {
+                webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
+            }
+            else
+            {
+                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
+            }
+            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+            litOmniturePageLoad.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
+
+        }
         #region Web Form Designer generated code
         /// <summary>
         /// Required method for Designer support - do not modify
