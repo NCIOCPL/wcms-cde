@@ -69,7 +69,7 @@ Function Make-Configs($cdeSrc, $configSrc, $branchName, $subsFile)
 		Exit
 	}
 
-	$substCommand = $configSrc + "\tools\build\scripts\substitution.ps1"
+	$substCommand = $configSrc + "\tools\build\build-tools\text-substitution\substitution.ps1"
 	
 	$sites = @("CancerGov", "DCEG", "MobileCancerGov", "TCGA")
 	
