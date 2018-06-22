@@ -295,6 +295,7 @@ namespace Www.Common.PopUps
             }
 
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+
             litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMTop + "\"></script>";
             litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
             litDtmBottom.Text = "<script>" + webAnalyticsPageLoad.DTMBottom + "</script>";

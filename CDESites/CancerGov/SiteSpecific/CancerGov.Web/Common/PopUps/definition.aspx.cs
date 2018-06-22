@@ -245,7 +245,10 @@ namespace CancerGov.Web.Common.PopUps
                 webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             }
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-            litOmniturePageLoad.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
+
+            litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMTop + "\"></script>";
+            litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
+            litDtmBottom.Text = "<script>" + webAnalyticsPageLoad.DTMBottom + "</script>";
         }
 
         protected void Page_Init(object sender, EventArgs e)
