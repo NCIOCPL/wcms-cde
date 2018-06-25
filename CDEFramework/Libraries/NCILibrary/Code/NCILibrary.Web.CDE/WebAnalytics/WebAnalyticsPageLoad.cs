@@ -391,7 +391,14 @@ namespace NCI.Web.CDE.WebAnalytics
             pageType = pageTypeValue;
         }
 
-        /// <summary>Set custom suites based on section details. Default suites are being set in wa_wcms_pre.js.</summary>
+        /// <summary>Set custom suites based on a given string.</summary>
+        /// <param name="customSuites">String of comma-separated suite names</param>
+        public void SetReportSuites(String customSuites)
+        {
+            suites += customSuites;
+        }
+
+        /// <summary>Overload to set custom suites based on section details.</summary>
         /// <param name="detail">Nav details for the current page</param>
         public void SetReportSuites(SectionDetail detail)
         {
@@ -400,7 +407,7 @@ namespace NCI.Web.CDE.WebAnalytics
                 string customSuites = detail.GetWASuites();
                 if (!string.IsNullOrEmpty(customSuites))
                 {
-                    suites += customSuites;
+                    SetReportSuites(customSuites);
                 }
             }
             catch (Exception ex)

@@ -283,7 +283,10 @@ namespace Www.Common.PopUps
         /// </summary>
         private void DrawAnalyticsTags()
         {
+            string popupSuites = "nciglobal,ncienterprise";
             WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+            webAnalyticsPageLoad.SetReportSuites(popupSuites);
+            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
             if (dictionaryLanguage == "es")
             {
@@ -293,8 +296,6 @@ namespace Www.Common.PopUps
             {
                 webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             }
-
-            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
             litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMTop + "\"></script>";
             litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 

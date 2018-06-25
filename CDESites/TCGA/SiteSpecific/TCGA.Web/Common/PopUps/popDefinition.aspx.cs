@@ -255,7 +255,9 @@ namespace TCGA.Web.Common.PopUps
         /// </summary>
         private void DrawAnalyticsTags()
         {
+            string popupSuites = "ncicssi-strategicscientificinitiatives,ncienterprise";
             WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+            webAnalyticsPageLoad.SetReportSuites(popupSuites);
             webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
