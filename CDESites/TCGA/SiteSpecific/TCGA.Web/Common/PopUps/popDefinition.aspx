@@ -10,13 +10,11 @@
     <link rel="stylesheet" href="/PublishedContent/Styles/tcga.css" type="text/css" />
     <meta content="text/html;charset=ISO-8859-1" http-equiv="content-type" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+    <asp:Literal ID="litDtmTop" Mode="PassThrough" runat="server" />
+    <asp:Literal ID="litWaMeta" Mode="PassThrough" runat="server" />
     <script src="/PublishedContent/js/modernizr.custom.2.7.1.js" type="text/javascript"></script>
-
     <script src="/PublishedContent/js/popEvents.js" type="text/javascript"></script>
-
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-       
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>       
     <script type="text/javascript">
         $(window).load(function() {
             $(window).resize();
@@ -83,7 +81,7 @@
         <asp:PlaceHolder ID="phNoResult" runat="server" Visible="false">
             <div class="definition">The term you are looking for does not exist in the glossary.</div>
         </asp:PlaceHolder>
-        <asp:Literal ID="litOmniturePageLoad" Mode="PassThrough" runat="server" />
     </div>
+    <asp:Literal ID="litDtmBottom" Mode="PassThrough" runat="server" />
 </body>
 </html>

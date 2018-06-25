@@ -74,18 +74,9 @@ namespace TCGA.Web.Common.PopUps
                     phNoResult.Visible = true;
                 }
 
-                // Web Analytics *************************************************
-                WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-                                
-                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
-                webAnalyticsPageLoad.SetLanguage("en");
-                
-                webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-                litOmniturePageLoad.Text = webAnalyticsPageLoad.Tag();  // Load page load script 
-                // End Web Analytics *********************************************
-
+                // Set analytics 
+                this.DrawAnalyticsTags();
             }
-
 
         }
 
@@ -257,6 +248,20 @@ namespace TCGA.Web.Common.PopUps
             dictionary = Strings.Clean(dictionary, "Unknown");
 
             return ConvertEnum<DictionaryType>.Convert(dictionary, DictionaryType.Unknown);
+        }
+
+        /// <summary>
+        /// Set web analytics values and draw the required meta and script tags.
+        /// </summary>
+        private void DrawAnalyticsTags()
+        {
+            WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+            webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
+            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+
+            litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMTop + "\"></script>";
+            litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
+            litDtmBottom.Text = "<script>" + webAnalyticsPageLoad.DTMBottom + "</script>";
         }
 
         #region Web Form Designer generated code
