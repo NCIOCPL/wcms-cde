@@ -180,6 +180,7 @@
     <Compile Include="SnippetControls\TemplatedDynamicList.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AdobeDTM\AdobeDTMControl.cs" />
     <Compile Include="WebAnalytics\WebAnalyticsControl.cs" />
   </ItemGroup>
   <ItemGroup>
