@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Common.Logging;
-using NCI.Web.CDE.WebAnalytics;
 
 namespace NCI.Web.CDE.UI.WebControls
 {
     /// <summary>
-    /// This web controls renders the Omniture java script required for web analytics. 
+    /// This web control renders DTM-specific script tags on the site.
     /// </summary>
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:AdobeDTMControl runat=server></{0}:AdobeDTMControl>")]
     public class AdobeDTMControl : WebControl
     {
         static ILog log = LogManager.GetLogger(typeof(AdobeDTMControl));
+        private static String DTMSrc = ConfigurationManager.AppSettings["DTMUrl"].ToString();
+        private const String SCRIPT_TYPE = "text/javascript";
+        private const String DTM_BOTTOM = "_satellite.pageBottom();";
 
         protected override void OnInit(EventArgs e)
-        {
+        { // Not doing anything at the moment
         }
 
         /// <summary>
@@ -29,75 +31,55 @@ namespace NCI.Web.CDE.UI.WebControls
         {
             RenderContents(writer);
         }
+
         /// <summary>
-        /// Uses the WebAnalyticsPageLoad helper class to render the required omniture java script 
-        /// for Web Analytics.
+        /// Draw the required tag based on the control ID set in the form.
         /// </summary>
-        /// <param name="output">HtmlTextWriter object</param>
-        protected override void RenderContents(HtmlTextWriter output)
+        /// <param name="writer">HtmlTextWriter object</param>
+        protected override void RenderContents(HtmlTextWriter writer)
         {
-            base.RenderContents(output);
-
-            System.Web.UI.AttributeCollection coll = this.Attributes;
-            String myID = this.ID;
-
-            switch (myID)
+            // Select which Draw() method to use
+            switch (this.ID)
             {
-                case "top":
-                    this.DrawTop(output);
+                case "DTMTop":
+                    this.DrawTopTag(writer);
                     break;
-                case "middle":
-                    this.DrawMiddle(output);
+                case "DTMDirectCall":
+                    this.DrawDirectCallTag(writer);
                     break;
-                case "bottom":
-                    this.DrawBottom(output);
+                case "DTMBottom":
+                    this.DrawBottomTag(writer);
                     break;
                 default:
                     break;
             }
 
-        }
-
-        /// <summary>Draw the analytics metadata to be used in the document head.</summary>
-        /// <param name="writer">Text writer object used to output HTML tags</param>
-        public void DrawTop(HtmlTextWriter writer)
-        {
-            String id = "script-on-top";
-
-            // Draw meta tag ID, suites, channel attributes
-            writer.AddAttribute(HtmlTextWriterAttribute.Id, id);
-
-            // Draw the <script> tag 
-            writer.RenderBeginTag(HtmlTextWriterTag.Script);
+            // Draw the closing tag 
             writer.RenderEndTag();
         }
 
-        /// <summary>Draw the analytics metadata to be used in the document head.</summary>
+        /// <summary>Draw the analytics script tag with source for the head.</summary>
         /// <param name="writer">Text writer object used to output HTML tags</param>
-        public void DrawMiddle(HtmlTextWriter writer)
+        public void DrawTopTag(HtmlTextWriter writer)
         {
-            String id = "script-in-mid";
-
-            // Draw meta tag ID, suites, channel attributes
-            writer.AddAttribute(HtmlTextWriterAttribute.Id, id);
-
-            // Draw the <script> tag 
+            writer.AddAttribute(HtmlTextWriterAttribute.Src, DTMSrc);
             writer.RenderBeginTag(HtmlTextWriterTag.Script);
-            writer.RenderEndTag();
         }
 
-        /// <summary>Draw the analytics metadata to be used in the document head.</summary>
+        /// <summary>Draw the analytics Javascript for the page bottom.</summary>
         /// <param name="writer">Text writer object used to output HTML tags</param>
-        public void DrawBottom(HtmlTextWriter writer)
+        public void DrawBottomTag(HtmlTextWriter writer)
         {
-            String id = "script-on-bottom";
-
-            // Draw meta tag ID, suites, channel attributes
-            writer.AddAttribute(HtmlTextWriterAttribute.Id, id);
-
-            // Draw the <script> tag 
+            writer.AddAttribute(HtmlTextWriterAttribute.Type, SCRIPT_TYPE);
             writer.RenderBeginTag(HtmlTextWriterTag.Script);
-            writer.RenderEndTag();
+            writer.Write(DTM_BOTTOM);
+        }
+
+        /// <summary>Draw a DTM direct call tag.</summary>
+        /// <param name="writer">Text writer object used to output HTML tags</param>
+        public void DrawDirectCallTag(HtmlTextWriter writer)
+        {
+            // Placeholder method if we need it later
         }
     }
 }
