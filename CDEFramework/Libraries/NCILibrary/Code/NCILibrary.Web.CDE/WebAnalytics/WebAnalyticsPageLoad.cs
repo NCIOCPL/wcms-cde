@@ -37,6 +37,8 @@ namespace NCI.Web.CDE.WebAnalytics
         private string language = "";
         private IPageAssemblyInstruction pgInstruction = PageAssemblyContext.Current.PageAssemblyInstruction;
 
+        public String WaMetaName = "entity";
+        public String WaMetaCont = "NCIAnalytics";
         public String WaDataID = ConfigurationManager.AppSettings["WADataElementID"].ToString();
         public String DTMUrl = ConfigurationManager.AppSettings["DTMUrl"].ToString();
         public String DTMBottom = "_satellite.pageBottom();";
@@ -83,6 +85,16 @@ namespace NCI.Web.CDE.WebAnalytics
             string concatEvents = string.Empty;
             string propValue = string.Empty;
             string eVarValue = string.Empty;
+
+            // Set a meta tag with name="entity" and content="NCIAnalytics".
+            // This is the closest valid <meta> name we have for our purposes. 
+            // Per https://wiki.whatwg.org/wiki/MetaExtensions:
+            // Allows for definitions of XML-style entities for substitution of references 
+            // (defined as specially-named elements (e.g., use of data element and/or data-* attribute) or script tags)
+            // via inclusion of a JavaScript library. Library also supports inclusion of additional meta element entity 
+            // definitions via iframe documents.
+            writer.AddAttribute(HtmlTextWriterAttribute.Name, WaMetaName);
+            writer.AddAttribute(HtmlTextWriterAttribute.Content, WaMetaCont);
 
             // Draw meta tag ID, suites, channel attributes
             writer.AddAttribute(HtmlTextWriterAttribute.Id, WaDataID);
