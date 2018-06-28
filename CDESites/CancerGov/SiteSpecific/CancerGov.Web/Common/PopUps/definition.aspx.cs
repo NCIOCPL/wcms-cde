@@ -1,22 +1,25 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using System.Configuration;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using NCI.Util;
 using System.Collections;
-using NCI.Web.CDE;
+using System.Configuration;
 using System.Data.SqlClient;
-using System.Text.RegularExpressions;
 using System.Data;
 using System.Globalization;
-using CancerGov.UI.HTML;
-using CancerGov.CDR.TermDictionary;
-using CancerGov.UI;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.Web.UI.WebControls;
+using System.Web.UI;
+using System.Web;
+
+using NCI.Util;
+using NCI.Web.CDE.UI.WebControls;
 using NCI.Web.CDE.WebAnalytics;
+using NCI.Web.CDE;
+using CancerGov.CDR.TermDictionary;
+using CancerGov.UI.HTML;
+using CancerGov.UI;
+
 namespace CancerGov.Web.Common.PopUps
 {
     public partial class Definition :PopUpPage
@@ -248,9 +251,9 @@ namespace CancerGov.Web.Common.PopUps
                 webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             }
 
-            litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMUrl + "\"></script>";
+            litDtmTop.Text = "<script src=\"" + AdobeDTMControl.DTMUrl + "\"></script>";
             litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
-            litDtmBottom.Text = "<script>" + webAnalyticsPageLoad.DTMBottom + "</script>";
+            litDtmBottom.Text = "<script>" + AdobeDTMControl.DTMBottom + "</script>";
         }
 
         protected void Page_Init(object sender, EventArgs e)

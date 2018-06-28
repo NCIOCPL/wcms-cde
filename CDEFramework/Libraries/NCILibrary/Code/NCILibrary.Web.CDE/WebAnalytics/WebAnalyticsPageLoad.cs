@@ -40,8 +40,6 @@ namespace NCI.Web.CDE.WebAnalytics
         public String WaMetaName = "entity";
         public String WaMetaCont = "NCIAnalytics";
         public String WaDataID = ConfigurationManager.AppSettings["WADataElementID"].ToString();
-        public String DTMUrl = ConfigurationManager.AppSettings["DTMUrl"].ToString();
-        public String DTMBottom = "_satellite.pageBottom();";
 
         /// <summary>the constructor builds base Omniture page load code.   
         /// Also sets the default custom variables (props), custom conversion variables (eVars), and events. .</summary>

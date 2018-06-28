@@ -7,6 +7,7 @@ using Common.Logging;
 using NCI.Util;
 using NCI.Web.CDE;
 using NCI.Web.CDE.WebAnalytics;
+using NCI.Web.CDE.UI.WebControls;
 using NCI.Web.Dictionary;
 using NCI.Web.Dictionary.BusinessObjects;
 
@@ -261,9 +262,9 @@ namespace TCGA.Web.Common.PopUps
             webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
-            litDtmTop.Text = "<script src=\"" + webAnalyticsPageLoad.DTMUrl + "\"></script>";
+            litDtmTop.Text = "<script src=\"" + AdobeDTMControl.DTMUrl + "\"></script>";
             litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
-            litDtmBottom.Text = "<script>" + webAnalyticsPageLoad.DTMBottom + "</script>";
+            litDtmBottom.Text = "<script>" + AdobeDTMControl.DTMBottom + "</script>";
         }
 
         #region Web Form Designer generated code
