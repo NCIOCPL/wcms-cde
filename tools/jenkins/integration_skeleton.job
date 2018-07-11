@@ -44,7 +44,7 @@ job("Integration build for $BRANCH on $ENVIRONMENT") {
         name('origin')
         url("https://github.com/$sourceRepository")
       }
-      branch("*/$TARGET_BRANCH")
+      branch("*/$BRANCH")
       extensions {
         submoduleOptions {
           recursive(true)

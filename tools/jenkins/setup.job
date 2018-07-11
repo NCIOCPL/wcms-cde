@@ -4,13 +4,13 @@
     belong in this file.
 */
 
-def FOLDER_NAME  = 'wcms-cde'    // Jenkins folder where the jbos will be placed.
+def FOLDER_NAME  = 'wcms-cde'         // Jenkins folder where the jbos will be placed.
 
-def GH_REPO_NAME = 'wcms-cde'     // The project's repository name (as used in the URL).
-def TARGET_BRANCH = 'master'            // Branch to run against.
-def GH_ORGANIZATION_NAME = 'NCIOCPL'   // GitHub Organization name (as used in the URL/userid).
-def GH_USER_TOKEN_KEY = 'NCIOCPL-GitHub-Token'  // Jenkins ID of the credential string containing the GitHub access token for creating releases.
-def NEXUS_USER_KEY = 'NCIOCPL-Nexus-Credentials' // Jenkins ID of the credentials object containing the nexus repository userid and password.
+def GH_REPO_NAME = 'wcms-cde'         // The project's repository name (as used in the URL).
+def TARGET_BRANCH = 'master'          // Branch to load seed jobs from. (This should almost always be "master.")
+def GH_ORGANIZATION_NAME = 'NCIOCPL'  // GitHub Organization name (as used in the URL/userid).
+def GH_USER_TOKEN_KEY = 'NCIOCPL-GitHub-Token'    // Jenkins ID of the credential string containing the GitHub access token for creating releases.
+def NEXUS_USER_KEY = 'NCIOCPL-Nexus-Credentials'  // Jenkins ID of the credentials object containing the nexus repository userid and password.
 def CONFIG_SUBSTITUTIONS = 'WCMS-cde-config-substitutions-file' // Jenkins ID of the credentials object containing the CDE configuration substitution values.
 
 def sourceRepository = "$GH_ORGANIZATION_NAME/$GH_REPO_NAME"
@@ -33,7 +33,6 @@ job("${FOLDER_PATH}/Create build job for a branch") {
         // Values common to the various scripts that we don't want to maintain in more than one place.
         FOLDER_NAME : FOLDER_NAME,
         GH_REPO_NAME : GH_REPO_NAME,
-        TARGET_BRANCH : TARGET_BRANCH,
         GH_ORGANIZATION_NAME : GH_ORGANIZATION_NAME,
         GH_USER_TOKEN_KEY : GH_USER_TOKEN_KEY,
         NEXUS_USER_KEY : NEXUS_USER_KEY,
