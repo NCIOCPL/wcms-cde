@@ -17,14 +17,8 @@ def sourceRepository = "$GH_ORGANIZATION_NAME/$GH_REPO_NAME"
 def toolsRepository = "$GH_ORGANIZATION_NAME/cancergov-build-tools"  // Where do we find the build tools.
 def toolsBranch = "cde"
 
-// Calculate the current folder path so the seed job is able to create jobs in the
-// current folder without the user remembering to set the context manually.
-// (Nested seed jobs - e.g. Create build job - do so by calling lookupStrategy.)
-def NAME_LENGTH = JOB_BASE_NAME.length()
-def FOLDER_PATH = JOB_NAME[0..((JOB_NAME.length() - NAME_LENGTH) - 2)]
 
-
-job("${FOLDER_PATH}/Create build job for a branch") {
+job("Create build job for a branch") {
   description("Creates the jobs that build individual branches.\n\nTo modify this job, see the contents of setup.job and create-branch-skeleton.job.")
 
   wrappers {
