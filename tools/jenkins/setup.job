@@ -30,14 +30,14 @@ job("Create build job for a branch") {
         GH_ORGANIZATION_NAME : GH_ORGANIZATION_NAME,
         GH_USER_TOKEN_KEY : GH_USER_TOKEN_KEY,
         NEXUS_USER_KEY : NEXUS_USER_KEY,
-        CONFIG_SUBSTITUTIONS : CONFIG_SUBSTITUTIONS
+        CONFIG_SUBSTITUTIONS : CONFIG_SUBSTITUTIONS,
+        ENVIRONMENT : 'blue'
       )
     }
   }
 
   parameters {
     stringParam('BRANCH', '', 'New Branch\'s Name')
-    choiceParam('ENVIRONMENT', ['pink', 'blue', 'red'], 'WCMS build environment.\n\nBlue - Dev\nRed - Hotfixes\nPink - Special projects')
   }
 
   scm {
