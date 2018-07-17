@@ -264,9 +264,9 @@ namespace TCGA.Web.Common.PopUps
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
             MetaSubject.Attributes.Add("content", "Dictionary of Cancer Terms");
-            DTMTop.Text = adobeDtmControl.GetDtmTag("DTMTop"); // DTM JS tag
+            DTMTop.Text = adobeDtmControl.GetDtmTag(DTMTop.ID); // DTM JS tag
             WebAnalytics.Text = webAnalyticsPageLoad.GetAnalyticsDataTag();  // Analytics meta tag
-            DTMBottom.Text = adobeDtmControl.GetDtmTag("DTMBottom"); // DTM pagebottom tag
+            DTMBottom.Text = adobeDtmControl.GetDtmTag(DTMBottom.ID); // DTM pagebottom tag
         }
 
         #region Web Form Designer generated code
