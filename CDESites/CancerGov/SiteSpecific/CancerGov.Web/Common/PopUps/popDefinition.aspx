@@ -5,7 +5,6 @@
 <html>
    <head id="header" runat="server">
       <title>Dictionary of Cancer Terms</title>
-      <link rel="stylesheet" href="/PublishedContent/Styles/nvcg.css" type="text/css" />
       <meta content="text/html;charset=ISO-8859-1" http-equiv="content-type" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta name="robots" content="noindex, nofollow" />
@@ -13,14 +12,12 @@
       <meta ID="MetaSubject" name="dcterms.subject" runat="server"/>
       <asp:Literal ID="DTMTop" Mode="PassThrough" runat="server" />
       <asp:Literal ID="WebAnalytics" Mode="PassThrough" runat="server" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+      <link href="/PublishedContent/Styles/nvcg.css" rel="stylesheet" type="text/css">
       <script src="/PublishedContent/js/Common.js" type="text/javascript"></script>
       <script src="/PublishedContent/js/Popups.js" type="text/javascript"></script>
-      <script type="text/javascript">
-          $(window).load(function () {
-              $(window).resize();
-          });
-      </script>
+
    </head>
    
    <body>
