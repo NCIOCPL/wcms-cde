@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/PublishedContent/Styles/tcga.css" type="text/css" />
     <meta content="text/html;charset=ISO-8859-1" http-equiv="content-type" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="dcterms.coverage" content="ncicssi-strategicscientificinitiatives,ncienterprise" />
     <meta ID="MetaSubject" name="dcterms.subject" runat="server"/>
     <asp:Literal ID="DTMTop" Mode="PassThrough" runat="server" />
     <asp:Literal ID="WebAnalytics" Mode="PassThrough" runat="server" />

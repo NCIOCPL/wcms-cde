@@ -5,6 +5,7 @@
    <head id="header" runat="server">
       <asp:Literal ID="DTMTop" Mode="PassThrough" runat="server" />
       <asp:Literal ID="WebAnalytics" Mode="PassThrough" runat="server" />
+      <meta name="dcterms.coverage" content="nciglobal,ncienterprise" />
       <meta ID="MetaSubject" name="dcterms.subject" runat="server"/>
       <script type="text/javascript" src="/PublishedContent/js/popEvents.js"></script>
       <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" language="JavaScript"></script>
