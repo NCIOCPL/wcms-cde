@@ -9,7 +9,7 @@
 <asp:Repeater ID="termDictionaryDefinitionView" runat="server" OnItemDataBound="termDictionaryDefinitionView_OnItemDataBound">
 <ItemTemplate> 
         <!-- Term and def -->
-        <div class="results" data-dict-type="term">
+        <div class="results" data-dict-type="term" data-events="event11">
             <dl class="dictionary-list">
                 <dt>
                     <dfn data-cdr-id="<%# ((DictionaryTerm)(Container.DataItem)).ID%>">

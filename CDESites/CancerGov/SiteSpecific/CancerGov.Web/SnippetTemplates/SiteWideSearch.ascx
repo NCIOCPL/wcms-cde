@@ -26,7 +26,7 @@
         <!-- Best Bets Here --> 
         <asp:Repeater ID="rptBestBets" EnableViewState="false" runat="server">
             <ItemTemplate>
-                <div class="featured sitewide-results">
+                <div class="featured sitewide-results" data-events="event10">
                  <h2>
                         <asp:Label
                             ID="lblBBCatName" 
