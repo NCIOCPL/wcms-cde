@@ -44,7 +44,6 @@ namespace NCI.Web.CDE.WebAnalytics
         private string WaSCode = ConfigurationManager.AppSettings["SCode"].ToString();
         private string WaFunctions = ConfigurationManager.AppSettings["NCIAnalyticsFunctions"].ToString();
         public String WaMetaName = "entity";
-        public String WaMetaCont = "NCIAnalytics";
 
         /// <summary>When true, page-wide link tracking is enabled.</summary>
         public bool DoPageWideLinkTracking
