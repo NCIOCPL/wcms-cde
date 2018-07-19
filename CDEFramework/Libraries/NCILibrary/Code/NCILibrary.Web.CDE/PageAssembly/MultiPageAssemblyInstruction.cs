@@ -906,8 +906,8 @@ namespace NCI.Web.CDE
                 PrettyUrl = _pages._Pages[pageIndex].PrettyUrl;
                 url.SetUrl(PrettyUrl);
             });
-			
-			AddUrlFilter("fontResize", (name, url) =>
+
+            AddUrlFilter("fontResize", (name, url) =>
             {
                 url.SetUrl(GetUrl("CurrentURL").ToString());
                 url.UriStem += "#";
@@ -1090,6 +1090,16 @@ namespace NCI.Web.CDE
         {
             base.RegisterWebAnalyticsFieldFilters();
 
+            SetWebAnalytics(WebAnalyticsOptions.Props.prop6.ToString(), wbField =>
+            {
+                wbField.Value = this.GetField("short_title");
+            });
+
+            SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
+            {
+                wbField.Value = String.Format("{0:MM/dd/yyyy}", this.ContentDates.FirstPublished);
+            });
+
             if (PageAssemblyContext.CurrentDisplayVersion == DisplayVersions.ViewAll)
             {
                 SetWebAnalytics(WebAnalyticsOptions.Events.event8, wbField =>
@@ -1102,5 +1112,4 @@ namespace NCI.Web.CDE
         #endregion
     }
 }
-
 
