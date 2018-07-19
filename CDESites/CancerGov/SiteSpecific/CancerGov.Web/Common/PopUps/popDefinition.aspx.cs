@@ -286,24 +286,21 @@ namespace Www.Common.PopUps
         {
             string popupSuites = "nciglobal,ncienterprise";
             WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-            AdobeDTMControl adobeDtmControl = new AdobeDTMControl();
-
             webAnalyticsPageLoad.SetReportSuites(popupSuites);
             webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
 
-            // Dynamically add meta tag
             if (dictionaryLanguage == "es")
             {
-                MetaSubject.Attributes.Add("content", "Diccionario de cancer (Dictionary of Cancer Terms)");
+                webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
             }
             else
             {
-                MetaSubject.Attributes.Add("content", "Dictionary of Cancer Terms");
+                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
             }
 
-            DTMTop.Text = adobeDtmControl.GetDtmTag(DTMTop.ID); // DTM JS tag
-            WebAnalytics.Text = webAnalyticsPageLoad.GetAnalyticsDataTag();  // Analytics meta tag
-            DTMBottom.Text = adobeDtmControl.GetDtmTag(DTMBottom.ID); // DTM pagebottom tag
+            litDtmTop.Text = "<script src=\"" + AdobeDTMControl.DTMUrl + "\"></script>";
+            litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
+            litDtmBottom.Text = "<script>" + AdobeDTMControl.DTMBottom + "</script>";
         }
 
         #region Web Form Designer generated code
