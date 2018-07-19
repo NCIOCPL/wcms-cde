@@ -637,7 +637,7 @@ namespace NCI.Web.CDE
                    this.PageMetadata.BrowserTitle != "")
                     data.Value = this.PageMetadata.BrowserTitle;
                 else
-                    data.Value = GetField("short_title");
+                    data.Value = GetField("short_title"); 
 
             });
 
@@ -849,7 +849,7 @@ namespace NCI.Web.CDE
 
         #region Protected
 
-
+        
         /// <summary>
         /// Get the section details for the content item, load custom analytics, 
         /// then add the values to the webAnalyticsFieldFilterDelegates dictionary

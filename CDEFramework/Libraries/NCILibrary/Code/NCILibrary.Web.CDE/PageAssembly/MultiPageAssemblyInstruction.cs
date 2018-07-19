@@ -906,8 +906,8 @@ namespace NCI.Web.CDE
                 PrettyUrl = _pages._Pages[pageIndex].PrettyUrl;
                 url.SetUrl(PrettyUrl);
             });
-
-            AddUrlFilter("fontResize", (name, url) =>
+			
+			AddUrlFilter("fontResize", (name, url) =>
             {
                 url.SetUrl(GetUrl("CurrentURL").ToString());
                 url.UriStem += "#";
