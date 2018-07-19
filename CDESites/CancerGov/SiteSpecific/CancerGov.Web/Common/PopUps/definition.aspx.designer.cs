@@ -22,30 +22,12 @@ namespace CancerGov.Web.Common.PopUps {
         protected global::System.Web.UI.HtmlControls.HtmlHead header;
         
         /// <summary>
-        /// litDtmTop control.
+        /// litOmniturePageLoad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDtmTop;
-        
-        /// <summary>
-        /// litWaMeta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litWaMeta;
-        
-        /// <summary>
-        /// litDtmBottom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDtmBottom;
+        protected global::System.Web.UI.WebControls.Literal litOmniturePageLoad;
     }
 }

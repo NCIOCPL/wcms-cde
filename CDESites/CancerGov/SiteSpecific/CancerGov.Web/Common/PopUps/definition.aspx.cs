@@ -1,25 +1,22 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
-using System.Collections;
+using System.Linq;
 using System.Configuration;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using NCI.Util;
+using System.Collections;
+using NCI.Web.CDE;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Text;
-using System.Web.UI.WebControls;
-using System.Web.UI;
-using System.Web;
-
-using NCI.Util;
-using NCI.Web.CDE.UI.WebControls;
-using NCI.Web.CDE.WebAnalytics;
-using NCI.Web.CDE;
-using CancerGov.CDR.TermDictionary;
 using CancerGov.UI.HTML;
+using CancerGov.CDR.TermDictionary;
 using CancerGov.UI;
-
+using NCI.Web.CDE.WebAnalytics;
 namespace CancerGov.Web.Common.PopUps
 {
     public partial class Definition :PopUpPage
@@ -29,7 +26,6 @@ namespace CancerGov.Web.Common.PopUps
         protected string strSendPrinter = "Send to Printer";
         //protected string strHeading = "<h3 class='popup-definition'>Definition from NCI's Dictionary of Cancer Terms</h3>";
         protected string strHeading = "<div class=\"heading\">Definition:</div>";
-        public DisplayLanguage dl = new DisplayLanguage();
 
         #region Page properties
 
@@ -65,6 +61,7 @@ namespace CancerGov.Web.Common.PopUps
             string pronunciation;
             string termDefinition;
 
+            DisplayLanguage dl=new DisplayLanguage();
 
             if (Request.QueryString["language"] == "English")
                 dl = DisplayLanguage.English;
@@ -166,8 +163,24 @@ namespace CancerGov.Web.Common.PopUps
                 + String.Format("<div class=\"definitionImage\">{0}</div>", mediaHtml)
                 );
 
-            // Set analytics 
-            this.DrawAnalyticsTags();
+           // Web Analytics *************************************************
+           WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+
+           if (dl == DisplayLanguage.Spanish)
+           {
+               webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
+               webAnalyticsPageLoad.SetLanguage("es");
+           }
+           else
+           {
+               webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
+               webAnalyticsPageLoad.SetLanguage("en");
+           }
+           webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+           litOmniturePageLoad.Text = webAnalyticsPageLoad.Tag();  // Load page load script 
+           // End Web Analytics *********************************************
+
+
         }
 
         private void ValidateParams()
@@ -230,30 +243,6 @@ namespace CancerGov.Web.Common.PopUps
             ArrayList returnvalue = new ArrayList(3);
             returnvalue = CancerGov.CDR.TermDictionary.TermDictionaryManager.GetDefinition(type, param, pdqVersion, lng);
             return returnvalue;
-        }
-
-        /// <summary>
-        /// Set web analytics values and draw the required meta and script tags.
-        /// </summary>
-        private void DrawAnalyticsTags()
-        {
-            string popupSuites = "nciglobal,ncienterprise";
-            WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-            webAnalyticsPageLoad.SetReportSuites(popupSuites);
-            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-
-            if (dl == DisplayLanguage.Spanish)
-            {
-                webAnalyticsPageLoad.SetChannel("Diccionario de cancer (Dictionary of Cancer Terms)");
-            }
-            else
-            {
-                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
-            }
-
-            litDtmTop.Text = "<script src=\"" + AdobeDTMControl.DTMUrl + "\"></script>";
-            litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
-            litDtmBottom.Text = "<script>" + AdobeDTMControl.DTMBottom + "</script>";
         }
 
         protected void Page_Init(object sender, EventArgs e)

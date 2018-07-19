@@ -22,24 +22,6 @@ namespace TCGA.Web.Common.PopUps {
         protected global::System.Web.UI.HtmlControls.HtmlHead header;
         
         /// <summary>
-        /// litDtmTop control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDtmTop;
-        
-        /// <summary>
-        /// litWaMeta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litWaMeta;
-        
-        /// <summary>
         /// closeWindowText control.
         /// </summary>
         /// <remarks>
@@ -85,12 +67,12 @@ namespace TCGA.Web.Common.PopUps {
         protected global::System.Web.UI.WebControls.PlaceHolder phNoResult;
         
         /// <summary>
-        /// litDtmBottom control.
+        /// litOmniturePageLoad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDtmBottom;
+        protected global::System.Web.UI.WebControls.Literal litOmniturePageLoad;
     }
 }

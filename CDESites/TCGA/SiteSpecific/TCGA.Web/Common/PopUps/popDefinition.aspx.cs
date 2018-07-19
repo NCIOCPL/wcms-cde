@@ -7,7 +7,6 @@ using Common.Logging;
 using NCI.Util;
 using NCI.Web.CDE;
 using NCI.Web.CDE.WebAnalytics;
-using NCI.Web.CDE.UI.WebControls;
 using NCI.Web.Dictionary;
 using NCI.Web.Dictionary.BusinessObjects;
 
@@ -75,9 +74,18 @@ namespace TCGA.Web.Common.PopUps
                     phNoResult.Visible = true;
                 }
 
-                // Set analytics 
-                this.DrawAnalyticsTags();
+                // Web Analytics *************************************************
+                WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
+                                
+                webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
+                webAnalyticsPageLoad.SetLanguage("en");
+                
+                webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
+                litOmniturePageLoad.Text = webAnalyticsPageLoad.Tag();  // Load page load script 
+                // End Web Analytics *********************************************
+
             }
+
 
         }
 
@@ -249,22 +257,6 @@ namespace TCGA.Web.Common.PopUps
             dictionary = Strings.Clean(dictionary, "Unknown");
 
             return ConvertEnum<DictionaryType>.Convert(dictionary, DictionaryType.Unknown);
-        }
-
-        /// <summary>
-        /// Set web analytics values and draw the required meta and script tags.
-        /// </summary>
-        private void DrawAnalyticsTags()
-        {
-            string popupSuites = "ncicssi-strategicscientificinitiatives,ncienterprise";
-            WebAnalyticsPageLoad webAnalyticsPageLoad = new WebAnalyticsPageLoad();
-            webAnalyticsPageLoad.SetReportSuites(popupSuites);
-            webAnalyticsPageLoad.SetChannel("Dictionary of Cancer Terms");
-            webAnalyticsPageLoad.AddEvent(WebAnalyticsOptions.Events.event11); // Dictionary Term view (event11)
-
-            litDtmTop.Text = "<script src=\"" + AdobeDTMControl.DTMUrl + "\"></script>";
-            litWaMeta.Text = webAnalyticsPageLoad.GetHeadTags();  // Load page load script 
-            litDtmBottom.Text = "<script>" + AdobeDTMControl.DTMBottom + "</script>";
         }
 
         #region Web Form Designer generated code

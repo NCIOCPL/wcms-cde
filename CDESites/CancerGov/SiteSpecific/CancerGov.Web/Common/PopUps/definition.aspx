@@ -3,8 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <html>
 <head id="header" runat="server">
-    <asp:Literal ID="litDtmTop" Mode="PassThrough" runat="server" />
-    <asp:Literal ID="litWaMeta" Mode="PassThrough" runat="server" />
+    
     <script src="/PublishedContent/js/modernizr.custom.2.7.1.js" type="text/javascript"></script>
     <script src="/PublishedContent/js/popEvents.js" type="text/javascript"></script>
     <script type="text/javascript" language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -47,6 +46,6 @@
             <%=strHeading%>
             <%=this.Content.Render()%>
     </div>
-    <asp:Literal ID="litDtmBottom" Mode="PassThrough" runat="server" />
+    <asp:Literal ID="litOmniturePageLoad" Mode="PassThrough" runat="server" />
 </body>
 </html>
