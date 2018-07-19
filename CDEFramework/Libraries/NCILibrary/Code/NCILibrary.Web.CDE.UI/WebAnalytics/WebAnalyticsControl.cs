@@ -93,6 +93,7 @@ namespace NCI.Web.CDE.UI.WebControls
                         webAnalyticsPageLoad.DrawAnalyticsDataTag(output);
                         break;
                     case "WebAnalyticsLegacy":
+                    case "WebAnalyticsControl1":
                         // Legacy method - do not use
                         // If you're using this after 2018, I'm going to throw something at you
                         output.Write(webAnalyticsPageLoad.Tag());
