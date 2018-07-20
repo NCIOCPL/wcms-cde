@@ -119,18 +119,6 @@ namespace NCI.Web.CDE.WebAnalytics
             writer.RenderEndTag();
         }
 
-        /// <summary>Draw noscript tag</noscript></summary>
-        private StringBuilder NoScriptTag()
-        {
-            StringBuilder noScriptTag = new StringBuilder();
-            noScriptTag.AppendLine("<noscript>");
-            noScriptTag.AppendLine("<a href='http://www.omniture.com' title='Web Analytics'>");
-            noScriptTag.AppendLine("<img src='http://metrics.cancer.gov/b/ss/nciglobal/1/H.20.3–NS/0' height='1' width='1' border='0' alt='' />");
-            noScriptTag.AppendLine("</a>");
-            noScriptTag.AppendLine("</noscript>");
-            return noScriptTag;
-        }
-
         /// <summary>Legacy constructor logic - only for use in Tag() method. 
         [Obsolete("This is the legacy method for drawing analytics JavaScript into the page HTML.")]
         public void BuildLegacyTags()
@@ -179,6 +167,20 @@ namespace NCI.Web.CDE.WebAnalytics
             linkTrackerPageLoadCode.AppendLine("// End Page-wide click tracking");
 
             return linkTrackerPageLoadCode;
+        }
+
+        /// <summary>Draw noscript tag</noscript></summary>
+        private StringBuilder NoScriptTag()
+        {
+            StringBuilder noScriptTag = new StringBuilder();
+
+            noScriptTag.AppendLine("<noscript>");
+            noScriptTag.AppendLine("<a href='http://www.omniture.com' title='Web Analytics'>");
+            noScriptTag.AppendLine("<img src='http://metrics.cancer.gov/b/ss/nciglobal/1/H.20.3–NS/0' height='1' width='1' border='0' alt='' />");
+            noScriptTag.AppendLine("</a>");
+            noScriptTag.AppendLine("</noscript>");
+
+            return noScriptTag;
         }
 
         /// <summary>When DoWebAnalytics is true, this method renders the Omniture page load JavaScript code.</summary>

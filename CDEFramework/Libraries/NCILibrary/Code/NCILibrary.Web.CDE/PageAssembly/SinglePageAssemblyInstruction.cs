@@ -864,9 +864,23 @@ namespace NCI.Web.CDE
 
                 string channels = sectiondetail.GetWAChannels();
                 string suites = sectiondetail.GetWASuites();
+                string group = sectiondetail.GetWAContentGroups();
                 string[] events = sectiondetail.GetWAEvents().ToArray();
                 WebAnalyticsCustomVariableOrEvent[] props = sectiondetail.GetWAProps().ToArray();
                 WebAnalyticsCustomVariableOrEvent[] evars = sectiondetail.GetWAEvars().ToArray();
+
+                // If Content Group has a value, add to prop44 and eVar44
+                if (!String.IsNullOrEmpty(group))
+                {
+                    SetWebAnalytics(WebAnalyticsOptions.Props.prop44.ToString(), wbField =>
+                    {
+                        wbField.Value = group;
+                    });
+                    SetWebAnalytics(WebAnalyticsOptions.eVars.evar44.ToString(), wbField =>
+                    {
+                        wbField.Value = group;
+                    });
+                }
 
                 // Register custom events entered on navon
                 foreach (string evn in events)
@@ -924,6 +938,19 @@ namespace NCI.Web.CDE
         protected override void RegisterWebAnalyticsFieldFilters()
         {
             base.RegisterWebAnalyticsFieldFilters();
+
+            // Add short title
+            SetWebAnalytics(WebAnalyticsOptions.Props.prop6.ToString(), wbField =>
+            {
+                wbField.Value = GetField("short_title");
+            });
+
+            // Add posted date
+            SetWebAnalytics(WebAnalyticsOptions.Props.prop25.ToString(), wbField =>
+            {
+                wbField.Value = String.Format("{0:MM/dd/yyyy}", this.ContentDates.FirstPublished);
+            });
+
             RegisterCustomWebAnalytics();
         }
 
