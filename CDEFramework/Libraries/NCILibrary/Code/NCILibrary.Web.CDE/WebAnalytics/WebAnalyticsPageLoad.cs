@@ -88,7 +88,7 @@ namespace NCI.Web.CDE.WebAnalytics
             if (events.Count > 0)
             {
                 string eventVal = string.Join(",", events.ToArray<string>());
-                blob.Add("events", eventVal);
+                writer.AddAttribute("data-events", eventVal);
             }
 
             // if props are set, output them to the tag
@@ -96,7 +96,8 @@ namespace NCI.Web.CDE.WebAnalytics
             {
                 foreach (int k in props.Keys.OrderBy(k => k))
                 {
-                    blob.Add(("prop" + k.ToString()), props[k]);
+                    string propVal = CleanQuotedString(props[k]);
+                    writer.AddAttribute(("data-prop" + k.ToString()), propVal);
                 }
             }
 
@@ -105,12 +106,10 @@ namespace NCI.Web.CDE.WebAnalytics
             {
                 foreach (int k in evars.Keys.OrderBy(k => k))
                 {
-                    blob.Add(("eVar" + k.ToString()), evars[k]);
+                    string eVarVal = CleanQuotedString(evars[k]);
+                    writer.AddAttribute("data-evar" + k.ToString(), eVarVal);
                 }
             }
-
-            // Convert our blob to a string
-            content = CreateJsonString(blob);
 
             // Set a meta tag with name="entity" and content="NCIAnalytics".
             // This is the closest valid <meta> name we have for our purposes. 
@@ -123,7 +122,7 @@ namespace NCI.Web.CDE.WebAnalytics
             writer.AddAttribute(HtmlTextWriterAttribute.Content, content);
 
             // Draw the actual <meta> tag 
-            writer.RenderBeginTag(HtmlTextWriterTag.Meta);
+            writer.RenderBeginTag(HtmlTextWriterTag.Div);
             writer.RenderEndTag();
         }
 
@@ -490,20 +489,10 @@ namespace NCI.Web.CDE.WebAnalytics
         /// <summary>Trim quotes and spaces from string and replace with double quotes</summary>
         /// <param name="content">Meta content attribute</param>
         /// <returns>Clean string enclosed in double quotes</returns>
-        /// TODO: fix double quote encoding
         private String CleanQuotedString(string value)
         {
             char[] charsToTrim = { '\'', ' ', '"' };
-            return "\"" + value.Trim(charsToTrim) + "\"";
-        }
-
-        /// <summary>Given a collection of key/value pairs, build a semicolon-delimited string</summary>
-        /// <param name="blob"></param>
-        /// <returns>JSON-formatted string</returns>
-        private String CreateJsonString(Dictionary<String, String> blob)
-        {
-            string rtn = string.Join(",", blob.Select(x => CleanQuotedString(x.Key) + ":" + CleanQuotedString(x.Value)));
-            return "{" + rtn + "}";
+            return value.Trim(charsToTrim);
         }
 
         /// <summary>Clears all previously set props, eVars, events, channel, pageName, and pageType.</summary>
