@@ -23,6 +23,7 @@ namespace NCI.Web.CDE.WebAnalytics
         private const string WEB_ANALYTICS_COMMENT_START = "<!-- ***** NCI Web Analytics - DO NOT ALTER ***** -->";
         private const string WEB_ANALYTICS_COMMENT_END = "<!-- ***** End NCI Web Analytics ***** -->";
         private const bool TEST_MODE = false;  // When true, Omniture image request is not sent 
+        private const string WA_DATA_ELEMENT = "wa-data-element";
 
         private StringBuilder pageLoadPreTag = new StringBuilder();
         private StringBuilder pageLoadPostTag = new StringBuilder();
@@ -43,7 +44,6 @@ namespace NCI.Web.CDE.WebAnalytics
         private string WaPre = ConfigurationManager.AppSettings["WAWCMSPre"].ToString();
         private string WaSCode = ConfigurationManager.AppSettings["SCode"].ToString();
         private string WaFunctions = ConfigurationManager.AppSettings["NCIAnalyticsFunctions"].ToString();
-        public String WaMetaName = "entity";
 
         /// <summary>When true, page-wide link tracking is enabled.</summary>
         public bool DoPageWideLinkTracking
@@ -77,12 +77,15 @@ namespace NCI.Web.CDE.WebAnalytics
             return stringWriter.ToString();
         }
 
-        /// <summary>Draw the analytics metadata to be used in the document head.</summary>
+        /// <summary>
+        /// Draw the analytics data element that will be used to populate analytics values.
+        /// This is a div element that will be in the DOM but not visibile. 
+        /// </summary>
         /// <param name="writer">Text writer object used to output HTML tags</param>
         public void DrawAnalyticsDataTag(HtmlTextWriter writer)
         {
-            Dictionary<string, string> blob = new Dictionary<string, string>();
-            String content = String.Empty;
+            // Add class and attributes to the tag
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, WA_DATA_ELEMENT);
 
             // if events have been defined, output then to the tag
             if (events.Count > 0)
@@ -111,17 +114,7 @@ namespace NCI.Web.CDE.WebAnalytics
                 }
             }
 
-            // Set a meta tag with name="entity" and content="NCIAnalytics".
-            // This is the closest valid <meta> name we have for our purposes. 
-            // Per https://wiki.whatwg.org/wiki/MetaExtensions:
-            // Allows for definitions of XML-style entities for substitution of references 
-            // (defined as specially-named elements (e.g., use of data element and/or data-* attribute) or script tags)
-            // via inclusion of a JavaScript library. Library also supports inclusion of additional meta element entity 
-            // definitions via iframe documents.
-            writer.AddAttribute(HtmlTextWriterAttribute.Name, WaMetaName);
-            writer.AddAttribute(HtmlTextWriterAttribute.Content, content);
-
-            // Draw the actual <meta> tag 
+            // Draw the actual <div> tag 
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
             writer.RenderEndTag();
         }
