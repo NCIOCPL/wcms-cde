@@ -18,6 +18,7 @@
 
 	<!-- Main Area -->
 	<div class="results">
+	<div class="wa-data-element hide" data-events="event10"></div>
 		<!-- Main Content Area -->
 
         <cc1:JavascriptProbeControl ID="jsProbe" runat="server" />

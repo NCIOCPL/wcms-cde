@@ -446,7 +446,7 @@ namespace CancerGov.Dictionaries.SnippetControls.DrugDictionary
             string dictionaryAnalytics = string.Join("|", analyticsParams);
 
             // Set event
-            this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Events.event12, wbField =>
+            this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Events.event11, wbField =>
             {
                 wbField.Value = WebAnalyticsOptions.Events.event11.ToString();
             });
