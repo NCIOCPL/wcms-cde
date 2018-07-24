@@ -128,7 +128,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2
         }
 
         /// <summary>
-        /// Get a list of Trial Phase, Trial ID, Investigator, and Lead Organization values.
+        /// Get a list of Drug/Drug Family and Other Treatment values.
         /// </summary>
         /// <param name="searchParams"></param>
         /// <returns>A list of search parameter values</returns>
