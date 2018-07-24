@@ -479,6 +479,17 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             }
         }
 
+        /// <summary>
+        /// Gets additional, Results Page-specific analytics values.
+        /// </summary>
+        /// <param name="dict">Dictionary object</param>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
+        {
+            dict.Add("events", WebAnalyticsOptions.Events.event2.ToString()); // Set event2
+            return dict;
+        }
+
         #endregion
     }
 }

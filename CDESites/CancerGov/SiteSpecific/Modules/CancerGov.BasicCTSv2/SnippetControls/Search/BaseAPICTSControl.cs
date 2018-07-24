@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -133,6 +134,29 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// Virtual method to set additional, page-specific analytics values.
         /// </summary>
         protected virtual void AddAdditionalAnalytics() { }
+
+        /// <summary>
+        /// Get collection of analytics data values.
+        /// </summary>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        public Dictionary<String, String> GetAnalytics()
+        {
+            Dictionary<string, string> waDictionary = new Dictionary<string, string>();
+            waDictionary.Add(WebAnalyticsOptions.Props.prop62.ToString(), this.GetPageTypeForAnalytics());
+            waDictionary.Add(WebAnalyticsOptions.eVars.evar62.ToString(), this.GetPageTypeForAnalytics());
+            waDictionary = this.GetAdditionalAnalytics(waDictionary);
+            return waDictionary;
+        }
+
+        /// <summary>
+        /// Virtual method to get additional, page-specific analytics values.
+        /// </summary>
+        /// <param name="dict">Dictionary object</param>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        protected virtual Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
+        {
+            return dict;
+        }
 
         #endregion
     }
