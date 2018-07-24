@@ -78,6 +78,14 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
          /// </summary>
         protected override void OnEmptyResults() { }
 
+        protected override string GetDynamicParams()
+        {
+            string[] analyticsParams = new string[2];
+            analyticsParams[0] = "Manual Parameters";
+            analyticsParams[1] = this.TotalSearchResults.ToString();
+            return string.Join("|", analyticsParams);
+        }
+
         /// <summary>
         /// Set default pageLoad analytics for this page
         /// </summary>
@@ -86,10 +94,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string val = "clinicaltrials_custom";
             string desc = "Clinical Trials: Custom";
 
-            string[] analyticsParams = new string[2];
-            analyticsParams[0] = "Manual Parameters";
-            analyticsParams[1] = this.TotalSearchResults.ToString();
-            string manualAnalytics = string.Join("|", analyticsParams);
+            string manualAnalytics = GetDynamicParams();
 
             string resultsPerPage;
             if (this.TotalSearchResults < this.GetItemsPerPage())

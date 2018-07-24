@@ -578,6 +578,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         }
 
         #region analytics methods
+
         /// <summary>
         /// Get collection of analytics data values.
         /// </summary>
@@ -598,8 +599,14 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         {
             return dict;
         }
-        #endregion
-    }
 
+        /// <summary>
+        /// Get formatted list of search parameters depending on listing page type.
+        /// </summary>
+        protected abstract String GetDynamicParams();
+
+        #endregion
+
+    }
 
 }
