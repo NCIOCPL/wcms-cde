@@ -79,18 +79,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         protected override void OnEmptyResults() { }
 
         /// <summary>
-        /// Format string for analytics params: Manual Parameters|Total Results
-        /// </summary>
-        /// <returns></returns>
-        protected override string GetDynamicParams()
-        {
-            string[] analyticsParams = new string[2];
-            analyticsParams[0] = "Manual Parameters";
-            analyticsParams[1] = this.TotalSearchResults.ToString();
-            return string.Join("|", analyticsParams);
-        }
-
-        /// <summary>
         /// Set default pageLoad analytics for this page
         /// </summary>
         protected override void SetAnalytics()
@@ -98,7 +86,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string val = "clinicaltrials_custom";
             string desc = "Clinical Trials: Custom";
 
-            string manualAnalytics = GetDynamicParams();
+            string[] analyticsParams = new string[2];
+            analyticsParams[0] = "Manual Parameters";
+            analyticsParams[1] = this.TotalSearchResults.ToString();
+            string manualAnalytics = string.Join("|", analyticsParams);
 
             string resultsPerPage;
             if (this.TotalSearchResults < this.GetItemsPerPage())
@@ -152,8 +143,5 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 wbField.Value = desc;
             });
         }
-
-
-
     }
 }

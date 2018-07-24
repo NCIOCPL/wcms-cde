@@ -309,34 +309,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             });
         }
 
-        // Format string for analytics params: Intervention|Intervention IDs|Trial Type|Total Results
-        protected override String GetDynamicParams()
-        {
-            string[] analyticsParams = new string[4];
-            analyticsParams[0] = "Intervention";
-            analyticsParams[1] = (!string.IsNullOrWhiteSpace(this.InterventionIDs)) ? this.InterventionIDs : "none";
-            analyticsParams[2] = (!string.IsNullOrWhiteSpace(this.TrialType)) ? this.TrialType : "none";
-            analyticsParams[3] = this.TotalSearchResults.ToString();
-            return string.Join("|", analyticsParams);
-        }
-
-        /// <summary>
-        /// Get page results count as a string
-        /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        private String GetResultsPerPage(DynamicTrialListingPageInterventionControl control)
-        {
-            if (control.TotalSearchResults < control.GetItemsPerPage())
-            {
-                return control.TotalSearchResults.ToString();
-            }
-            else
-            {
-                return control.GetItemsPerPage().ToString();
-            }
-        }
-
         /// <summary>
         /// Set default pageLoad analytics for this page
         /// </summary>
@@ -345,9 +317,23 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string val = "clinicaltrials_custom";
             string desc = "Clinical Trials: Custom";
 
-            // Format strings for analytics params and results per page
-            string dynamicAnalytics = GetDynamicParams();
-            string resultsPerPage = GetResultsPerPage(this);
+            // Format string for analytics params: Intervention|Intervention IDs|Trial Type|Total Results
+            string[] analyticsParams = new string[4];
+            analyticsParams[0] = "Intervention";
+            analyticsParams[1] = (!string.IsNullOrWhiteSpace(this.InterventionIDs)) ? this.InterventionIDs : "none";
+            analyticsParams[2] = (!string.IsNullOrWhiteSpace(this.TrialType)) ? this.TrialType : "none";
+            analyticsParams[3] = this.TotalSearchResults.ToString();
+            string dynamicAnalytics = string.Join("|", analyticsParams);
+
+            string resultsPerPage;
+            if (this.TotalSearchResults < this.GetItemsPerPage())
+            {
+                resultsPerPage = this.TotalSearchResults.ToString();
+            }
+            else
+            {
+                resultsPerPage = this.GetItemsPerPage().ToString();
+            }
 
             // Set event
             this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Events.event2, wbField =>
@@ -391,8 +377,5 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 wbField.Value = desc;
             });
         }
-
-
-
     }
 }
