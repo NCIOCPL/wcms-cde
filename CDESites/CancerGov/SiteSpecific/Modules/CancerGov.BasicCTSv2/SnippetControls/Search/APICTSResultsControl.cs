@@ -481,14 +481,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 
         /// <summary>
         /// Gets additional, Results Page-specific analytics values.
+        /// Wherever possible, it's better to create analytics data selectors on the front end, but the params logic is already in place here.
         /// </summary>
         /// <param name="dict">Dictionary object</param>
         /// <returns>Dictionary (key/value string pairs)</returns>
         protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
         {
-            // Get total results count
-            string count = this._results.TotalResults.ToString();
-
             // Dynamic value the search type (e.g. basic or advanced)
             string searchType = GetSearchType(this.SearchParams).ToLower();
 
@@ -498,8 +496,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string locBlob = CTSWebAnalyticsHelper.GetAnalyticsLocation(this.SearchParams); // Location
 
             // Set common results data
-            dict.Add("events", WebAnalyticsOptions.Events.event2.ToString());
-            dict.Add(WebAnalyticsOptions.Props.prop10.ToString(), count);
             dict.Add(WebAnalyticsOptions.Props.prop11.ToString(), "clinicaltrials_" + searchType);
             dict.Add(WebAnalyticsOptions.eVars.evar11.ToString(), "clinicaltrials_" + searchType);
             dict.Add(WebAnalyticsOptions.Props.prop15.ToString(), paramBlob);
