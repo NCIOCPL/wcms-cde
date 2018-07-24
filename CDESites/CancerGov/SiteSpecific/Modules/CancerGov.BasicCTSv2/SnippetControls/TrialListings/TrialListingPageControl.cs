@@ -78,6 +78,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
          /// </summary>
         protected override void OnEmptyResults() { }
 
+        /// <summary>
+        /// Format string for analytics params: Manual Parameters|Total Results
+        /// </summary>
+        /// <returns></returns>
         protected override string GetDynamicParams()
         {
             string[] analyticsParams = new string[2];
@@ -148,5 +152,30 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 wbField.Value = desc;
             });
         }
+
+        /// <summary>
+        /// Gets additional, Listing Page-specific analytics values.
+        /// </summary>
+        /// <param name="dict">Dictionary object</param>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
+        {
+            string manualAnalytics = GetDynamicParams();
+            string resultsPerPage;
+            if (this.TotalSearchResults < this.GetItemsPerPage())
+            {
+                resultsPerPage = this.TotalSearchResults.ToString();
+            }
+            else
+            {
+                resultsPerPage = this.GetItemsPerPage().ToString();
+            }
+
+            dict.Add(WebAnalyticsOptions.eVars.evar10.ToString(), resultsPerPage);
+            dict.Add(WebAnalyticsOptions.Props.prop20.ToString(), manualAnalytics);
+            dict.Add(WebAnalyticsOptions.eVars.evar20.ToString(), manualAnalytics);
+            return dict;
+        }
+
     }
 }
