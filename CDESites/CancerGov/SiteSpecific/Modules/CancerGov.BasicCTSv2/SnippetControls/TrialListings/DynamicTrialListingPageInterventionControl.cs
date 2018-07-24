@@ -310,20 +310,26 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         }
 
         /// <summary>
+        /// Format string for analytics params: Intervention|Intervention IDs|Trial Type|Total Results
+        /// </summary>
+        protected override String GetDynamicParams()
+        {
+            string[] analyticsParams = new string[4];
+            analyticsParams[0] = "Intervention";
+            analyticsParams[1] = (!string.IsNullOrWhiteSpace(this.InterventionIDs)) ? this.InterventionIDs : "none";
+            analyticsParams[2] = (!string.IsNullOrWhiteSpace(this.TrialType)) ? this.TrialType : "none";
+            analyticsParams[3] = this.TotalSearchResults.ToString();
+            return string.Join("|", analyticsParams);
+        }
+
+        /// <summary>
         /// Set default pageLoad analytics for this page
         /// </summary>
         protected override void SetAnalytics()
         {
             string val = "clinicaltrials_custom";
             string desc = "Clinical Trials: Custom";
-
-            // Format string for analytics params: Intervention|Intervention IDs|Trial Type|Total Results
-            string[] analyticsParams = new string[4];
-            analyticsParams[0] = "Intervention";
-            analyticsParams[1] = (!string.IsNullOrWhiteSpace(this.InterventionIDs)) ? this.InterventionIDs : "none";
-            analyticsParams[2] = (!string.IsNullOrWhiteSpace(this.TrialType)) ? this.TrialType : "none";
-            analyticsParams[3] = this.TotalSearchResults.ToString();
-            string dynamicAnalytics = string.Join("|", analyticsParams);
+            string dynamicAnalytics = GetDynamicParams();
 
             string resultsPerPage;
             if (this.TotalSearchResults < this.GetItemsPerPage())
