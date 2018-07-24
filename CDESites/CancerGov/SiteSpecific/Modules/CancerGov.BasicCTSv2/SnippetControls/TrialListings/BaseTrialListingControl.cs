@@ -597,6 +597,8 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// <returns>Dictionary (key/value string pairs)</returns>
         protected virtual Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
         {
+            dict.Add(WebAnalyticsOptions.Props.prop20.ToString(), this.GetDynamicParams());
+            dict.Add(WebAnalyticsOptions.eVars.evar20.ToString(), this.GetDynamicParams());
             return dict;
         }
 

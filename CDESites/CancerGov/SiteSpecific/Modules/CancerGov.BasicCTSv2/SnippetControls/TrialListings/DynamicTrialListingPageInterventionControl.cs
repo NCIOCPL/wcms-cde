@@ -392,20 +392,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             });
         }
 
-        /// <summary>
-        /// Gets additional, Intervention-specific analytics values.
-        /// </summary>
-        /// <param name="dict">Dictionary object</param>
-        /// <returns>Dictionary (key/value string pairs)</returns>
-        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
-        {
-            string dynamicAnalytics = GetDynamicParams();
-            string resultsPerPage = GetResultsPerPage(this);
-            dict.Add(WebAnalyticsOptions.eVars.evar10.ToString(), resultsPerPage);
-            dict.Add(WebAnalyticsOptions.Props.prop20.ToString(), dynamicAnalytics);
-            dict.Add(WebAnalyticsOptions.eVars.evar20.ToString(), dynamicAnalytics);
-            return dict;
-        }
+
 
     }
 }
