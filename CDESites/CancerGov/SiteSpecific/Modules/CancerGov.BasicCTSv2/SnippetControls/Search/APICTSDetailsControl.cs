@@ -306,7 +306,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// <returns>Dictionary (key/value string pairs)</returns>
         protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
         {
-            dict.Add(WebAnalyticsOptions.Props.prop16.ToString(), _nctid); // Set event2
+            dict.Add(WebAnalyticsOptions.Props.prop16.ToString(), _nctid);
             return dict;
         }
 
