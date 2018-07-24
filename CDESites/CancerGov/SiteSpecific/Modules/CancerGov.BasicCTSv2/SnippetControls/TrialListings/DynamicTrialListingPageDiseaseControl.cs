@@ -379,6 +379,54 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         }
 
         /// <summary>
+        /// Format string for analytics params: Intervention|Disease IDs|Trial Type|Intervention IDs|Total Results
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        private String GetDynamicAnalytics(DynamicTrialListingPageDiseaseControl control)
+        {
+            string[] analyticsParams = new string[5];
+            analyticsParams[0] = "Disease";
+            analyticsParams[1] = (!string.IsNullOrWhiteSpace(control.DiseaseIDs)) ? control.DiseaseIDs : "none";
+            analyticsParams[2] = (!string.IsNullOrWhiteSpace(control.TrialType)) ? control.TrialType : "none";
+            analyticsParams[3] = (!string.IsNullOrWhiteSpace(control.InterventionIDs)) ? control.InterventionIDs : "none";
+            analyticsParams[4] = control.TotalSearchResults.ToString();
+            return string.Join("|", analyticsParams);
+        }
+
+        /// <summary>
+        /// Get page results count as a string
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        private String GetResultsPerPage(DynamicTrialListingPageDiseaseControl control)
+        {
+            if (control.TotalSearchResults < control.GetItemsPerPage())
+            {
+                return control.TotalSearchResults.ToString();
+            }
+            else
+            {
+                return control.GetItemsPerPage().ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets additional, Disease Listing Page-specific analytics values.
+        /// </summary>
+        /// <param name="dict">Dictionary object</param>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
+        {
+            string dynamicAnalytics = GetDynamicAnalytics(this);
+            string resultsPerPage = GetResultsPerPage(this);
+            dict.Add(WebAnalyticsOptions.eVars.evar10.ToString(), resultsPerPage);
+            dict.Add(WebAnalyticsOptions.Props.prop20.ToString(), dynamicAnalytics);
+            dict.Add(WebAnalyticsOptions.eVars.evar20.ToString(), dynamicAnalytics);
+            return dict;
+        }
+
+        /// <summary>
         /// Set default pageLoad analytics for this page
         /// </summary>
         protected override void SetAnalytics()
@@ -386,24 +434,9 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string val = "clinicaltrials_custom";
             string desc = "Clinical Trials: Custom";
 
-            // Format string for analytics params: Intervention|Disease IDs|Trial Type|Intervention IDs|Total Results
-            string[] analyticsParams = new string[5];
-            analyticsParams[0] = "Disease";
-            analyticsParams[1] = (!string.IsNullOrWhiteSpace(this.DiseaseIDs)) ? this.DiseaseIDs : "none";
-            analyticsParams[2] = (!string.IsNullOrWhiteSpace(this.TrialType)) ? this.TrialType : "none";
-            analyticsParams[3] = (!string.IsNullOrWhiteSpace(this.InterventionIDs)) ? this.InterventionIDs : "none";
-            analyticsParams[4] = this.TotalSearchResults.ToString();
-            string dynamicAnalytics = string.Join("|", analyticsParams);
-
-            string resultsPerPage;
-            if (this.TotalSearchResults < this.GetItemsPerPage())
-            {
-                resultsPerPage = this.TotalSearchResults.ToString();
-            }
-            else
-            {
-                resultsPerPage = this.GetItemsPerPage().ToString();
-            }
+            // Format strings for analytics params and results per page
+            string dynamicAnalytics = GetDynamicAnalytics(this);
+            string resultsPerPage = GetResultsPerPage(this);
 
             // Set event
             this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Events.event2, wbField =>

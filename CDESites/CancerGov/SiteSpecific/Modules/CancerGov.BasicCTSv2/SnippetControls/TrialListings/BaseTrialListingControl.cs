@@ -1,23 +1,25 @@
 ﻿using System;
-using System.Configuration;
-using System.Text.RegularExpressions;
-using System.Linq;
 using System.Collections.Generic;
-using System.Web;
+using System.Configuration;
 using System.IO;
-using CancerGov.ClinicalTrials.Basic.v2.Configuration;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.UI;
 using Common.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
+
 using NCI.Web;
 using NCI.Web.CDE;
 using NCI.Web.CDE.Modules;
 using NCI.Web.CDE.UI;
-using CancerGov.ClinicalTrials.Basic.v2.SnippetControls.Configs;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-using System.Web.UI;
+using NCI.Web.CDE.WebAnalytics;
 using CancerGov.ClinicalTrialsAPI;
+using CancerGov.ClinicalTrials.Basic.v2.Configuration;
+using CancerGov.ClinicalTrials.Basic.v2.SnippetControls.Configs;
 
 namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 {
@@ -574,6 +576,30 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 _control = control;
             }
         }
+
+        #region analytics methods
+        /// <summary>
+        /// Get collection of analytics data values.
+        /// </summary>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        public Dictionary<String, String> GetAnalytics()
+        {
+            Dictionary<string, string> waDictionary = new Dictionary<string, string>();
+            waDictionary = this.GetAdditionalAnalytics(waDictionary);
+            return waDictionary;
+        }
+
+        /// <summary>
+        /// Virtual method to get additional, page-specific analytics values.
+        /// </summary>
+        /// <param name="dict">Dictionary object</param>
+        /// <returns>Dictionary (key/value string pairs)</returns>
+        protected virtual Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
+        {
+            return dict;
+        }
+        #endregion
     }
+
 
 }
