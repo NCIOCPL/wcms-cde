@@ -299,17 +299,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             });
         }
 
-        /// <summary>
-        /// Gets additional, Detail Page-specific analytics values.
-        /// </summary>
-        /// <param name="dict">Dictionary object</param>
-        /// <returns>Dictionary (key/value string pairs)</returns>
-        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
-        {
-            dict.Add(WebAnalyticsOptions.Props.prop16.ToString(), _nctid);
-            return dict;
-        }
-
         #endregion
 
     }

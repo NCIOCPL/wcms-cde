@@ -479,57 +479,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             }
         }
 
-        /// <summary>
-        /// Gets additional, Results Page-specific analytics values.
-        /// Wherever possible, it's better to create analytics data selectors on the front end, but the params logic is already in place here.
-        /// </summary>
-        /// <param name="dict">Dictionary object</param>
-        /// <returns>Dictionary (key/value string pairs)</returns>
-        protected override Dictionary<String, String> GetAdditionalAnalytics(Dictionary<String, String> dict)
-        {
-            // Dynamic value the search type (e.g. basic or advanced)
-            string searchType = GetSearchType(this.SearchParams).ToLower();
-
-            // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
-            // These values will be used to populate props and evars below.
-            string paramBlob = CTSWebAnalyticsHelper.GetAnalyticsAllParams(this.SearchParams); // List of all used parameters
-            string locBlob = CTSWebAnalyticsHelper.GetAnalyticsLocation(this.SearchParams); // Location
-
-            // Set common results data
-            dict.Add(WebAnalyticsOptions.Props.prop11.ToString(), "clinicaltrials_" + searchType);
-            dict.Add(WebAnalyticsOptions.eVars.evar11.ToString(), "clinicaltrials_" + searchType);
-            dict.Add(WebAnalyticsOptions.Props.prop15.ToString(), paramBlob);
-            dict.Add(WebAnalyticsOptions.eVars.evar15.ToString(), paramBlob);
-            dict.Add(WebAnalyticsOptions.Props.prop18.ToString(), locBlob);
-            dict.Add(WebAnalyticsOptions.eVars.evar18.ToString(), locBlob);
-
-            // Set basic search result data
-            if (searchType == "basic")
-            {
-                // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
-                string basicBlob = CTSWebAnalyticsHelper.GetAnalyticsBasicCancerInfo(this.SearchParams); // Type/Subtype/Stage/Findings/Age/Keyword
-                dict.Add(WebAnalyticsOptions.Props.prop17.ToString(), basicBlob);
-                dict.Add(WebAnalyticsOptions.eVars.evar17.ToString(), basicBlob);
-            }
-
-            // Set advanced search result data
-            if (searchType == "advanced")
-            {
-                // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
-                string advBlob = CTSWebAnalyticsHelper.GetAnalyticsAdvCancerInfo(this.SearchParams); // Type/Subtype/Stage/Findings/Age/Keyword
-                string ttDrugBlob = CTSWebAnalyticsHelper.GetAnalyticsTmntDrugOther(this.SearchParams); // TrialType/Drug/Other Intervention
-                string idOrgBlob = CTSWebAnalyticsHelper.GetAnalyticsPhaseIdInvOrg(this.SearchParams); // Phase/Trial ID/Investigator/Org
-                dict.Add(WebAnalyticsOptions.Props.prop17.ToString(), advBlob);
-                dict.Add(WebAnalyticsOptions.eVars.evar17.ToString(), advBlob);
-                dict.Add(WebAnalyticsOptions.Props.prop19.ToString(), ttDrugBlob);
-                dict.Add(WebAnalyticsOptions.eVars.evar19.ToString(), ttDrugBlob);
-                dict.Add(WebAnalyticsOptions.Props.prop20.ToString(), idOrgBlob);
-                dict.Add(WebAnalyticsOptions.eVars.evar20.ToString(), idOrgBlob);
-            }
-
-            return dict;
-        }
-
         #endregion
     }
 }
