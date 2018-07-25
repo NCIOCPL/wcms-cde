@@ -272,10 +272,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             return url.ToString();
         }
 
-        #endregion
-
-        #region Analytics methods
-
         /// <summary>
         /// Get the search page type for analytics.
         /// </summary>
@@ -284,6 +280,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         {
             return GetSearchType(this.SearchParams);
         }
+
+        #endregion
+
+        #region Analytics methods
 
         /// <summary>
         /// Set additional, page-specific analytics values.

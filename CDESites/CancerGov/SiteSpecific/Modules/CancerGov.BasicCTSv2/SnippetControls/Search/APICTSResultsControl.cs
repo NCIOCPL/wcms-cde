@@ -345,11 +345,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             }
         }
 
-
-        #endregion
-
-        #region Analytics methods
-
         /// <summary>
         /// Get the search page type for analytics.
         /// </summary>
@@ -357,6 +352,60 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         public override String GetPageType()
         {
             return GetSearchType(this.SearchParams);
+        }
+
+        #endregion
+
+        #region Analytics methods
+
+        /// <summary>
+        /// Get used query parameter keys only.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaAllParams() {
+            return CTSWebAnalyticsHelper.GetAnalyticsAllParams(this.SearchParams);
+        }
+
+        /// <summary>
+        /// Get main Cancer Type/Keyword and Age values.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaBasicCancerInfo() {
+            return CTSWebAnalyticsHelper.GetAnalyticsBasicCancerInfo(this.SearchParams);
+        }
+        
+        /// <summary>
+        /// Get main Cancer Type, Subtype, Stages, Findings, Age, and Keyword values.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaAdvancedCancerInfo() {
+            return CTSWebAnalyticsHelper.GetAnalyticsAdvCancerInfo(this.SearchParams);
+        }
+
+        /// <summary>
+        /// Get Location search values.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaLocation() {
+            return CTSWebAnalyticsHelper.GetAnalyticsLocation(this.SearchParams);
+        }
+
+        /// <summary>
+        /// Get Drug/Drug Family and Other Treatment values.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaTreatmentDrugOther()
+        {
+            return CTSWebAnalyticsHelper.GetAnalyticsTmntDrugOther(this.SearchParams);
+        }
+
+        /// <summary>
+        /// Get Trial Phase, Trial ID, Investigator, and Lead Organization values.
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public String GetWaPhaseIdInvOrg()
+        {
+            return CTSWebAnalyticsHelper.GetAnalyticsPhaseIdInvOrg(this.SearchParams);
         }
 
         /// <summary>
@@ -369,12 +418,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string count = this._results.TotalResults.ToString();
 
             // Dynamic value the search type (e.g. basic or advanced)
-            string searchType =  GetSearchType(this.SearchParams).ToLower();
+            string searchType =  GetPageType().ToLower();
 
             // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
             // These values will be used to populate props and evars below.
-            string paramBlob = CTSWebAnalyticsHelper.GetAnalyticsAllParams(this.SearchParams); // List of all used parameters
-            string locBlob = CTSWebAnalyticsHelper.GetAnalyticsLocation(this.SearchParams); // Location
+            string paramBlob = this.GetWaAllParams(); // List of all used parameters
+            string locBlob = this.GetWaLocation(); // Location
             string ciBlob = string.Empty;
             string ttDrugBlob = string.Empty;
             string idOrgBlob = string.Empty;
@@ -425,7 +474,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             if (searchType == "basic")
             {
                 // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
-                ciBlob = CTSWebAnalyticsHelper.GetAnalyticsBasicCancerInfo(this.SearchParams); // Type/Subtype/Stage/Findings/Age/Keyword
+                ciBlob = this.GetWaBasicCancerInfo(); // Type/Subtype/Stage/Findings/Age/Keyword
 
                 // Set prop17 & eVar 17
                 this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Props.prop17, wbField =>
@@ -442,9 +491,9 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             if (searchType == "advanced")
             {
                 // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
-                ciBlob = CTSWebAnalyticsHelper.GetAnalyticsAdvCancerInfo(this.SearchParams); // Type/Subtype/Stage/Findings/Age/Keyword
-                ttDrugBlob = CTSWebAnalyticsHelper.GetAnalyticsTmntDrugOther(this.SearchParams); // TrialType/Drug/Other Intervention
-                idOrgBlob = CTSWebAnalyticsHelper.GetAnalyticsPhaseIdInvOrg(this.SearchParams); // Phase/Trial ID/Investigator/Org
+                ciBlob = this.GetWaAdvancedCancerInfo(); // Type/Subtype/Stage/Findings/Age/Keyword
+                ttDrugBlob = this.GetWaTreatmentDrugOther(); // TrialType/Drug/Other Intervention
+                idOrgBlob = this.GetWaPhaseIdInvOrg(); // Phase/Trial ID/Investigator/Org
 
                 // Set prop17 & eVar 17
                 this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Props.prop17, wbField =>
