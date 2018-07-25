@@ -85,7 +85,8 @@ namespace NCI.Web.CDE.WebAnalytics
         public void DrawAnalyticsDataTag(HtmlTextWriter writer)
         {
             // Add class and attributes to the tag
-            writer.AddAttribute(HtmlTextWriterAttribute.Id, WA_DATA_ELEMENT);
+            string[] classes = {WA_DATA_ELEMENT, "hide"};
+            writer.AddAttribute(HtmlTextWriterAttribute.Class, string.Join(" ", classes));
 
             // if events have been defined, output then to the tag
             if (events.Count > 0)

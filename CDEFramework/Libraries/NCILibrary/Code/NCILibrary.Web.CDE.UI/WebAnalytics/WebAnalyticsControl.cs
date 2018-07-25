@@ -89,13 +89,14 @@ namespace NCI.Web.CDE.UI.WebControls
                 // Draw the control HTML based on the control ID
                 switch (this.ID)
                 {
+                    // Draw analytics HTML data element 
                     case "WebAnalyticsData":
                         webAnalyticsPageLoad.DrawAnalyticsDataTag(output);
                         break;
+                    // Draw s_code script block
+                    // This should NOT be used once DTM Analytics are in place
                     case "WebAnalyticsControl1":
                     case "WebAnalyticsLegacy":
-                        // Legacy method - do not use
-                        // If you're using this after 2018, I'm going to throw something at you
                         output.Write(webAnalyticsPageLoad.Tag());
                         break;
                     default:
