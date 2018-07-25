@@ -418,7 +418,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             string count = this._results.TotalResults.ToString();
 
             // Dynamic value the search type (e.g. basic or advanced)
-            string searchType =  GetPageType().ToLower();
+            string searchType = this.GetPageType().ToLower();
 
             // Retrieve concatenated param/field strings using the CTSWebAnalyticsHelpder. 
             // These values will be used to populate props and evars below.

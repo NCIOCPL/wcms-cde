@@ -40,7 +40,7 @@ namespace NCI.Web.CDE.WebAnalytics
 
         // Get paths for WCMS analytics code
         // Dev/QA/Stage tiers are hosted on static-dev.cancer.gov/wcms
-        // Prod is hosted on static.cancer.gov/wcms
+		// Prod is hosted on static.cancer.gov/wcms
         private string WaPre = ConfigurationManager.AppSettings["WAWCMSPre"].ToString();
         private string WaSCode = ConfigurationManager.AppSettings["SCode"].ToString();
         private string WaFunctions = ConfigurationManager.AppSettings["NCIAnalyticsFunctions"].ToString();
@@ -54,75 +54,8 @@ namespace NCI.Web.CDE.WebAnalytics
 
         /// <summary>the constructor builds base Omniture page load code.   
         /// Also sets the default custom variables (props), custom conversion variables (eVars), and events. .</summary>
-        /// <summary>the constructor builds base Omniture page load code.   
-        /// Also sets the default custom variables (props), custom conversion variables (eVars), and events. .</summary>
+        /// Note: as of the Feline release, Prod web analytics javascript is hosted on static.cancer.gov
         public WebAnalyticsPageLoad()
-        {
-            // Default props, eVars, and/or events
-            AddEvent(WebAnalyticsOptions.Events.event1); // page view event
-            pageLoadPostTag.AppendLine(WEB_ANALYTICS_COMMENT_END);
-        }
-
-        /// <summary>Get the analytics metadata to be used in the document head.</summary>
-        /// <returns>HTML string</returns>
-        public String GetAnalyticsDataTag()
-        {
-            StringWriter stringWriter = new StringWriter();
-
-            // Put HtmlTextWsriter in using block because it needs to call Dispose()
-            using (HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter))
-            {
-                DrawAnalyticsDataTag(htmlWriter);
-            }
-            return stringWriter.ToString();
-        }
-
-        /// <summary>
-        /// Draw the analytics data element that will be used to populate analytics values.
-        /// This is a div element that will be in the DOM but not visibile. 
-        /// </summary>
-        /// <param name="writer">Text writer object used to output HTML tags</param>
-        public void DrawAnalyticsDataTag(HtmlTextWriter writer)
-        {
-            // Add class and attributes to the tag
-            string[] classes = {WA_DATA_ELEMENT, "hide"};
-            writer.AddAttribute(HtmlTextWriterAttribute.Class, string.Join(" ", classes));
-
-            // if events have been defined, output then to the tag
-            if (events.Count > 0)
-            {
-                string eventVal = string.Join(",", events.ToArray<string>());
-                writer.AddAttribute("data-events", eventVal);
-            }
-
-            // if props are set, output them to the tag
-            if (props.Count > 0)
-            {
-                foreach (int k in props.Keys.OrderBy(k => k))
-                {
-                    string propVal = CleanQuotedString(props[k]);
-                    writer.AddAttribute(("data-prop" + k.ToString()), propVal);
-                }
-            }
-
-            // if eVars are set, output them to the tag
-            if (evars.Count > 0)
-            {
-                foreach (int k in evars.Keys.OrderBy(k => k))
-                {
-                    string eVarVal = CleanQuotedString(evars[k]);
-                    writer.AddAttribute("data-evar" + k.ToString(), eVarVal);
-                }
-            }
-
-            // Draw the actual <div> tag 
-            writer.RenderBeginTag(HtmlTextWriterTag.Div);
-            writer.RenderEndTag();
-        }
-
-        /// <summary>Legacy constructor logic - only for use in Tag() method. 
-        [Obsolete("This is the legacy method for drawing analytics JavaScript into the page HTML.")]
-        public void BuildLegacyTags()
         {
             pageLoadPreTag.AppendLine("<script language=\"JavaScript\" type=\"text/javascript\" src=\"" + WaFunctions + "\"></script>");
             pageLoadPreTag.AppendLine("<script language=\"JavaScript\" type=\"text/javascript\" src=\"" + WaSCode + "\"></script>");
@@ -191,9 +124,6 @@ namespace NCI.Web.CDE.WebAnalytics
             StringBuilder output = new StringBuilder();
             string reportSuites = "";
 
-            // Do old constructor actions
-            BuildLegacyTags();
-
             if (WebAnalyticsOptions.IsEnabled)
             {
                 output.AppendLine("");
@@ -223,7 +153,7 @@ namespace NCI.Web.CDE.WebAnalytics
                 // 3. NCIAnalyticsFunctions.js source URL (see line 47)
                 // 4. s_code source URL
                 // 5. Channel, Prop, eVar, and Event info
-                // Note: as of 06/2018, the web analytics javascript is hosted on DTM
+                // Note: as of 08/2018, the web analytics javascript is hosted on DTM
                 output.AppendLine("<script language=\"JavaScript\" type=\"text/javascript\" src=\"" + WaPre + "\"></script>");
                 output.AppendLine("<script language=\"JavaScript\" type=\"text/javascript\">");
                 output.AppendLine("<!--");
@@ -305,6 +235,63 @@ namespace NCI.Web.CDE.WebAnalytics
                 output.AppendLine(pageLoadPostTag.ToString());
             }
             return output.ToString();
+        }
+
+        /// <summary>Get the analytics metadata to be used in the document head.</summary>
+        /// <returns>HTML string</returns>
+        public String GetAnalyticsDataTag()
+        {
+            StringWriter stringWriter = new StringWriter();
+
+            // Put HtmlTextWsriter in using block because it needs to call Dispose()
+            using (HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter))
+            {
+                DrawAnalyticsDataTag(htmlWriter);
+            }
+            return stringWriter.ToString();
+        }
+
+        /// <summary>
+        /// Draw the analytics data element that will be used to populate analytics values.
+        /// This is a div element that will be in the DOM but not visibile. 
+        /// </summary>
+        /// <param name="writer">Text writer object used to output HTML tags</param>
+        public void DrawAnalyticsDataTag(HtmlTextWriter writer)
+        {
+            // Add class and attributes to the tag
+            string[] classes = {WA_DATA_ELEMENT, "hide"};
+            writer.AddAttribute(HtmlTextWriterAttribute.Class, string.Join(" ", classes));
+
+            // if events have been defined, output then to the tag
+            if (events.Count > 0)
+            {
+                string eventVal = string.Join(",", events.ToArray<string>());
+                writer.AddAttribute("data-events", eventVal);
+            }
+
+            // if props are set, output them to the tag
+            if (props.Count > 0)
+            {
+                foreach (int k in props.Keys.OrderBy(k => k))
+                {
+                    string propVal = CleanQuotedString(props[k]);
+                    writer.AddAttribute(("data-prop" + k.ToString()), propVal);
+                }
+            }
+
+            // if eVars are set, output them to the tag
+            if (evars.Count > 0)
+            {
+                foreach (int k in evars.Keys.OrderBy(k => k))
+                {
+                    string eVarVal = CleanQuotedString(evars[k]);
+                    writer.AddAttribute("data-evar" + k.ToString(), eVarVal);
+                }
+            }
+
+            // Draw the actual <div> tag 
+            writer.RenderBeginTag(HtmlTextWriterTag.Div);
+            writer.RenderEndTag();
         }
 
         /// <summary>Adds an Omniture custom variable (prop) to the Omniture page load JavaScript code 
