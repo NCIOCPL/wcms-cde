@@ -312,7 +312,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// <summary>
         /// Format string for analytics params: Intervention|Intervention IDs|Trial Type|Total Results
         /// </summary>
-        protected override String GetDynamicParams()
+        public override String GetDynamicParams()
         {
             string[] analyticsParams = new string[4];
             analyticsParams[0] = "Intervention";
