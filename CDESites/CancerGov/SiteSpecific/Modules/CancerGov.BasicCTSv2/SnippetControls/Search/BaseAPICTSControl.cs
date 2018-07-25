@@ -43,6 +43,11 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         protected abstract object GetDataForTemplate();
 
         /// <summary>
+        /// Gets the search page type.
+        /// </summary>
+        public abstract String GetPageType();
+
+        /// <summary>
         /// Provides a method to be called on initialization.  If overridden you must call base!
         /// </summary>
         protected virtual void Init()
@@ -103,9 +108,9 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// </summary>
         private void SetAnalytics()
         {
-            // Call the GetPageTypeForAnalytics abstract method; each control must have a concrete implementation to populate the 
+            // Call the GetPageType abstract method; each control must have a concrete implementation to populate the 
             // page type (e.g. Basic, Advanced, Custom)
-            String pageType = this.GetPageTypeForAnalytics();// abstract method
+            String pageType = "Clinical Trials: " + this.GetPageType();// abstract method
 
             // Set prop62
             this.PageInstruction.SetWebAnalytics(WebAnalyticsOptions.Props.prop62, wbField =>
@@ -123,11 +128,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
             // Only implemented in results control for now.
             this.AddAdditionalAnalytics();
         }
-
-        /// <summary>
-        /// Abstract method to get the search page type for analytics.
-        /// </summary>
-        protected abstract String GetPageTypeForAnalytics();
 
         /// <summary>
         /// Virtual method to set additional, page-specific analytics values.

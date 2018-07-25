@@ -280,10 +280,9 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// Get the search page type for analytics.
         /// </summary>
         /// <returns></returns>
-        protected override String GetPageTypeForAnalytics()
+        public override String GetPageType()
         {
-            string type = GetSearchType(this.SearchParams);
-            return "Clinical Trials: " + type;
+            return GetSearchType(this.SearchParams);
         }
 
         /// <summary>
