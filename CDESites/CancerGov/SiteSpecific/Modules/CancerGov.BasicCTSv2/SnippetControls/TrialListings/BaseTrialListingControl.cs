@@ -111,7 +111,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
         /// The total results returned from the API from a search.
         /// </summary>
         protected int TotalSearchResults { get; set; }
-
+        
         protected sealed override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -159,15 +159,15 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 this._pageNum,
                 this._itemsPerPage
             );
-
+           
             //CODE ADDED BY CHRISTIAN RIKONG ON 12/07/2017 at 03:07 PM - THE GOAL IS THAT WHEN THERE ARE NO TRIALS RESULTS, WE 
             //REDIRECT TO THE NOTRIALS PAGE
 
-            if (results == null || (results.TotalResults == 0))
+            if(results == null || (results.TotalResults == 0 ))
             {
                 this.OnEmptyResults();
             }
-
+           
             this.TotalSearchResults = results.TotalResults;
 
             //Load VM File and show search results
@@ -567,13 +567,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
 
             public int Page
             {
-                get
-                {
-                    if (this._control != null)
-                    {
+                get {
+                    if (this._control != null) {
                         return this._control.PageNum;
-                    }
-                    else { return -1; }
+                    } else { return -1;  }
                 }
             }
 
