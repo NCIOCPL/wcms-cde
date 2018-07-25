@@ -7,7 +7,6 @@
 <asp:Repeater ID="drugDictionaryDefinitionView" runat="server" OnItemDataBound="drugDictionaryDefinitionView_OnItemDataBound">
 <ItemTemplate>
     <div class="results" data-dict-type="drug">
-    <div class="wa-data-element hide" data-events="event11"></div>
         <!-- Term and def -->
         <dl>
             <dt>

@@ -10,7 +10,6 @@
 <ItemTemplate> 
         <!-- Term and def -->
         <div class="results" data-dict-type="term">
-        <div class="wa-data-element hide" data-events="event11"></div>
             <dl class="dictionary-list">
                 <dt>
                     <dfn data-cdr-id="<%# ((DictionaryTerm)(Container.DataItem)).ID%>">
