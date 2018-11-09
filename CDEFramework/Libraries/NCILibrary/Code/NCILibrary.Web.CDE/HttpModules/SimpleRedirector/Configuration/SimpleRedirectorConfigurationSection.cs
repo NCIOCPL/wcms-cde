@@ -11,9 +11,9 @@ namespace NCI.Web.CDE.SimpleRedirector.Configuration
         }
 
         [ConfigurationProperty("dataSource")]
-        public DataSourceConfigurationElement DataSource
+        public SimpleRedirectorDataSourceConfigurationElement DataSource
         {
-            get { return (DataSourceConfigurationElement)base["dataSource"]; }
+            get { return (SimpleRedirectorDataSourceConfigurationElement)base["dataSource"]; }
         }
     }
 }
