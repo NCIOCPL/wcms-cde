@@ -4,7 +4,7 @@ using System.Configuration;
 
 namespace NCI.Web.CDE.SimpleRedirector.Configuration
 {
-    public class SimpleRedirectorDataSourceConfigurationElement : ConfigurationElement
+    public class DataSourceConfigurationElement : ConfigurationElement
     {
         const String DEFAULT_FILE_LOCATION = "~/PublishedContent/Files/Configuration/RedirectionList.txt";
         const String DEFAULT_SEPARATOR_STRING = ",";

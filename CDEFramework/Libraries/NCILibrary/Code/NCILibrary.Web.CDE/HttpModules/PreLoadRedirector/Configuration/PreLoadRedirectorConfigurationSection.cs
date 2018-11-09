@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using NCI.Web.CDE.SimpleRedirector.Configuration;
 
 namespace NCI.Web.CDE.PreLoadRedirector.Configuration
 {
@@ -12,9 +13,9 @@ namespace NCI.Web.CDE.PreLoadRedirector.Configuration
         }
 
         [ConfigurationProperty("dataSource")]
-        public PreLoadRedirectorDataSourceElement DataSource
+        public DataSourceConfigurationElement DataSource
         {
-            get { return (PreLoadRedirectorDataSourceElement)base["dataSource"]; }
+            get { return (DataSourceConfigurationElement)base["dataSource"]; }
         }
     }
 

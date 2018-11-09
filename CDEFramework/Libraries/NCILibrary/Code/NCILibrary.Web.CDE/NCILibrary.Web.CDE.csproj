@@ -131,11 +131,10 @@
     <Compile Include="HttpModules\MobileRedirect.cs" />
     <Compile Include="HttpModules\PageAssemblyInstructionLoader.cs" />
     <Compile Include="Configuration\PageAssemblyElement.cs" />
-    <Compile Include="HttpModules\PreLoadRedirector\Configuration\PreLoadRedirectorDataSourceElement.cs" />
     <Compile Include="HttpModules\PreLoadRedirector\Configuration\PreLoadRedirectorConfigurationSection.cs" />
     <Compile Include="HttpModules\PreLoadRedirector\PreLoadRedirect.cs" />
     <Compile Include="HttpModules\PromoUrlMappingLoader.cs" />
-    <Compile Include="HttpModules\SimpleRedirector\Configuration\SimpleRedirectorDataSourceElement.cs" />
+    <Compile Include="HttpModules\SimpleRedirector\Configuration\DataSourceElement.cs" />
     <Compile Include="HttpModules\SimpleRedirector\Configuration\SimpleRedirectorConfigurationSection.cs" />
     <Compile Include="HttpModules\SimpleRedirector\RedirectionMap.cs" />
     <Compile Include="HttpModules\SimpleRedirector\SimpleRedirect.cs" />
