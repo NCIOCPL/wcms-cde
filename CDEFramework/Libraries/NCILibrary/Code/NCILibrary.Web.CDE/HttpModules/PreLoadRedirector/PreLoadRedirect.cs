@@ -54,12 +54,22 @@ namespace NCI.Web.CDE
             String query = context.Server.UrlDecode(context.Request.Url.Query);
             if (!String.IsNullOrEmpty(query))
             {
+                // Strip ? from query parameters to add them to redirectUrl query params
+                if(redirectUrl.Contains("?"))
+                {
+                    query = query.Replace("?", "&");
+                }
+
                 // Add query parameters and redirect parameter for analytics (if not previously redirected)
                 redirectUrl += query + (!query.Contains("redirect=true") ? "&redirect=true" : String.Empty);
             }
             else
             {
-                redirectUrl += "?redirect=true";
+                if(!redirectUrl.Contains("redirect=true"))
+                {
+                    // Add redirect parameter for analytics (if not previously redirected)
+                    redirectUrl += redirectUrl.Contains("?") ? "&redirect=true" : "?redirect=true";
+                }
             }
 
             NCI.Web.CDE.Application.PermanentRedirector.DoPermanentRedirect(context.Response, redirectUrl, "Redirect Map");
