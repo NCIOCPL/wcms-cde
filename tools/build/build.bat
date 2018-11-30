@@ -14,8 +14,6 @@ REM Determine the Build Environment Name.  This is used for tagging and proper c
 rem Get the build environment name from the command line
 set my_target=%2
 
-
-
 REM Validate Branch and Target
 set FAIL=
 IF "%my_branch%"=="" set FAIL=True
@@ -39,6 +37,9 @@ IF "%FAIL%" NEQ "" (
 	GOTO :EOF
 )
 
+rem Set the temp directory for the config files.
+set TEMP_BUILD=%TEMP%\wcms-cde-%RANDOM%
+
 REM Determine the current Git commit hash.
 FOR /f %%a IN ('git rev-parse --verify HEAD') DO SET COMMIT_ID=%%a
 
@@ -51,7 +52,7 @@ IF errorlevel 1 GOTO ERROR
 
 Echo Retrieving configuration file build
 REM Create a directory for the configuration source.
-set ConfigDownload=%TEMP%\%BUILD_NUMBER%\Config
+set ConfigDownload=%TEMP-BUILD%\Config
 mkdir %ConfigDownload%
 pushd %ConfigDownload%
 REM Copy the configuration files from GitHub.
@@ -75,6 +76,7 @@ set GH_REPO_NAME=%OLD_GH_REPO_NAME%
 REM Clean up.
 popd %ConfigDownload%
 rmdir /q/s %ConfigDownload%
+rmdir /q/s %TEMP_BUILD%
 
 GOTO :EOF
 :ERROR
