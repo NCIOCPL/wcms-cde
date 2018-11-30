@@ -351,6 +351,12 @@ namespace CancerGov.ClinicalTrials.Basic.v2.SnippetControls
                 needsRedirect = true;
                 return FriendlyNameWithOverridesMapping.GetFriendlyNameFromCode(param, true);
             }
+            else if (FriendlyNameMapping.MappingContainsCode(param, true))
+            {
+                // If an exact match is found in the Friendly Name mapping, return the friendly name and set redirection bool
+                needsRedirect = true;
+                return FriendlyNameMapping.GetFriendlyNameFromCode(param, true);
+            }
             else
             {
                 if (FriendlyNameMapping.MappingContainsCode(param, false))
