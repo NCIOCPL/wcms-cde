@@ -14,6 +14,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Lookups
         private static string _evsMappingFile = null;
         private static string _overrideMappingFile = null;
         private Dictionary<string, MappingItem> _mappings = new Dictionary<string, MappingItem>();
+        private static Regex CCODE_REGEX = new Regex("C[0-9]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         public DynamicTrialListingFriendlyNameMapper(string evsMappingFilepath, string overrideMappingFilepath, bool withOverrides)
         {
@@ -213,7 +214,7 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Lookups
                     }
                     else
                     {
-                        if (!IsValidCCode(ID))
+                        if (!CCODE_REGEX.IsMatch(ID))
                         {
                             LogManager.GetLogger(typeof(DynamicTrialListingFriendlyNameMappingService)).ErrorFormat("Invalid parameter in dynamic listing page: {0} is not a valid c-code", ID);
                             NCI.Web.CDE.Application.ErrorPageDisplayer.RaisePageByCode("DynamicTrialListingFriendlyNameMappingService", 404, "Invalid parameter in dynamic listing page: value given is not a valid c-code");
@@ -256,14 +257,6 @@ namespace CancerGov.ClinicalTrials.Basic.v2.Lookups
             }
 
             return false;
-        }
-
-        public bool IsValidCCode(string code)
-        {
-            string pattern = @"[c][0-9]{4}";
-            Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
-
-            return r.IsMatch(code);
         }
     }
 }
