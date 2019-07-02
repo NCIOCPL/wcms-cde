@@ -64,10 +64,10 @@ namespace TCGA.Web.SnippetTemplates
                     {
                         long dimFilter = Strings.ToLong(ConfigurationManager.AppSettings["EndecaSWSearchDimFilter"], 0);
 
-                        ISiteWideSearchResultCollection results = NCI.Search.SiteWideSearch.GetSearchResults(SearchCollection, Keyword, _recordsPerPage,
+                        SiteWideSearchAPIResultCollection results = SiteWideSearchManager.Search(SearchCollection, Keyword, _recordsPerPage,
                     (_currentPage - 1) * _recordsPerPage);
 
-                        rptSearchResults.DataSource = results;
+                        rptSearchResults.DataSource = results.SearchResults;
                         rptSearchResults.DataBind();
 
                         if (results.ResultCount == 0)
@@ -172,7 +172,7 @@ namespace TCGA.Web.SnippetTemplates
 
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                ISiteWideSearchResult searchResultRow = (ISiteWideSearchResult)e.Item.DataItem;
+                SiteWideSearchAPIResult searchResultRow = (SiteWideSearchAPIResult)e.Item.DataItem;
 
                 Literal litTitle = (Literal)e.Item.FindControl("litTitle");
 

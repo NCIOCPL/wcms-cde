@@ -133,12 +133,12 @@ namespace DCEG.Web.SnippetTemplates
                     ResultTitleText = searchConfig.ResultTitleText;
                 }
 
-                ISiteWideSearchResultCollection results;
+                SiteWideSearchAPIResultCollection results;
                 try
                 {
 
-                    results = NCI.Search.SiteWideSearch.GetSearchResults(SearchCollection, Keyword, pageSize,
-                   (currentPage - 1) * pageSize);
+                    results = NCI.Search.SiteWideSearchManager.Search(SearchCollection, Keyword, pageSize,
+                        (currentPage - 1) * pageSize);
 
                     if (results != null && results.ResultCount > 0)
                     {
@@ -146,7 +146,7 @@ namespace DCEG.Web.SnippetTemplates
                         lastRecord = firstRecord + (int)results.ResultCount - 1;
                         totalItems = (int)results.ResultCount;
 
-                        ResultRepeater.DataSource = results;
+                        ResultRepeater.DataSource = results.SearchResults;
                         ResultRepeater.DataBind();
 
                         //pager code
@@ -230,7 +230,7 @@ namespace DCEG.Web.SnippetTemplates
 
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                ISiteWideSearchResult searchResultRow = (ISiteWideSearchResult)e.Item.DataItem;
+                SiteWideSearchAPIResult searchResultRow = (SiteWideSearchAPIResult)e.Item.DataItem;
 
                 System.Web.UI.HtmlControls.HtmlAnchor titleLink = (System.Web.UI.HtmlControls.HtmlAnchor)e.Item.FindControl("titleLink");
 
