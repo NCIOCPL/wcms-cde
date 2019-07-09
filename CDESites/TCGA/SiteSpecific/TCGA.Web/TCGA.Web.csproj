@@ -131,10 +131,6 @@
       <Project>{F4C37116-861A-4FD6-B45D-578B258FEFC7}</Project>
       <Name>NCILibrary.DataManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Search.ElasticSearch\NCILibrary.Search.ElasticSearch.csproj">
-      <Project>{0af8d250-e5a2-4195-8940-54f806acf5f2}</Project>
-      <Name>NCILibrary.Search.ElasticSearch</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Search\NCILibrary.Search.csproj">
       <Project>{8962B50C-E3A9-4F0A-9E48-7008C40247CD}</Project>
       <Name>NCILibrary.Search</Name>

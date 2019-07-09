@@ -656,11 +656,11 @@ namespace NCI.Web.CancerGov.Apps
             }
 
             //Get Results...  
-            ISiteWideSearchResultCollection results = null;
+            SiteWideSearchAPIResultCollection results = null;
             
             try
             {
-                results = NCI.Search.SiteWideSearch.GetSearchResults(SearchCollection, SearchTerm, ItemsPerPage,
+                results = SiteWideSearchManager.Search(SearchCollection, SearchTerm, ItemsPerPage,
                         (CurrentPage - 1) * ItemsPerPage);
             }
             catch (Exception e)
@@ -686,16 +686,16 @@ namespace NCI.Web.CancerGov.Apps
             {
                 //the title text that needs to be removed from the search result Title
                 string removeTitleText = ContentDeliveryEngineConfig.PageTitle.AppendPageTitle.Title;
-                rptResults.DataSource = from res in results
+                rptResults.DataSource = from res in results.SearchResults
                                         select new NCI.Web.UI.WebControls.TemplatedDataItem(
-                                            GetSearchResultTemplate((ISiteWideSearchResult)res),
+                                            GetSearchResultTemplate(res),
                                             new
                                             {
                                                 URL = res.Url,
                                                 Title = (!string.IsNullOrEmpty(removeTitleText) && res.Title.Contains(removeTitleText)) ? res.Title.Remove(res.Title.IndexOf(removeTitleText)) : res.Title,
                                                 DisplayUrl = res.Url,
                                                 Description = res.Description,
-                                                Label = GetSearchResultLabel((ISiteWideSearchResult)res),
+                                                Label = GetSearchResultLabel(res),
                                             });
                 rptResults.DataBind();
             }
@@ -742,7 +742,7 @@ namespace NCI.Web.CancerGov.Apps
         /// </summary>
         /// <param name="res">The source EndecaResult used to generate the label.</param>
         /// <returns>A language-specific label for the result.</returns>
-        private String GetSearchResultLabel(ISiteWideSearchResult res)
+        private String GetSearchResultLabel(SiteWideSearchAPIResult res)
         {
             string language = PageAssemblyContext.Current.PageAssemblyInstruction.Language;
             string label = res.ContentType;
@@ -768,7 +768,7 @@ namespace NCI.Web.CancerGov.Apps
         /// </summary>
         /// <param name="res">The source EndecaResult.</param>
         /// <returns>A String template name.</returns>
-        private string GetSearchResultTemplate(ISiteWideSearchResult res)
+        private string GetSearchResultTemplate(SiteWideSearchAPIResult res)
         {
             switch (res.ContentType)
             {
