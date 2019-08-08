@@ -133,9 +133,11 @@ namespace NCI.Web.CancerGov.Apps
         }
 
         private string SearchCollection { get; set; }
+
+        private string ResultTitleText { get; set; }
         
         /// <summary>
-        /// Gets and sets the PreviousItemsPerPage.  
+        /// Gets and sets the PreviousItemsPerPage.
         /// </summary>
         /// <remarks>
         /// This is to support the moving to the
@@ -264,8 +266,10 @@ namespace NCI.Web.CancerGov.Apps
             //determine what text needs to be removed from the title e.g. - National Cancer Institute
             SiteWideSearchConfig searchConfig = ModuleObjectFactory<SiteWideSearchConfig>.GetModuleObject(SnippetInfo.Data);
             if (searchConfig != null)
-               SearchCollection = searchConfig.SearchCollection;
-               
+            {
+                SearchCollection = searchConfig.SearchCollection;
+                ResultTitleText = searchConfig.ResultTitleText;
+            }
                                     
             if (Page.Request.RequestType == "POST")
             {
@@ -633,8 +637,8 @@ namespace NCI.Web.CancerGov.Apps
         {
 
             //Get Bestbets. Only show if we are on page one and we are not doing a search within
-            //the results.
-            if (CurrentPage == 1 && OldKeywords.Count == 0)
+            //the results, and if the search term is not empty.
+            if (CurrentPage == 1 && OldKeywords.Count == 0 && !string.IsNullOrWhiteSpace(SearchTerm))
             {
                 BestBetUIResult[] bbResults = GetBestBetsResults(SearchTerm);
 
@@ -685,7 +689,12 @@ namespace NCI.Web.CancerGov.Apps
             if (results != null && results.ResultCount > 0)
             {
                 //the title text that needs to be removed from the search result Title
-                string removeTitleText = ContentDeliveryEngineConfig.PageTitle.AppendPageTitle.Title;
+                string removeTitleText = ResultTitleText;
+                if (string.IsNullOrWhiteSpace(removeTitleText))
+                {
+                    removeTitleText = ContentDeliveryEngineConfig.PageTitle.AppendPageTitle.Title;
+                }
+                
                 rptResults.DataSource = from res in results.SearchResults
                                         select new NCI.Web.UI.WebControls.TemplatedDataItem(
                                             GetSearchResultTemplate(res),

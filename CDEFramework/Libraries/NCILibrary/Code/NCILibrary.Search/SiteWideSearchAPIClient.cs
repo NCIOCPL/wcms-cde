@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -103,10 +104,6 @@ namespace NCI.Search
             if (String.IsNullOrWhiteSpace(language))
             {
                 throw new ArgumentNullException("The language is null or an empty string");
-            }
-            if (String.IsNullOrWhiteSpace(searchTerm))
-            {
-                throw new ArgumentNullException("The search term is null or an empty string");
             }
 
             string[] searchParams = { collection, language, searchTerm };
