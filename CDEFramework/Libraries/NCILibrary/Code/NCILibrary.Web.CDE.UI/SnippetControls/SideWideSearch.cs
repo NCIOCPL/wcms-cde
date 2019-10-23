@@ -65,10 +65,10 @@ namespace NCI.Web.CDE.UI.SnippetControls
                     try
                     {
 
-                        ISiteWideSearchResultCollection results = NCI.Search.SiteWideSearch.GetSearchResults(SearchCollection, Keyword, _recordsPerPage,
-                    (_currentPage - 1) * _recordsPerPage);
+                        SiteWideSearchAPIResultCollection results = SiteWideSearchManager.Search(SearchCollection, Keyword, _recordsPerPage,
+                            (_currentPage - 1) * _recordsPerPage);
 
-                        rptSearchResults.DataSource = results;
+                        rptSearchResults.DataSource = results.SearchResults;
                         rptSearchResults.DataBind();
 
                         if (results.ResultCount == 0)
@@ -172,7 +172,7 @@ namespace NCI.Web.CDE.UI.SnippetControls
 
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                ISiteWideSearchResult searchResultRow = (ISiteWideSearchResult)e.Item.DataItem;
+                SiteWideSearchAPIResult searchResultRow = (SiteWideSearchAPIResult)e.Item.DataItem;
 
                 System.Web.UI.HtmlControls.HtmlAnchor titleLink = (System.Web.UI.HtmlControls.HtmlAnchor)e.Item.FindControl("titleLink");
 

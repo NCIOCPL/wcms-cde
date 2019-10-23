@@ -41,9 +41,16 @@
       <HintPath>..\..\..\..\..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,9 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestBetAPIResult.cs" />
+    <Compile Include="BestBetsAPIClient.cs" />
+    <Compile Include="BestBetsAPIClientHelper.cs" />
     <Compile Include="BestBetUIResult.cs" />
     <Compile Include="BestBetsPresentationManager.cs" />
-    <Compile Include="CancerGovBestBetsPathConfiguration.cs" />
+    <Compile Include="IBestBetsAPIClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +72,13 @@
       <Project>{898ff17c-c94a-4d85-8aad-88764b72cfae}</Project>
       <Name>NCILibrary.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Search.BestBets\NCILibrary.Search.BestBets.csproj">
-      <Project>{abf0dff3-2cfc-490f-96d5-69dc770824d3}</Project>
-      <Name>NCILibrary.Search.BestBets</Name>
+    <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Search\NCILibrary.Search.csproj">
+      <Project>{8962b50c-e3a9-4f0a-9e48-7008c40247cd}</Project>
+      <Name>NCILibrary.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Web.CDE.UI\NCILibrary.Web.CDE.UI.csproj">
+      <Project>{aafa2f86-d3f3-4224-a13e-ba6209a4ebad}</Project>
+      <Name>NCILibrary.Web.CDE.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Web.CDE\NCILibrary.Web.CDE.csproj">
       <Project>{eee51ba0-18ae-4cf2-876f-7e75b5a2d1ff}</Project>
@@ -72,7 +86,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

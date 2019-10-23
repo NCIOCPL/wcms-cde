@@ -52,7 +52,7 @@ IF errorlevel 1 GOTO ERROR
 
 Echo Retrieving configuration file build
 REM Create a directory for the configuration source.
-set ConfigDownload=%TEMP-BUILD%\Config
+set ConfigDownload=%TEMP_BUILD%\Config
 mkdir %ConfigDownload%
 pushd %ConfigDownload%
 REM Copy the configuration files from GitHub.

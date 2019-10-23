@@ -9,12 +9,12 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
-using System.Data.SqlClient;
 
-using CancerGov.UI;
-using CancerGov.Common.ErrorHandling;
 
 using NCI.Web.CDE;
+using NCI.Search;
+
+using Common.Logging;
 
 namespace CancerGov.Search.AutoSuggest
 {
@@ -26,14 +26,14 @@ namespace CancerGov.Search.AutoSuggest
     [ServiceContract]
     public class AutoSuggestSearchService
     {
+        static ILog log = LogManager.GetLogger(typeof(AutoSuggestSearchService));
+
         /// <summary>
-        /// Method to interface through the WCF do get results from a database query
+        /// Method to interface through the WCF do get results from an API query
         /// This will return the data in JSON format
         /// </summary>
-        /// <param name="language">The language used to query the database</param>
-        /// <param name="criteria">The partial text used to query the database</param>
-        /// <param name="maxRows">The maximum number of rows that the database will return. a value of zero will return the entire set</param>
-        /// <param name="contains">Indicator on whether the text is to be search from the beginning of the text or anywhere in the string</param>
+        /// <param name="language">The language used to query the API</param>
+        /// <param name="criteria">The partial text used to query the API</param>
         /// <returns>Returns the search results</returns>
         [WebGet(ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "SearchJSON/{language}?term={criteria}")]
@@ -52,9 +52,8 @@ namespace CancerGov.Search.AutoSuggest
         /// Method to interface through the WCF do get results from a database query.
         /// This will return the data in XML format
         /// </summary>
-        /// <param name="criteria">The partial text used to query the database</param>
-        /// <param name="maxRows">The maximum number of rows that the database will return. a value of zero will return the entire set</param>
-        /// <param name="contains">Indicator on whether the text is to be search from the beginning of the text or anywhere in the string</param>
+        /// <param name="language">The language used to query the API</param>
+        /// <param name="criteria">The partial text used to query the API</param>
         /// <returns>Returns the search results</returns>
         [WebGet(ResponseFormat = WebMessageFormat.Xml,
             UriTemplate = "SearchXML/{language}?term={criteria}")]
@@ -70,37 +69,32 @@ namespace CancerGov.Search.AutoSuggest
         }
 
         /// <summary>
-        /// Method used to query database for English language results. This will return the
-        /// data in XML format. There is no way to create an additional WebGet so that we
-        /// can return the same data in JSON format.
+        /// Method used to query API for results.
         /// </summary>
-        /// <param name="language">The language needed to do the lookup</param>
-        /// <param name="criteria">The partial text used to query the database</param>
-        /// <param name="maxRows">The maximum number of rows that the database will return. a value of zero will return the entire set</param>
+        /// <param name="language">The language used to query the API</param>
+        /// <param name="criteria">The partial text used to query the API</param>
+        /// <param name="size">The maximum number of items that the API will return</param>
         /// <param name="contains">Indicator on whether the text is to be search from the beginning of the text or anywhere in the string</param>
         /// <returns>Returns the search results</returns>
-        private AutoSuggestSearchServiceCollection Search(string language, string criteria, int maxRows, bool contains)
+        private AutoSuggestSearchServiceCollection Search(string language, string criteria, int size, bool contains)
         {
-            // create the collection variable
+            // Create the collection variable
             AutoSuggestSearchServiceCollection sc = new AutoSuggestSearchServiceCollection();
+
+            // Language converted to an enum
+            DisplayLanguage displayLanguage = (DisplayLanguage)Enum.Parse(typeof(DisplayLanguage), language);
 
             try
             {
-                // language passed to an enum
-                DisplayLanguage displayLanguage =
-                    (DisplayLanguage)Enum.Parse(typeof(DisplayLanguage), language);
+                // Pass the given API parameters to the business layer
+                AutoSuggestAPIResultCollection apiCollection = AutoSuggestSearchManager.Search(displayLanguage, criteria, size, contains);
 
-                // Call the database query
-                AutoSuggestSearchCollection dc =
-                    AutoSuggestSearchManager.Search(language, criteria, maxRows, contains);
-
-                // Use Linq to extract the data from the business layer and create 
-                // the service data objects
-                // TermID is 0 always , that value is not part of the result received from the call to 
-                // Stroed procedure.But can be used in the future for other purposes.
-                var collection = dc.ConvertAll(entry => new AutoSuggestSearchServiceItem(
-                    entry.TermID,
-                    entry.TermName,
+                // Use Linq to extract the data from the business layer and create the service data objects
+                // TermID is 0 always, that value is not part of the result received from the API call.
+                //But can be used in the future for other purposes.
+                var collection = apiCollection.Results.Select(r => new AutoSuggestSearchServiceItem(
+                    0,
+                    r.Term,
                     string.Empty
                     ));
 
@@ -109,7 +103,7 @@ namespace CancerGov.Search.AutoSuggest
             catch (Exception ex)
             {
                 // Log the error that occured
-                CancerGovError.LogError("AutoSuggestSearch", 2, ex);
+                log.Error("Error in AutoSuggestSearchService", ex);
             }
 
             return sc;
