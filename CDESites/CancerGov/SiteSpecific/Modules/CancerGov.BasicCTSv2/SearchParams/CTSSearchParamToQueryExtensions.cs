@@ -220,9 +220,10 @@ namespace CancerGov.ClinicalTrials.Basic.v2
                             throw new Exception(String.Format("Location type, {0} not supported.", searchParams.Location));
                         }
                 }
-                //All locations need filtering of active sites.
-                FilterActiveSites(filterCriteria);
             }
+
+            //All searches need filtering of active sites.
+            FilterActiveSites(filterCriteria);
 
             //This is for only searching open trials.
             filterCriteria.Add("current_trial_status", CTSConstants.ActiveTrialStatuses);
