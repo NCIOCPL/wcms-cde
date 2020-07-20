@@ -102,6 +102,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\LegacyDictionarySupport\LegacyDictionarySupport.csproj">
+      <Project>{fb837661-56d6-439f-a83a-5801b4fe0796}</Project>
+      <Name>LegacyDictionarySupport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Core\NCILibrary.Core.csproj">
       <Project>{898FF17C-C94A-4D85-8AAD-88764B72CFAE}</Project>
       <Name>NCILibrary.Core</Name>
