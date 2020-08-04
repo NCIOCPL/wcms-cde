@@ -12,6 +12,7 @@ copy "%placeholder%" "CDESites\MobileCancerGov\SiteSpecific\MobileCancerGov.Web\
 copy "%placeholder%" "CDESites\Proteomics\SiteSpecific\Proteomics.Web\web.config"
 copy "%placeholder%" "CDESites\TCGA\SiteSpecific\TCGA.Web\web.config"
 
+copy "%placeholder%" "CDEFramework\Libraries\LegacyDictionarySupport\app.config"
 copy "%placeholder%" "CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Modules.Search\app.config"
 copy "%placeholder%" "CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Search.BestBets\app.config"
 copy "%placeholder%" "CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Web.CDE\app.config"
