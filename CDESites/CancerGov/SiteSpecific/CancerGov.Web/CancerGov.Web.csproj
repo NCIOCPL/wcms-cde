@@ -174,26 +174,12 @@
     <Compile Include="Common\PopUpPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Common\PopUps\definition.aspx.cs">
-      <DependentUpon>definition.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Common\PopUps\definition.aspx.designer.cs">
-      <DependentUpon>definition.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Common\PopUps\Email.aspx.cs">
       <DependentUpon>Email.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Common\PopUps\Email.aspx.designer.cs">
       <DependentUpon>Email.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Common\PopUps\popDefinition.aspx.cs">
-      <DependentUpon>popDefinition.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Common\PopUps\popDefinition.aspx.designer.cs">
-      <DependentUpon>popDefinition.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\PopUps\PopEmail.aspx.cs">
       <DependentUpon>PopEmail.aspx</DependentUpon>
@@ -270,6 +256,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\LegacyDictionarySupport\LegacyDictionarySupport.csproj">
+      <Project>{fb837661-56d6-439f-a83a-5801b4fe0796}</Project>
+      <Name>LegacyDictionarySupport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\CDEFramework\Libraries\NCILibrary\Code\NCILibrary.Core\NCILibrary.Core.csproj">
       <Project>{898FF17C-C94A-4D85-8AAD-88764B72CFAE}</Project>
       <Name>NCILibrary.Core</Name>
@@ -346,8 +336,6 @@
   <ItemGroup>
     <Content Include="App_Data\web_browsers_patch.xml" />
     <Content Include="AutoSuggestSearch.svc" />
-    <Content Include="Common\PopUps\definition.aspx" />
-    <Content Include="Common\PopUps\popDefinition.aspx" />
     <Content Include="Common\PopUps\popHelp.aspx" />
     <Content Include="Common\PopUps\popHelp.html" />
     <Content Include="Common\UserControls\AlphaListBox.ascx" />
